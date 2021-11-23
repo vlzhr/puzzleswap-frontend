@@ -1,1 +1,1 @@
-# puzzleswap-frontend
+# puzzle-swap

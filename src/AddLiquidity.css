@@ -1,0 +1,282 @@
+.addLiquidity {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 560px;
+    max-width: 90%;
+    margin: 0 auto;
+}
+
+.investToPool h1, .addLiquidity h1 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+    color: #363870;
+    margin: 100px 0 4px;
+}
+
+.addLiquidity>div {
+    margin-bottom: 24px;
+}
+
+.addLiquidity .desc {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #8082C5;
+    margin-top: 4px;
+    margin-bottom: 8px;
+}
+
+.methodChoice {
+    display: flex;
+    background: #FFFFFF;
+    width: 100%;
+    border: 1px solid #F1F2FE;
+    border-radius: 12px;
+    padding: 4px;
+    box-sizing: border-box;
+    margin: 10px auto;
+}
+
+.choice {
+    border-radius: 10px;
+    padding: 4px 20px;
+    color: #8082C5;
+    cursor: pointer;
+    width: 50%;
+}
+.choice.chosen {
+    background: #7075E9;
+    color: #FFFFFF;
+}
+
+.preTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #8082C5;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.blockBody {
+    background: #FFFFFF;
+    border-radius: 16px;
+    margin: 8px 0px;
+    padding: 30px;
+}
+
+.poolData {
+    text-align: left;
+}
+
+.poolName {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #363870;
+}
+
+.poolValue {
+    font-size: 14px;
+    line-height: 20px;
+    color: #363870;
+}
+
+.dollarValue {
+    color: #8082C5;
+}
+
+.addAmountValue {
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.chooseValue {
+    width: 100%;
+    margin-top: 26px;
+    background: #7075E9;
+    border: 1px solid #7075E9;
+    cursor: pointer;
+    border-radius: 2px;
+}
+
+/*.chooseValue::-webkit-slider-runnable-track {*/
+/*    background: #F1F2FE;*/
+/*    border-radius: 2px;*/
+/*    border: none;*/
+/*}*/
+
+/*.chooseValue::-webkit-slider-thumb {*/
+/*    !*background: #7075E9;*!*/
+/*    !*border: 1px solid #7075E9;*!*/
+/*}*/
+
+.tokenDeposit {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: 2px #C6C9F4 dotted;
+}
+
+.tokenDeposit>div {
+    display: flex;
+    text-align: left;
+}
+
+.tokenName {
+    font-size: 14px;
+    line-height: 20px;
+    color: #8082C5;
+    margin-left: 8px;
+}
+
+.tokenWeight {
+    font-weight: 500;
+    color: #8082C5;
+    margin-right: 16px;
+}
+
+.notEnough {
+    color: #EDAA8A;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.notEnough a {
+    /*font-weight: 800;*/
+    color: inherit;
+}
+.notEnough a:hover {
+    color: inherit;
+}
+
+.depositButton {
+    width: 100%;
+    padding: 16px 24px;
+    background: #7075E9;
+    border-radius: 12px;
+    border: none;
+    color: white;
+}
+
+.investToPool button, .addLiquidity button, .typicalButton {
+    border: none;
+    background: #7075E9;
+    border-radius: 10px;
+    color: white;
+    padding: 8px 20px;
+    z-index: 10;
+}
+
+.investToPool button.withdraw, .addLiquidity button.withdraw {
+    background: white;
+    color: #363870;
+    border: 2px solid #F1F2FE;
+}
+
+.column {
+    max-width: 360px;
+    margin: auto;
+}
+
+.subPreTitle {
+    font-size: 14px;
+    line-height: 20px;
+    color: #8082C5;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin: 4px 0px;
+    text-align: left;
+}
+
+.columnFlex {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+}
+
+.flex {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+.flex>* {
+    margin: auto 0;
+}
+
+.flex>button {
+    width: 45%;
+    margin: 0 5% 0 0
+}
+
+.bigNumber {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    color: #363870;
+}
+
+.mediumNumber {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #363870;
+}
+
+.blockBodyHead {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #F1F2FE;
+}
+
+.smallTitle {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #363870;
+    margin-top: 24px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.investToPool .block {
+    margin: 44px 0;
+}
+
+button a {
+    color: inherit;
+    text-decoration: none;
+}
+button a:hover {
+    color: inherit;
+}
+
+.absolute {
+    position: relative;
+}
+
+.comingSoon {
+    margin-top: -2px;
+    margin-left: 5px;
+}
+
+.hidden {
+    display: none;
+}
+
+.preTitle-after {
+    font-weight: 400;
+}
+
+@media screen and (max-width: 720px) {
+    .addLiquidity {
+        margin-top: 100px;
+    }
+}

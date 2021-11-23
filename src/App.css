@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap');
+
+.App {
+  text-align: center;
+}
+
+header {
+  width: 100%;
+  display: flex;
+  padding: 0 20px;
+  box-sizing: border-box;
+  font-size: 20px;
+  /*box-shadow: #282c34 0 0 2px 1px;*/
+  margin-bottom: 100px;
+  position: absolute;
+  justify-content: space-between;
+  top: 0;
+  background: white;
+  z-index: 0;
+  min-height: 73px !important;
+  box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
+}
+
+header div {
+  line-height: 35px;
+  vertical-align: center;
+  display: flex;
+  color: #363870;
+  font-weight: 800;
+  font-family: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+.topmenu {
+  margin: 19px 0 0 34px;
+}
+.topmenu > a {
+  text-decoration: none; padding: 0;
+}
+
+header .menu-element {
+  font-family: Roboto, sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #8082C5;
+  padding-bottom: 26px;
+  margin: 12px 14px 0;
+  cursor: pointer;
+  transition: color .5s;
+  box-sizing: border-box;
+}
+header a.chosen .menu-element, header .menu-element:hover {
+  color: #363870;
+  border-bottom: 4px solid #7075E9;
+  padding-bottom: 22px;
+}
+
+span.logo {
+  font-size: 35px;
+  margin-right: 10px;
+}
+.logo-image {
+  width: 155px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.swap-window, .pool-data {
+  width: 480px;
+  box-sizing: border-box;
+  position: relative;
+  max-width: 90%;
+  border-radius: 10px;
+  font-family: 'Roboto', sans-serif;
+  background: white;
+}
+
+.swap-window {
+  margin: 150px auto 16px;
+  padding: 32px 32px;
+}
+
+.swap-window div {
+  margin: 5px 0;
+}
+
+.choose-option {
+  cursor: pointer;
+}
+
+.swap-window input {
+  padding: 16px;
+  border-radius: 5px;
+  box-shadow: none;
+  background: #F1F2FE;
+  border: none;
+  margin: 10px 0 10px;
+  text-align: center;
+  color: #363870;
+  font-size: 20px;
+}
+
+.swap-window input::placeholder {
+  color: #8082C5;
+}
+
+.swap-window .afterInput {
+  color: #8082C5;
+  position: absolute;
+  font-size: 12px;
+  right: 38px;
+  top: 50px;
+  width: 320px;
+  text-align: right;
+  transition: color .5s;
+}
+
+.swap-window .afterInput:hover {
+  cursor: pointer;
+  color: #363870;
+}
+
+.swap-window .comp {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  vertical-align: center;
+  margin: 1px auto;
+}
+
+.choose-option.chosen {
+  color: green;
+}
+
+button.exchange-button {
+  background: #7075E9;
+  width: 100%;
+  color: white;
+  border: none;
+  box-shadow: none;
+  padding: 16px 24px;
+  margin: 24px 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.notificationWindow {
+  top: 50px;
+}
+
+.pool-data {
+  margin: 0 auto 100px;
+  padding: 18px 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.poolliq-image {
+  display: block;
+  margin: -18px -32px -18px -0px;
+  border-radius: 12px;
+  height: 100%;
+}
+
+.poolliq-text {
+  text-align: left;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8082C5;
+}
+
+.poolliq-value {
+  text-align: left;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #363870;
+}
+
+.change-button {
+  cursor: pointer;
+}
+
+.change-button img {
+  margin: 10px;
+}
+
+.tokenLogo, .smallLogo {
+  border: 1px solid #F1F2FE;
+  border-radius: 12px;
+  position: relative;
+  margin: auto;
+  width: 56px;
+  height: 56px;
+}
+
+.smallLogo {
+  width: 24px;
+  height: 24px;
+}
+
+.tokenData {
+  display: flex;
+  flex-direction: row;
+  margin: 10px 0;
+  padding: 0;
+}
+
+.tokenName {
+  display: flex;
+  flex-direction: column;
+  width: 101px;
+  justify-content: center;
+}
+
+.tokenName-name {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #363870;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.tokenName-text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #8082C5;
+  text-align: left;
+  margin-left: 10px;
+}
+
+.arrow {
+  padding-bottom: 1px;
+  padding-left: 5px;
+}
+
+.comp.rate {
+  justify-content: flex-start;
+  font-size: 14px;
+  line-height: 20px;
+  color: #363870;
+}
+
+.rateText {
+  font-size: 14px;
+  line-height: 20px;
+  color: #363870;
+  display: block;
+  margin: auto 4px;
+}
+
+.infoIcon {
+  border: none;
+  background: none;
+  font-size: 14px;
+  line-height: 20px;
+  color: #8082C5;
+}
+
+.infoPopup .popover {
+  padding: 20px 25px 10px !important;
+}
+
+.custom-popover .popover {
+  padding: 12px 4px 0px;
+  background: #ffffff;
+  border: 1px solid #F1F2FE;
+  box-shadow: 0px 8px 24px rgba(54, 56, 112, 0.16);
+  border-radius: 12px;
+  z-index: 100;
+}
+
+.tokenChoice {
+  padding: 8px 12px;
+  display: flex;
+  cursor: pointer;
+}
+
+.tokenChoice-image {
+  width: 24px;
+  height: 24px;
+  border-radius: 12px;
+}
+
+.tokenChoice-name {
+  font-size: 14px;
+  line-height: 20px;
+  vertical-align: center;
+  margin: 2px 8px;
+  color: #363870;
+}
+
+.non-visible {
+  display: none;
+}
+
+.portfolio-value, .balance, .address {
+  font-size: 16px;
+  color: #1c1d39;
+  margin: auto 12px;
+}
+
+
+
+.tokenBalance {
+  margin: 10px auto;
+  height: 24px;
+  width: 200px;
+  vertical-align: center;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.smallLogo {
+  margin-right: 8px;
+}
+
+.tokenBalance-balance {
+  color: #4f647b;
+  line-height: 18px;
+  vertical-align: center;
+  font-size: 14px;
+}
+
+.wallet-popup {
+  box-sizing: border-box;
+  width: 400px;
+}
+
+.wallet-widget {
+  background: none;
+  border: none;
+}
+.wallet-module {
+  margin-top: 4px;
+}
+
+.login-button {
+  background: #7075E9;
+  width: 100%;
+  color: white;
+  border: none;
+  box-shadow: none;
+  padding: 5px 24px;
+  margin: 12px 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+}
+
+.waves-logo {
+  width: 16px;
+  height: 16px;
+}
+
+footer {
+  padding-bottom: 35px;
+}
+
+.banner a, footer a {
+  color: #8082C5;
+  text-decoration: none;
+  margin: 0 10px;
+  transition: color .5s;
+}
+
+.banner a:hover, footer a:hover {
+  color: #363870;
+}
+
+.banner {
+  padding: 15px;
+  margin-bottom: 40px !important;
+  border-radius: 12px;
+  color: #363870;
+  background: #f1f2fe;
+}
+
+.banner span {
+  line-height: 10px;
+
+}
+
+.banner a {
+  margin: 0;
+}
+
+
+@media screen and (max-width: 720px) {
+  .comp input {
+    width: 100px;
+  }
+  .header-menu {
+    display: flex;
+    flex-direction: column;
+  }
+  header .logo-image {
+    margin: 18px 0 0 10px;
+  }
+  header a .menu-element:hover, header a.chosen .menu-element {
+    border-bottom-width: 1px;
+  }
+  .header-menu .topmenu {
+    margin: 5px 0;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  header a.chosen .menu-element, header .menu-element:hover {
+    padding-bottom: 12px;
+  }
+  header a.chosen .menu-element, header .menu-element:hover {
+    padding-bottom: 8px;
+  }
+  .login-button {
+    height: 44px;
+  }
+  .swap-window {
+    margin-top: 200px;
+  }
+  .poolliq-image {
+    display: none;
+  }
+}
