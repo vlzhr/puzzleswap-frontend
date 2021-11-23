@@ -1,7 +1,7 @@
 import React from 'react';
-import './App.css';
-import './Landing.css';
-import './AddLiquidity.css';
+import './App.scss';
+import './Landing.scss';
+import './AddLiquidity.scss';
 import {ExampleClass} from "./ExampleClass";
 import {SwapInterface} from "./SwapInterface";
 import ReactGA from 'react-ga';

@@ -117,7 +117,7 @@ export class SwapInterface extends React.Component<IProps, IState>{
                             </div>
                             <input onChange={(e) => this.handleInput(e)} type="text" placeholder="0"/>
                         </div>
-                        <div className="change-button comp rate"
+                        <div className="change-button comp rate button secondary medium"
                              onClick={() => this.setState({tokenOut: [1, 0].indexOf(this.state.tokenOut)})}>
                             <img src={changeButton} alt="change"/>
                             <span

@@ -120,8 +120,8 @@ const ModalWindow = (props: any) => {
 
     return (
         <div>
-            <button onClick={toggle} className="exchange-button">{buttonLabel}</button>
-            <button onClick={(e) => e.currentTarget.focus()} className="infoIcon" id="PopoverFocus" type="button">
+            <button onClick={toggle} className="button primary large wide">{buttonLabel}</button>
+            <button onClick={(e) => e.currentTarget.focus()} className="infoIcon button secondary large wide" id="PopoverFocus" type="button">
                 Details
             </button>
             <UncontrolledPopover className="custom-popover infoPopup" trigger="focus" placement="bottom" target="PopoverFocus">
