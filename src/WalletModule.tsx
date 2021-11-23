@@ -152,7 +152,7 @@ export class WalletModule extends React.Component<IProps, IState> {
                     ))}
                 </UncontrolledPopover>
 
-                <button onClick={() => {this.setState({status: "authOpen"})}} className={this.state.status == "authed" ? "non-visible" : "open main-login-button login-button"}>Login</button>
+                <button onClick={() => {this.setState({status: "authOpen"})}} className={this.state.status == "authed" ? "non-visible" : "open button primary medium"}>Login</button>
 
                 <Modal toggle={() => {this.setState({"status": "nonauth"})}} isOpen={this.state.status == "authOpen"} className={"auth-window mt-5"}>
                     <ModalHeader toggle={() => {this.setState({"status": "nonauth"})}}>Connect your wallet</ModalHeader>

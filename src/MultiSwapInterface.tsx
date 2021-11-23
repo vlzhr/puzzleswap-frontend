@@ -221,7 +221,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                     </div>
                     { this.poolData.layer2Address ? (
                         <div>
-                            <Link to={"/"+this.poolData.poolName+"/addLiquidity"}><button className="absolute typicalButton">Add liquidity</button></Link>
+                            <Link to={"/"+this.poolData.poolName+"/addLiquidity"}><button className="absolute button primary medium">Add liquidity</button></Link>
                         </div>
                     ) : (
                         <img className="poolliq-image" src={puzzleBack}/>

@@ -18,17 +18,24 @@
     margin: 100px 0 4px;
 }
 
-.addLiquidity>div {
-    margin-bottom: 24px;
-}
+.addLiquidity {
 
-.addLiquidity .desc {
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    color: #8082C5;
-    margin-top: 4px;
-    margin-bottom: 8px;
+    &__login {
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto 24px;
+        justify-content: center;
+        align-items: center;
+
+        &-desc {
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+            color: #8082C5;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+    }
 }
 
 .methodChoice {

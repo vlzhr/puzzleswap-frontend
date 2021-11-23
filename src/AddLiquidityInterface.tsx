@@ -276,10 +276,10 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
                     </div>
                 </div>
             ) : (
-                <div>
-                    <p className="desc">Login to provide liquidity</p>
+                <div className="addLiquidity__login">
+                    <p className="addLiquidity__login-desc">Login to provide liquidity</p>
 
-                    <button onClick={() => {simulateMouseClick(document.getElementsByClassName("main-login-button")[0]!)}} className="login-button">Login</button>
+                    <button onClick={() => {simulateMouseClick(document.getElementsByClassName("main-login-button")[0]!)}} className="login-button button primary medium">Login</button>
 
                 </div>
             )}
