@@ -6,20 +6,29 @@
 
 header {
   width: 100%;
-  height: 80px;
   display: flex;
+  position: fixed;
   padding: 0 40px;
   box-sizing: border-box;
   font-size: 20px;
   /*box-shadow: #282c34 0 0 2px 1px;*/
   margin-bottom: 100px;
-  position: absolute;
   justify-content: space-between;
   top: 0;
+  left: 0;
   background: white;
-  z-index: 0;
-  min-height: 73px !important;
+  z-index: 100;
+  min-height: 80px !important;
   box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
+}
+
+@media screen and (max-width: 720px) {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
 }
 
 header div {
@@ -30,6 +39,7 @@ header div {
   color: #363870;
   font-weight: 800;
   font-family: 'Roboto', sans-serif;
+  overflow: hidden;
 }
 
 .topmenu {
