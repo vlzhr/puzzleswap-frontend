@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap');*/
 
 .App {
   text-align: center;
@@ -6,8 +6,9 @@
 
 header {
   width: 100%;
+  height: 80px;
   display: flex;
-  padding: 0 20px;
+  padding: 0 40px;
   box-sizing: border-box;
   font-size: 20px;
   /*box-shadow: #282c34 0 0 2px 1px;*/
@@ -22,16 +23,18 @@ header {
 }
 
 header div {
-  line-height: 35px;
+  /*line-height: 35px;*/
+  line-height: 24px;
   vertical-align: center;
   display: flex;
   color: #363870;
   font-weight: 800;
-  font-family: 'IBM Plex Sans Arabic', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 .topmenu {
-  margin: 19px 0 0 34px;
+  /*margin: 19px 0 0 34px;*/
+  margin: 28px 0 0 56px;
 }
 .topmenu > a {
   text-decoration: none; padding: 0;
@@ -43,16 +46,23 @@ header .menu-element {
   font-size: 16px;
   line-height: 24px;
   color: #8082C5;
-  padding-bottom: 26px;
+  /*padding-bottom: 26px;*/
   margin: 12px 14px 0;
   cursor: pointer;
   transition: color .5s;
   box-sizing: border-box;
 }
-header a.chosen .menu-element, header .menu-element:hover {
+header a.chosen .menu-element {
   color: #363870;
   border-bottom: 4px solid #7075E9;
-  padding-bottom: 22px;
+  padding-bottom: 26px;
+}
+
+header .menu-element:hover {
+  border-bottom: 4px solid #C6C9F4;
+  padding-bottom: 26px;
+  color: #8082C5;
+  /*margin: 12px 14px 0;*/
 }
 
 span.logo {
