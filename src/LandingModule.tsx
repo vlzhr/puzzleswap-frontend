@@ -1,5 +1,5 @@
 import React from "react";
-import landingImage from './img/landing-image1.png';
+import landingImage from './img/hero-image-2x.png';
 import fomoLogo from "./img/fomo-logo.jpeg";
 import {appTokens, downloadStates} from "./Pools";
 import {calculateTokenPrice} from "./WalletModule";
@@ -78,23 +78,24 @@ export class LandingModule extends React.Component<IProps, IState> {
 
     render() {
         return <div className="landing">
-            <div className="block-1">
-                <div className="block-1-left">
-                    <h1>Decentralized&nbsp;exchange <br/>
+            <div className="landing__intro">
+                <div className="landing__intro--lc">
+                    <h1 className="landing__title">Decentralized&nbsp;exchange <br/>
                         of a newer generation</h1>
-                    <p>Trade tokens in multiple mega pools</p>
-                    <Link to="/defi"><button>Trade</button></Link>
+                    <p className="landing__desc">Trade tokens in multiple mega pools</p>
+                    <Link to="/defi"><button className="button primary large">Trade</button></Link>
                 </div>
-                <div className="landing-image-container">
-                    <img className="landing-image" src={landingImage} alt=""/>
+                <div className="landing__intro--rc">
+                    <img className="landing__intro--rc-image" src={landingImage} alt=""/>
                 </div>
-                <div className="block-1-more" onClick={() => window.open("https://medium.com/@izhur27/what-is-puzzle-swap-1e4b4af4ed17")}>
+                <div className="landing__intro-more" onClick={() => window.open("https://medium.com/@izhur27/what-is-puzzle-swap-1e4b4af4ed17")}>
                     Learn more on
                     <img src={mediumLogo} alt=""/>
                 </div>
             </div>
-            <div className="about-block">
-                <h1>Solving multiple pain points and market needs</h1>
+            <div className="landing__about">
+                <p className="landing__about--subtitle">About</p>
+                <h1 className="landing__title">Solving multiple pain points and market needs</h1>
                 <div className="advantages">
                     <div className="advantage">
                         <img src={adv1} alt=""/>
@@ -134,7 +135,7 @@ export class LandingModule extends React.Component<IProps, IState> {
                     <img src={bannerToken} alt=""/>
                 </div>
             </div>
-            <div className="traders-block">
+            <div className="landing__traders">
                 <h1>Trade the best performing tokens</h1>
                 <p>Trade any share tokens and earn on holding them.
                     Learn more on <a href="https://collective.wavesducks.com" target="_blank">collective.wavesducks.com</a></p>
