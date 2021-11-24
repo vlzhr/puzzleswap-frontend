@@ -1,6 +1,3 @@
-.landing>div {
-    background: #F1F2FE;
-}
 
 @media screen and (max-width: 375px) {
     h1 {
@@ -33,6 +30,14 @@ h2 {
     font-size: 32px;
     line-height: 40px;
     color: #8082C5;
+    @media screen and (max-width: 375px) {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    @media screen and (max-width: 680px) {
+        font-size: 24px;
+        line-height: 1.2;
+    }
 }
 
 h1, h2 {
@@ -57,6 +62,17 @@ h1, h2 {
 
     &__title {
 
+    }
+
+    &__subtitle {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        text-align: center;
+        color: #7075E9;
+        text-transform: uppercase;
+        margin-top: 96px;
+        margin-bottom: 0.5rem;
     }
 
     &__desc {
@@ -111,36 +127,186 @@ h1, h2 {
     }
 
     &__about {
-        &--subtitle {
-            font-weight: 500;
-            font-size: 14px;
-            line-height: 20px;
-            text-align: center;
-            color: #7075E9;
-            text-transform: uppercase;
-            margin-top: 96px;
-            margin-bottom: 0.5rem;
+        background: #F1F2FE;
+
+        &--advantages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 100px;
+            margin-top: 60px;
+
+            &-item {
+                width: 240px;
+                margin: 20px;
+
+                h2 {
+                    font-weight: 500;
+                    font-size: 24px;
+                    line-height: 32px;
+                    text-align: center;
+                    color: #363870;
+                    margin-bottom: 8px;
+                }
+
+                p {
+                    font-size: 14px;
+                    line-height: 20px;
+                    text-align: center;
+                    color: #8082C5;
+                }
+
+                img {
+                    width: 80px;
+                }
+            }
+        }
+
+        &--banner {
+            position: absolute;
+            background: #7075E9;
+            border-radius: 16px;
+            left: 0;
+            margin: 0 15% -150px;
+            height: 270px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0;
+            bottom: 0;
+
+            @media screen and (max-width: 680px) {
+                height: 144px;
+                margin: 0 auto -100px;
+            }
+
+            &-wrapper {
+                position: relative;
+                margin-top: 100px;
+            }
+
+            &-lc {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                color: #FFFFFF;
+                //max-width: 80px;
+                text-align: left;
+                margin: 48px;
+                font-style: normal;
+                font-weight: 500;
+                font-size: 32px;
+                line-height: 40px;
+                @media screen and (max-width: 680px) {
+                    margin: 24px;
+                    font-size: 24px;
+                    line-height: 1.2;
+                }
+            }
+
+            button {
+                margin-left: 0;
+                margin-bottom: 0;
+            }
+
+            &-rc {
+                &-image {
+                    max-width: 438px;
+                    max-height: 328px;
+                    margin: -30px 48px;
+
+                    @media screen and (max-width: 1200px) {
+                        max-width: 260px;
+                    }
+
+                    @media screen and (max-width: 680px) {
+                        max-width: 200px;
+                        //max-height: 120px;
+                        margin: -15px 24px;
+                    }
+
+                    @media screen and (max-width: 375px) {
+                        max-width: 160px;
+                        max-height: 120px;
+                        margin: 12px -8.5px;
+                    }
+                }
+            }
         }
     }
 
     &__traders {
         background: white;
+        padding-top: 200px;
+    }
+
+    &__prices {
+        margin: 56px auto;
+        max-width: 790px;
+        border: 1px solid #F1F2FE;
+        border-radius: 12px;
+        padding: 14px 24px;
+
+        &--logo {
+            width: 24px;
+            height: 24px;
+            margin: 12px 6px 12px 0;
+            border-radius: 12px;
+        }
+
+        .table-row {
+            display: flex;
+            color: #363870;
+            padding: 12px 19px;
+            border-bottom: 1px solid #F1F2FE;
+        }
+
+        .table-head {
+            color: #8082C5;
+        }
+
+        .table-cell button {
+            margin: 0;
+        }
+
+        .table-cell {
+            width: 33%;
+            vertical-align: center;
+            height: 24px;
+            box-sizing: border-box;
+            display: flex;
+        }
+
+        .table-body .table-cell {
+            height: 48px;
+            line-height: 48px;
+            align-items: center;
+        }
+
+        .ignore-link {
+            display: inherit;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .table-cell {
+            width: 25%;
+        }
+        .table-cell:first-child {
+            width: 50%;
+        }
     }
 }
 
 
-.landing>div.landing__intro {
-    display: flex;
-    align-items: center;
-    /*height: 100vh;*/
-    width: 100%;
-    background: white;
-    position: relative;
-}
-
-.landing .traders-block {
-    font-family: "Open Sans", sans-serif;
-}
+//.landing>div.landing__intro {
+//    display: flex;
+//    align-items: center;
+//    /*height: 100vh;*/
+//    width: 100%;
+//    background: white;
+//    position: relative;
+//}
 
 .traders-block h1 {
     padding-top: 96px;
@@ -170,67 +336,9 @@ h1, h2 {
     text-decoration: none; padding: 0;
 }
 
-.prices-block {
-    margin: 56px auto;
-    max-width: 790px;
-    border: 1px solid #F1F2FE;
-    border-radius: 12px;
-    padding: 14px 24px;
-}
 
-.prices-block .table-row {
-    display: flex;
-    color: #363870;
-    padding: 12px 19px;
-    border-bottom: 1px solid #F1F2FE;
-}
 
-.table-row.table-head {
-    color: #8082C5;
-}
 
-.table-cell {
-    width: 33%;
-    vertical-align: center;
-    height: 24px;
-    box-sizing: border-box;
-    display: flex;
-}
-
-.table-body .table-cell {
-    height: 48px;
-    line-height: 48px;
-}
-
-.prices-logo {
-    width: 24px;
-    height: 24px;
-    margin: 12px 6px 12px 0;
-    border-radius: 12px;
-}
-
-.prices-block .table-cell button {
-    background: none;
-    border: 1px solid #F1F2FE;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    border-radius: 12px;
-    padding: 12px 18px;
-}
-
-.ignore-link {
-    display: inherit;
-    text-decoration: none;
-    color: inherit;
-}
-
-.table-cell {
-    width: 25%;
-}
-.table-cell:first-child {
-    width: 50%;
-}
 
 .about-block h1 {
     font-weight: 500;
@@ -238,85 +346,6 @@ h1, h2 {
     line-height: 40px;
 }
 
-.advantages {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 100px;
-    margin-top: 60px;
-}
-
-.advantage {
-    width: 240px;
-    margin: 20px;
-}
-
-.advantage h2 {
-    font-weight: 500;
-    font-size: 24px;
-    line-height: 32px;
-    text-align: center;
-    color: #363870;
-    margin-bottom: 8px;
-}
-
-.advantage p {
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    color: #8082C5;
-}
-
-.advantage img {
-    width: 80px;
-}
-
-.banner-left {
-    font-weight: 500;
-    font-size: 32px;
-    line-height: 40px;
-    color: #FFFFFF;
-    width: 50%;
-    text-align: left;
-    margin: 48px;
-}
-
-.landing>.banner {
-    position: relative;
-    margin: 100px 10%;
-    background: #7075E9;
-    border-radius: 16px;
-    height: 280px;
-    display: flex;
-    justify-content: space-between;
-    padding: 0;
-}
-
-.banner>div {
-    width: 50%;
-}
-
-.banner img {
-    width: 400px;
-    margin: -30px 0;
-}
-
-.banner button {
-    border: none;
-    padding: 8px 20px;
-    background: #FFFFFF;
-    border-radius: 10px;
-    color: #363870;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-}
-
-.banner-left {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
 
 
 @media (max-device-width: 500px) {

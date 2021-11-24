@@ -66,12 +66,12 @@ export class LandingModule extends React.Component<IProps, IState> {
         console.log(item)
         return <div className="table-body table-row">
             <div className="table-cell">
-                <img src={item.logo} alt="" className="prices-logo" /><span>{item.name}</span>
+                <img src={item.logo} alt="" className="landing__prices--logo" /><span>{item.name}</span>
             </div>
             <div className="table-cell">${item.price}</div>
             {/*<div className="table-cell">+ 115%</div>*/}
             <div className="table-cell">
-                <Link className="ignore-link" to={"/"+item.pool}><button>Trade</button></Link>
+                <Link className="ignore-link" to={"/"+item.pool}><button className="button secondary medium">Trade</button></Link>
             </div>
         </div>
     }
@@ -94,53 +94,57 @@ export class LandingModule extends React.Component<IProps, IState> {
                 </div>
             </div>
             <div className="landing__about">
-                <p className="landing__about--subtitle">About</p>
+                <p className="landing__subtitle">About</p>
                 <h1 className="landing__title">Solving multiple pain points and market needs</h1>
-                <div className="advantages">
-                    <div className="advantage">
+                <div className="landing__about--advantages">
+                    <div className="landing__about--advantages-item">
                         <img src={adv1} alt=""/>
                         <h2>Mega pools</h2>
                         <p>Trade up to 10 tokens in one pool without extra fees and lower slippage risks. Any token can be exchanged to any other.</p>
                     </div>
-                    <div className="advantage">
+                    <div className="landing__about--advantages-item">
                         <img src={adv2} alt=""/>
                         <h2>Portfolio pools</h2>
                         <p>Create a custom trading pool and provide liquidity from your portfolio with any token which is suitable for you.</p>
                     </div>
-                    <div className="advantage">
+                    <div className="landing__about--advantages-item">
                         <img src={adv3} alt=""/>
                         <h2>Fair routing</h2>
                         <p>Suitable routing service between custom pools and AMM-exchanges on Waves — trade with the best fare.</p>
                     </div>
-                    <div className="advantage">
+                    <div className="landing__about--advantages-item">
                         <img src={adv4} alt=""/>
                         <h2>Trading&nbsp;subscriptions</h2>
                         <p>Purchase subscriptions with PUZZLE to pay less fees if you are a regular user.</p>
                     </div>
                 </div>
             </div>
-            <div className="banner">
-                <div className="banner-left">
-                    <div>
-                        PUZZLE token will <br/>
-                        be released soon!
+            <div className="landing__about--banner-wrapper">
+                <div className="landing__about--banner">
+                    <div className="landing__about--banner-lc">
+                        <div>
+                            PUZZLE token will <br/>
+                            be released soon!
+                        </div>
+                        <div>
+                            <button className="button secondary medium" onClick={() => {window.open("https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166")}}>
+                                Learn more
+                            </button>
+                        </div>
                     </div>
-                    <div>
-                        <button onClick={() => {window.open("https://medium.com/@puzzleswap/puzzle-swap-%EF%B8%8F-roadmap-d8629c2dd166")}}>
-                            Learn more
-                        </button>
+                    <div className="landing__about--banner-rc">
+                        <img className="landing__about--banner-rc-image" src={bannerToken} alt=""/>
                     </div>
-                </div>
-                <div>
-                    <img src={bannerToken} alt=""/>
                 </div>
             </div>
+
             <div className="landing__traders">
-                <h1>Trade the best performing tokens</h1>
-                <p>Trade any share tokens and earn on holding them.
+                <p className="landing__subtitle">Trade</p>
+                <h1 className="landing__title">Trade the best performing tokens</h1>
+                <p className="landing__desc">Trade any share tokens and earn on holding them.
                     Learn more on <a href="https://collective.wavesducks.com" target="_blank">collective.wavesducks.com</a></p>
 
-                <div className="prices-block" >
+                <div className="landing__prices" >
 
                     <div className="table-head table-row">
                         <div className="table-cell">Asset</div>
@@ -153,7 +157,7 @@ export class LandingModule extends React.Component<IProps, IState> {
 
                     {/*<div className="table-body table-row">*/}
                     {/*    <div className="table-cell">*/}
-                    {/*        <img src={fomoLogo} alt="" className="prices-logo" /> FOMO*/}
+                    {/*        <img src={fomoLogo} alt="" className="landing__prices--logo" /> FOMO*/}
                     {/*    </div>*/}
                     {/*    <div className="table-cell">$1440</div>*/}
                     {/*    <div className="table-cell">+ 115%</div>*/}
