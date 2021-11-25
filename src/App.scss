@@ -365,7 +365,6 @@ span.logo {
 
 .infoPopup .popover {
   padding: 20px 25px 10px !important;
-  //z-index: 100;
 }
 
 .custom-popover .popover {
@@ -374,7 +373,10 @@ span.logo {
   border: 1px solid #F1F2FE;
   box-shadow: 0px 8px 24px rgba(54, 56, 112, 0.16);
   border-radius: 12px;
+}
 
+.popover, .custom-popover, .infoPopup, .tokenChoice, .tokenChoice-image, .tokenChoice-name {
+  z-index: 101 !important;
 }
 
 .tokenChoice {
@@ -647,7 +649,7 @@ span.logo {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    flex-grow: 2;
+    flex-grow: 6;
     transition:.25s ease-in-out;
     overflow: hidden;
 
@@ -715,7 +717,7 @@ span.logo {
       line-height: 24px;
       color: #8082C5;
       /*padding-bottom: 26px;*/
-      margin: 12px 14px 0;
+      margin: 0 14px;
       cursor: pointer;
       transition: color .5s;
       box-sizing: border-box;
@@ -867,11 +869,10 @@ span.logo {
 
   /* Logo */
   &__logo {
-    flex: 1;
     align-items: center;
     display: flex;
     outline: none;
-    flex-grow: 2;
+    flex-grow: 0;
     padding-left: 40px;
 
     @media screen and (max-width: 720px) {
