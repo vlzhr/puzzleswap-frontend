@@ -18,8 +18,10 @@
     "@waves/waves-transactions": "^4.2.1-beta.2",
     "bootstrap": "^5.1.0",
     "classnames": "^2.3.1",
+    "create-app-react": "^1.0.6",
     "history": "^5.0.1",
-    "postcss": "^8.3.11",
+    "node-sass": "^6.0.1",
+    "postcss": "^8.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-ga": "^3.3.0",
@@ -59,5 +61,8 @@
     "@types/react-router-dom": "^5.1.9",
     "react-notifications": "^1.7.2",
     "react-scripts": "^4.0.3"
+  },
+  "engines": {
+    "node": "14.x"
   }
 }
