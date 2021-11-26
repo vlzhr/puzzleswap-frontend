@@ -382,9 +382,9 @@ span.logo {
   border-radius: 12px;
 }
 
-.popover, .custom-popover, .infoPopup, .tokenChoice, .tokenChoice-image, .tokenChoice-name {
-  z-index: 101 !important;
-}
+//.popover, .custom-popover, .infoPopup, .tokenChoice, .tokenChoice-image, .tokenChoice-name {
+//  z-index: 101 !important;
+//}
 
 .tokenChoice {
   padding: 8px 12px;
@@ -630,7 +630,7 @@ span.logo {
   position: fixed;
   min-height: 80px;
   align-items: center;
-  z-index: 100;
+  //z-index: 100;
   color: white;
   top: 0;
   left: 0;
@@ -698,12 +698,22 @@ span.logo {
           color: #363870;
           border-bottom: 4px solid #7075E9;
           padding-bottom: 16px;
+
+          @media screen and (max-width: 720px) {
+            border-bottom: unset;
+            padding-bottom: unset;
+          }
         }
 
         a.chosen .header-menu__link:hover  {
           color: #363870;
           border-bottom: 4px solid #7075E9;
           padding-bottom: 16px;
+
+          @media screen and (max-width: 720px) {
+            border-bottom: unset;
+            padding-bottom: unset;
+          }
         }
       }
   }
