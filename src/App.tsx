@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './App.scss';
 import './Landing.scss';
 import './AddLiquidity.scss';
@@ -32,8 +32,7 @@ declare global {
     }
 }
 
-
-function App() {
+function App(this: any) {
 
     const trackingId = "G-W203LN8Q6R";
     const history = createBrowserHistory();
@@ -42,6 +41,12 @@ function App() {
     history.listen(location => {
         ReactGA.pageview(window.location.pathname + window.location.search);
     });
+
+    const [isActive, setActive] = useState(false);
+
+    const toggleClass = () => {
+        setActive(!isActive);
+    };
 
   return (
       <Router>
@@ -63,7 +68,7 @@ function App() {
                     <div className="header__logo">
                         <Link className="ignore-link" to="/"><img className="logo-image" src={puzzleLogo} /></Link>
 
-                        <div className="header__toggle">
+                        <div className={isActive ? 'header__toggle--open': 'header__toggle'} onClick={toggleClass} >
                             <div className="header__burger">
                               <span className="header__burger-item"></span>
                               <span className="header__burger-item"></span>
@@ -76,7 +81,7 @@ function App() {
                         </div>
                     </div>
 
-                    <div className="header__menu">
+                    <div className={isActive ? 'header__menu--open': 'header__menu'} >
                       <div className="header__links">
                         <div className="header__link">
                             <NavLink activeClassName="chosen" to="/farms"><span className="header__menu-link">Farms Pool 1</span></NavLink>
