@@ -149,12 +149,17 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                         <div className="comp">
                                 <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenIn" type="button">
                                     <img className="tokenLogo" src={this.poolData.tokenLogos[this.getTokenIn()]}/>
-                                    <div className="tokenName">
-                                        <span className="tokenName-text">You pay</span>
-                                        <span
-                                            className="tokenName-name">{this.poolData.tokenNames[this.getTokenIn()]}
-                                            <img className="arrow" src={arrow} alt=""/></span>
+                                    <div className="tokenPair">
+                                        <div className="tokenName">
+                                            <span className="tokenName-text">You pay</span>
+                                            <span
+                                                className="tokenName-name">{this.poolData.tokenNames[this.getTokenIn()]}
+                                            </span>
+                                        </div>
+                                        <img className="arrow" src={arrow} alt=""/>
                                     </div>
+
+
                                 </button>
 
                                 <UncontrolledPopover className="custom-popover" trigger="focus" placement="bottom" target="TokenIn">
@@ -180,12 +185,15 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                         <div className="comp">
                             <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenOut" type="button">
                                 <img className="tokenLogo" src={this.poolData.tokenLogos[this.state.tokenOut]}/>
-                                <div className="tokenName">
-                                    <span className="tokenName-text">You receive</span>
-                                    <span
-                                        className="tokenName-name">{this.poolData.tokenNames[this.state.tokenOut]}
-                                        <img className="arrow" src={arrow} alt=""/>
-                                    </span>
+
+                                <div className="tokenPair">
+                                    <div className="tokenName">
+                                        <span className="tokenName-text">You receive</span>
+                                        <span
+                                            className="tokenName-name">{this.poolData.tokenNames[this.state.tokenOut]}
+                                        </span>
+                                    </div>
+                                    <img className="arrow" src={arrow} alt=""/>
                                 </div>
                             </button>
                             <input disabled={true} placeholder={(this.calculateAmountOut(0.98)).toString()}/>
