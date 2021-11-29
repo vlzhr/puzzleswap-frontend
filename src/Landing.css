@@ -1,0 +1,334 @@
+.landing>div {
+    background: #F1F2FE;
+}
+
+h1 {
+    color: #363870;
+    font-weight: 500;
+}
+
+.block-1-left h1 {
+    font-style: normal;
+    margin-bottom: 40px;
+    /* font-size: 48px; */
+    /*font-size: 48px;*/
+    /*min-width: 560px;*/
+    /*line-height: 56px;*/
+}
+
+.landing .block-1-left p {
+    color: #8082C5;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+h2 {
+    font-style: normal;
+    font-weight: 500;
+    font-size: calc(1.325rem + .9vw);
+    line-height: 24px;
+    color: #8082C5;
+}
+
+h1, h2 {
+    font-family: "Open Sans", sans-serif;
+    max-width: 100%;
+    margin: auto;
+}
+
+.landing {
+    width: 100%;
+}
+
+.block-1 {
+    padding-left: 20px;
+}
+
+.block-1 button {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+    padding: 16px 50px;
+    background: #7075E9;
+    border-radius: 12px;
+    border: none;
+    margin-top: 15px;
+}
+
+.landing>div.block-1 {
+    display: flex;
+    align-items: center;
+    /*height: 100vh;*/
+    width: 100%;
+    background: white;
+    position: relative;
+}
+
+.block-1-left {
+    text-align: left;
+}
+
+.block-1>div {
+    margin: auto;
+}
+
+.block-1>.landing-image-container {
+    margin-left: -10%;
+}
+
+.block-1-more {
+    position: absolute;
+    bottom: 0;
+    left: 120px;
+    background: #F1F2FE;
+    border-radius: 12px 12px 0px 0px;
+    padding: 20px 24px 16px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7075E9;
+    cursor: pointer;
+}
+
+.block-1-more img {
+    margin-left: 10px;
+}
+
+.landing-image {
+    display: block;
+    margin: 80px auto 0;
+    width: 700px;
+}
+
+.landing .traders-block {
+    background: white;
+}
+
+.landing .traders-block {
+    font-family: "Open Sans", sans-serif;
+}
+
+.traders-block h1 {
+    padding-top: 96px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    color: #363870;
+}
+
+.traders-block p {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #8082C5;
+}
+
+.traders-block p, .traders-block h1 {
+    margin: 10px auto;
+    box-sizing: border-box;
+    width: 350px;
+    max-width: 90%;
+}
+
+.traders-block a {
+    text-decoration: none; padding: 0;
+}
+
+.prices-block {
+    margin: 56px auto;
+    max-width: 790px;
+    border: 1px solid #F1F2FE;
+    border-radius: 12px;
+    padding: 14px 24px;
+}
+
+.prices-block .table-row {
+    display: flex;
+    color: #363870;
+    padding: 12px 19px;
+    border-bottom: 1px solid #F1F2FE;
+}
+
+.table-row.table-head {
+    color: #8082C5;
+}
+
+.table-cell {
+    width: 33%;
+    vertical-align: center;
+    height: 24px;
+    box-sizing: border-box;
+    display: flex;
+}
+
+.table-body .table-cell {
+    height: 48px;
+    line-height: 48px;
+}
+
+.prices-logo {
+    width: 24px;
+    height: 24px;
+    margin: 12px 6px 12px 0;
+    border-radius: 12px;
+}
+
+.prices-block .table-cell button {
+    background: none;
+    border: 1px solid #F1F2FE;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    border-radius: 12px;
+    padding: 12px 18px;
+}
+
+.ignore-link {
+    display: inherit;
+    text-decoration: none;
+    color: inherit;
+}
+
+.table-cell {
+    width: 25%;
+}
+.table-cell:first-child {
+    width: 50%;
+}
+
+.about-block {
+}
+
+.about-block h1 {
+    margin-top: 124px;
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+.advantages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 100px;
+    margin-top: 60px;
+}
+
+.advantage {
+    width: 240px;
+    margin: 20px;
+}
+
+.advantage h2 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 32px;
+    text-align: center;
+    color: #363870;
+    margin-bottom: 8px;
+}
+
+.advantage p {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #8082C5;
+}
+
+.advantage img {
+    width: 80px;
+}
+
+.banner-left {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 40px;
+    color: #FFFFFF;
+    width: 50%;
+    text-align: left;
+    margin: 48px;
+}
+
+.landing>.banner {
+    position: relative;
+    margin: 100px 10%;
+    background: #7075E9;
+    border-radius: 16px;
+    height: 280px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.banner>div {
+    width: 50%;
+}
+
+.banner img {
+    width: 400px;
+    margin: -30px 0;
+}
+
+.banner button {
+    border: none;
+    padding: 8px 20px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    color: #363870;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.banner-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+@media (max-device-width: 500px) {
+    .block-1 {
+        flex-direction: column;
+        justify-content: center;
+    }
+    .block-1>div {
+        margin: 0;
+    }
+    .block-1 .block-1-left {
+        margin-top: 200px;
+        margin-bottom: 0;
+    }
+    .landing-image {
+        width: 100%;
+        margin-top: 0;
+    }
+    .block-1.landing-image-container {
+        margin-top: -50vh;
+    }
+    .block-1-left {
+        margin-left: 5%;
+        max-width: 90%;
+    }
+    .advantages {
+        flex-basis: 49% !important;
+    }
+    .banner {
+        overflow: hidden;
+    }
+    .banner>.banner-left {
+        width: 70%;
+        margin: 24px;
+        line-height: 24px;
+    }
+    .landing .banner-left {
+        font-size: 16px;
+    }
+    .banner img {
+        width: 300px;
+        margin: 0 0;
+    }
+}

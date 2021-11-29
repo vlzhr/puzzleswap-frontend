@@ -1,10 +1,11 @@
 .addLiquidity {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 560px;
     max-width: 90%;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
 .investToPool h1, .addLiquidity h1 {
@@ -17,24 +18,17 @@
     margin: 100px 0 4px;
 }
 
-.addLiquidity {
+.addLiquidity>div {
+    margin-bottom: 24px;
+}
 
-    &__login {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto 24px;
-        justify-content: center;
-        align-items: center;
-
-        &-desc {
-            font-size: 14px;
-            line-height: 20px;
-            text-align: center;
-            color: #8082C5;
-            margin-top: 4px;
-            margin-bottom: 8px;
-        }
-    }
+.addLiquidity .desc {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #8082C5;
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
 
 .methodChoice {
@@ -146,7 +140,6 @@
     font-weight: 500;
     color: #8082C5;
     margin-right: 16px;
-    width: 33px;
 }
 
 .notEnough {
@@ -280,41 +273,6 @@ button a:hover {
 
 .preTitle-after {
     font-weight: 400;
-}
-
-.explanation {
-    padding: 18px 16px 16px;
-    background: #FCF4F1;
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 20px;
-    color: #363870;
-    text-align: left;
-}
-
-.classicInput {
-    background: #F1F2FE;
-    border-radius: 12px;
-    color: #363870;
-    width: 60%;
-    margin-left: 16px;
-    padding: 16px;
-    box-sizing: border-box;
-    height: 56px;
-    border: none;
-}
-
-.attentionImg {
-    display: block;
-    margin: 0 16px 0 0;
-}
-
-.left-small {
-    margin-left: 0px;
-    width: 100%;
-    position: relative;
-    margin-bottom: 20px;
-    text-align: left;
 }
 
 @media screen and (max-width: 720px) {

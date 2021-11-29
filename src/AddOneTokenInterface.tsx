@@ -3,11 +3,13 @@ import axios from 'axios';
 import {appTokens, PoolNames, poolsData} from "./Pools";
 import { Link } from "react-router-dom";
 import {API_URL, IContractStateKey} from "./MultiSwapInterface";
-import comingSoon from "./img/comingSoon.svg"
+import comingSoon from "./img/comingSoon.svg";
 import {globalSigner} from "./SignerHandler";
+import attentionImg from "./img/attention.svg";
 import {Button, Modal, ModalBody, ModalHeader} from "reactstrap";
 import {auth} from "@waves/waves-transactions";
 import {errorMessage, successMessage} from "./AuthInterface";
+import {valueOrZero} from "./InvestToPoolInterface";
 
 interface IState{
     percentage: Number;
@@ -17,11 +19,18 @@ interface IState{
     maxValue: Number;
     allTokensHave: Boolean;
     userAddress: String;
-    auth: Boolean
+    auth: Boolean;
+    eggAmount: Number;
 }
 
 interface IProps{
     poolName: string;
+}
+
+
+export function strToNum(n: string) {
+    console.log(n, Number(n))
+    return Number(n)
 }
 
 const mouseClickEvents = ['mousedown', 'click', 'mouseup'];
@@ -38,7 +47,7 @@ function simulateMouseClick(element: Element){
     );
 }
 
-export class AddLiquidityInterface extends React.Component<IProps, IState> {
+export class AddOneTokenInterface extends React.Component<IProps, IState> {
 
     poolData: any = {};
     dicBalances: any = {};
@@ -65,25 +74,25 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
             maxValue: 0,
             allTokensHave: true,
             auth: auth,
-            userAddress: localStorage.getItem("userAddress")!
+            userAddress: localStorage.getItem("userAddress")!,
+            eggAmount: 0
         }
     }
 
-    depositAndStake() {
-        const payments = []
-        for (const name of this.poolData.tokenNames) {
-            payments.push({
-                assetId: this.dicBalances[name].tokenId,
-                amount: Math.floor(Math.floor(this.calculateTokenToDeposit(name) * Number(this.state.percentage) * 0.01 * this.dicBalances[name].decimals))
-            })
-        }
-        console.log(payments)
+    depositOneTokenAndStake() {
+        const toStake = Math.round(Number(this.state.eggAmount) * 10**8);
+
         globalSigner.signer.invoke({
             dApp: this.poolData.layer2Address,
             fee: 500000,
-            payment: payments,
+            payment: [
+                {
+                    assetId: this.poolData.baseTokenId,
+                    amount: toStake
+                }
+            ],
             call: {
-                function: 'generateIndexAndStake',
+                function: 'generateIndexWithOneTokenAndStake',
                 args: []
             },
             feeAssetId: 'WAVES',
@@ -116,38 +125,15 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
         return Math.floor(sum) / 100;
     }
 
-    calculateMinPIssued() {
-        const poolState = this.state.poolState;
-
-        let minPIssued = 100000000000;
-        for (const name of this.poolData.tokenNames) {
-            if (this.dicBalances[name] != undefined) {
-                const tokenId = this.dicBalances[name].tokenId;
-                const userTokenBalance = this.dicBalances[name].balance * this.dicBalances[name].decimals;
-                const globalTokenBalance = poolState.get("global_" + tokenId + "_balance");
-                const poolTokenAmount = poolState.get("global_poolToken_amount");
-
-                let tokenMaxPIssued = Math.floor(this.dicBalances[name].decimals * poolTokenAmount * userTokenBalance / globalTokenBalance) / this.dicBalances[name].decimals;
-
-                // console.log(globalTokenBalance, userTokenBalance, poolTokenAmount)
-                console.log(tokenMaxPIssued);
-
-                minPIssued = Math.min(tokenMaxPIssued, minPIssued);
-            } else {
-                this.setState({allTokensHave: false})
-            }
-        }
-
-        console.log(minPIssued, " indexes to be issued max");
-        return minPIssued;
-    }
-
     async componentDidMount() {
         const state = await this.downloadState();
         this.setState({poolState: state})
 
-        const minPIssued = this.calculateMinPIssued()
-        this.setState({minPIssued: minPIssued})
+        const baseTokenNum = this.poolData.tokenIds.indexOf(this.poolData.baseTokenId);
+        const baseTokenName = this.poolData.tokenNames[baseTokenNum];
+        if (this.dicBalances[baseTokenName]) {
+            this.setState({eggAmount: this.dicBalances[baseTokenName].balance})
+        }
 
         setInterval(() => {
             globalSigner.updateBalances()
@@ -158,60 +144,10 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
         }, 1000)
     }
 
-    calculateTokenToDeposit(tokenName: any) {
-        const tokenNum = this.poolData.tokenNames.indexOf(tokenName);
-        const tokenId = this.poolData.tokenIds[tokenNum];
-        const minPIssued = this.state.minPIssued;
-        const poolTokenAmount = this.state.poolState.get("global_poolToken_amount");
-        const Bk = this.state.poolState.get("global_"+tokenId+"_balance");
-
-        const Dk = ((poolTokenAmount + minPIssued) / poolTokenAmount - 1) * Bk / this.poolData.tokenDecimals[tokenNum]
-
-        return Math.floor(this.poolData.tokenDecimals[tokenNum] * Dk) / this.poolData.tokenDecimals[tokenNum];
-    }
-
     calculateDepositValue() {
-        return Math.floor(100 * Number(this.state.percentage) * 0.01 * this.calculateLiquidity() * Number(this.state.minPIssued) / Number(this.state.poolState.get("global_poolToken_amount"))) / 100
-    }
-
-    renderTokenDeposit(tokenName: any) {
-        const tokenNum = this.poolData.tokenNames.indexOf(tokenName);
-        const tokenDetails = (this.dicBalances[tokenName] != undefined ? this.dicBalances[tokenName] : {balance: 0, value: 0})
-
-        const tokenBalance = tokenDetails["balance"];
-        const tokenWeight = this.poolData.tokenShares[tokenNum] * 100
-        const tokenToDeposit = Math.floor(this.poolData.tokenDecimals[tokenNum] * this.calculateTokenToDeposit(tokenName) * Number(this.state.percentage) / 100) / this.poolData.tokenDecimals[tokenNum];
-
-        if (tokenBalance > 0) {
-            const tokenDollarValue = Math.floor(tokenDetails["value"] * 100) / 100;
-
-            return <div className="tokenDeposit">
-                <div>
-                    <div className="tokenWeight">{tokenWeight}%</div>
-                    <img className="smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
-                    <div className="tokenName">{tokenName}</div>
-                </div>
-                <div>
-                    <div className="poolValue">{tokenToDeposit} <span className="dollarValue">/{tokenBalance}</span></div>
-                </div>
-            </div>
-        } else {
-            return <div className="tokenDeposit">
-                <div>
-                    <div className="tokenWeight">{tokenWeight}%</div>
-                    <img className="smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
-                    <div className="tokenName">{tokenName}</div>
-                </div>
-                <div>
-                    <div className="notEnough"><Link to="./"><span>buy {tokenToDeposit} tokens</span></Link></div>
-                </div>
-            </div>
-        }
-    }
-
-    handleRangeChange(e: any) {
-        const inputValue = e.target.value;
-        this.setState({percentage: inputValue});
+        const baseTokenNum = this.poolData.tokenIds.indexOf(this.poolData.baseTokenId);
+        const baseTokenName = this.poolData.tokenNames[baseTokenNum];
+        return Math.round(100 * this.dicBalances[baseTokenName].value * (Number(this.state.eggAmount) / this.dicBalances[baseTokenName].balance)) / 100
     }
 
     render() {
@@ -230,11 +166,11 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
             </div>
 
             <div className="methodChoice">
-                <div className="choice chosen first">
+                <div className="choice first"><Link className="ignore-link" to="addLiquidity">
                     Multiple tokens
-                </div>
-                <div className="choice second">
-                    <Link className="ignore-link" to="addOneToken">With {baseTokenName} token</Link>
+                </Link></div>
+                <div className="choice chosen second">
+                    With {baseTokenName} token
                 </div>
             </div>
 
@@ -254,28 +190,31 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
 
             {(this.state.auth) ? (
                 <div>
-                    <div className="amountChoice">
-                        <h2 className="preTitle">Amount</h2>
-                        <div className="blockBody">
-                            <p className="desc">Select the percentage of your assets</p>
-                            <div className="addAmountValue">{this.state.percentage}% <span className="dollarValue">($ {this.calculateDepositValue()})</span></div>
-                            <input onInput={(e) => {this.handleRangeChange(e)}} className="chooseValue" type="range" min="0" max="100" step="0.1" />
-                        </div>
-                    </div>
-
                     <div className="compositionChoice">
-                        <h2 className="preTitle">Deposit composition</h2>
-                        <div className="blockBody">
-                            {this.poolData.tokenNames.map((item: any) => (
-                                this.renderTokenDeposit(item)
-                            ))}
+                        <div className="poolDetails blockBody">
+                            <div className="flex">
+                                <div className="poolData flex">
+                                    <img src={this.poolData.tokenLogos[baseTokenNum]} alt=""/>
+                                    <div>
+                                        <div className="poolName">{baseTokenName}</div>
+                                        <div className="poolValue dollarValue">Max: {valueOrZero(this.dicBalances[baseTokenName].balance)}</div>
+                                    </div>
+                                </div>
+                                    <input onChange={(e) => {this.setState({eggAmount: strToNum(e.target.value)})}} className="classicInput" id="eggAmountInput" defaultValue={valueOrZero(this.dicBalances[baseTokenName].balance)} type="text"/>
+                            </div>
+                            <div className="explanation flex">
+                                <img src={attentionImg} className="attentionImg" alt="attentione"/>
+                                Your token will be automatically converted to other pool tokens and provided as liquidity.
+                                Please pay attention that value of your deposit can change if share token prices fluctuate.
+                                <br/>
+                                Because of slippage we don't recommend to invest more than $1000 with one transaction!
+                            </div>
                         </div>
-                    </div>
-
-                    <div className={this.state.allTokensHave ? "depositButtonContainer" : "hidden"}>
-                        <button className="depositButton" onClick={() => {this.depositAndStake()}}>
-                            Deposit <span className="">$ {this.calculateDepositValue()}</span>
-                        </button>
+                        <div className={this.state.allTokensHave ? "depositButtonContainer" : "hidden"}>
+                            <button className="depositButton" onClick={() => {this.depositOneTokenAndStake()}}>
+                                Convert and deposit <span className="">$ {this.calculateDepositValue()}</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             ) : (

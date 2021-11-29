@@ -94,6 +94,8 @@ export class GlobalSigner {
         localStorage.removeItem("authMethod")
         localStorage.removeItem("userAddress")
         localStorage.removeItem("userBalances")
+
+        window.location.reload()
     }
 }
 

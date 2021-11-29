@@ -4,12 +4,13 @@ import {PoolNames, poolsData} from "./Pools";
 import { Link } from "react-router-dom";
 import {API_URL, IContractStateKey} from "./MultiSwapInterface";
 import {store} from "react-notifications-component";
+import comingSoon from "./img/comingSoon.svg"
 import {globalSigner} from "./SignerHandler";
 import {errorMessage, successMessage} from "./AuthInterface";
 
 export function toDateString(timestamp: number) {
     const d = new Date(timestamp)
-    return d.getDate() + "." + d.getMonth() + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
+    return d.getDate() + "." + (d.getUTCMonth() + 1) + "." + d.getFullYear() + " " + d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds()
 }
 
 export function valueOrZero(n: number) {
@@ -219,9 +220,11 @@ export class InvestToPoolInterface extends React.Component<IProps, IState> {
                             <button className="withdraw" onClick={() => this.withdrawAll()}>Withdraw all</button>
                             <button><Link to="./addLiquidity">Deposit</Link></button>
                         </div>
+                            {/*<div className="withdraw left-small">Withdraw as EGG <img className="comingSoon" src={comingSoon} alt=""/></div>*/}
 
-                        <div className="subPreTitle">
-                            Total reward claimed: <span className="dollarValue">${userClaimedValue / 10**6}</span>
+                        <br/>
+                        <div className="subPreTitle columnFlex">
+                            <div>Total reward claimed:</div><div className="dollarValue bigNumber">${userClaimedValue / 10**6}</div>
                         </div>
                     </div>
                 </div>

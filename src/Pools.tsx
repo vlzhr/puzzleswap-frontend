@@ -16,6 +16,8 @@ import marvinLogo from "./img/marvin-logo.jpeg";
 import cartelLogo from "./img/cartel-logo.png";
 import cguLogo from "./img/cgu-logo.png";
 
+import wxLogo from "./img/logos/WX.svg";
+import puzzleLogo from "./img/logos/PUZZLE.svg";
 import ennoLogo from "./img/logos/enno-logo.svg";
 import nsbtLogo from "./img/logos/nsbt-logo.svg";
 import signLogo from "./img/logos/sign-logo.svg";
@@ -33,7 +35,8 @@ export enum PoolNames {
     pool1 = 'pool-1',
     megapool = 'farms',
     megapool2 = 'farms2',
-    defi = 'defi'
+    defi = 'defi',
+    puzzle = 'puzzle'
 }
 
 export const poolsData: any = {
@@ -149,6 +152,7 @@ export const poolsData: any = {
         ],
         contractAddress: "3PPRHHF9JKvDLkAc3aHD3Kd5tRZp1CoqAJa",
         layer2Address: "3PDVDYZiwJzK3pu8vcknuLiKCYBPx6XZntG",
+        baseTokenId: "C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS",
         name: "Farms 1"
     },
 
@@ -190,6 +194,7 @@ export const poolsData: any = {
         tokenDecimals: [10**8, 10**8, 10**8, 10**8, 10**8, 10**8, 10**8, 10**8, 10**6],
         contractAddress: "3PKYPKJPHZENAAwH9e7TF5edDgukNxxBt3M",
         layer2Address: "3PLNxoMJYKzcA8qQ7hQidGDaUJNvM4w36nj",
+        baseTokenId: "C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS",
         name: "Farms 2"
     },
 
@@ -197,42 +202,68 @@ export const poolsData: any = {
         tokenIds: [
             'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',  // EGG
             'WAVES',  // WAVES
+            '4K35syPfY2tYrNWzjh1vbmH39qE4qPV7SwLwekrzD82r',  // USDTLAMBO
             'Ehie5xYpeN8op1Cctc6aGUrqx8jq3jtf1DSjXDbfm7aT',  // SWOP
             'DSbbhLsSTeDg5Lsiufk2Aneh3DjVqJuPr2M9uU1gwy5p',  // VIRES
             '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g',  // NSBT
             '7LMV3s1J4dKpMQZqge5sKYoFkZRLojnnU49aerqos4yg',  // ENNO
             '9sQutD5HnRvjM1uui5cVC4w9xkMPAfYEV8ymug3Mon2Y',  // SIGN
-            '4K35syPfY2tYrNWzjh1vbmH39qE4qPV7SwLwekrzD82r',  // USDTLAMBO
             '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',  // USDT
             'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p'   // USDN
         ],
         tokenNames: [
             "EGG",
             "WAVES",
+            "USDTLAMBO",
             "SWOP",
             "VIRES",
             "NSBT",
             "ENNO",
             "SIGN",
-            "USDTLAMBO",
             "USDT",
             "USDN"
         ],
         tokenLogos: [
             eggLogo,
             wavesLogo,
+            usdtlamboLogo,
             swopLogo,
             viresLogo,
             nsbtLogo,
             ennoLogo,
             signLogo,
-            usdtlamboLogo,
             usdtLogo,
             usdnLogo
         ],
-        tokenShares: [20, 20, 8, 8, 6, 6, 4, 4, 12, 12],
-        tokenDecimals: [10**8, 10**8, 10**8, 10**8, 10**6, 10**8, 10**8, 10**6, 10**6, 10**6],
-        contractAddress: "3PDrYPF6izza2sXWffzTPF7e2Fcir2CMpki"
+        tokenShares: [0.2, 0.2, 0.04, 0.08, 0.08, 0.06, 0.06, 0.04, 0.12, 0.12],
+        tokenDecimals: [10**8, 10**8, 10**8, 10**8, 10**8, 10**6, 10**8, 10**8, 10**6, 10**6],
+        contractAddress: "3PDrYPF6izza2sXWffzTPF7e2Fcir2CMpki",
+        // layer2Address: "-",
+        baseTokenId: "DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p",
+        name: "Waves DeFi"
+    },
+
+    [PoolNames.puzzle]: {
+        tokenIds: [
+            '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',  // USDT
+            'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS',  // PUZZLE
+            'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p'   // USDN
+        ],
+        tokenNames: [
+            "USDT",
+            "PUZZLE",
+            "USDN"
+        ],
+        tokenLogos: [
+            usdtLogo,
+            puzzleLogo,
+            usdnLogo
+        ],
+        tokenShares: [0.1, 0.8, 0.1],
+        tokenDecimals: [10**6, 10**8, 10**6],
+        contractAddress: "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh",
+        baseTokenId: "DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p",
+        name: "Puzzle Parent Pool"
     }
 }
 

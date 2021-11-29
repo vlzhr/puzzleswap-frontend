@@ -68,6 +68,19 @@ export class WalletModule extends React.Component<IProps, IState> {
         }
     }
 
+    componentDidMount() {
+        if (window.localStorage.getItem("userAddress") && window.localStorage.getItem("userBalances")) {
+            this.setState({address: window.localStorage.getItem("userAddress")!})
+            const balances = JSON.parse(window.localStorage.getItem("userBalances")!)
+            let sum = 0
+            balances.map((x: any) => sum += x.value)
+
+            this.setState({balances: balances})
+            this.setState({portfolioValue: sum})
+            this.setState({status: "authed"})
+        }
+    }
+
     displayFormat(address: string) {
         return address.slice(0, 6) + "...." + address.slice(address.length-4, address.length)
     }
@@ -152,7 +165,7 @@ export class WalletModule extends React.Component<IProps, IState> {
                     ))}
                 </UncontrolledPopover>
 
-                <button onClick={() => {this.setState({status: "authOpen"})}} className={this.state.status == "authed" ? "non-visible" : "open button primary medium"}>Login</button>
+                <button onClick={() => {this.setState({status: "authOpen"})}} id="login" className={this.state.status == "authed" ? "non-visible" : "open button primary medium"}>Login</button>
 
                 <Modal toggle={() => {this.setState({"status": "nonauth"})}} isOpen={this.state.status == "authOpen"} className={"auth-window mt-5"}>
                     <ModalHeader toggle={() => {this.setState({"status": "nonauth"})}}>Connect your wallet</ModalHeader>

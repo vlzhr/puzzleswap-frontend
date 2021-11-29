@@ -141,9 +141,13 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
             {this.poolData && <>
                 <div className="swap-window">
                     <div className="banner">
-                        <span>Liquidity Providing is live.</span>
+                        <span>PUZZLE token is live 🧩🚀</span>
                         <br/>
-                        <a href="https://t.me/PuzzleSwap" target="_blank">Join our chat.</a>
+                        {(this.poolData.contractAddress !== "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh") ?
+                            (<Link to="puzzle">Trade.</Link>)
+                            :
+                            (<a href="https://t.me/PuzzleSwap" target="_blank">Join our chat.</a>)
+                        }
                     </div>
                     <div>
                         <div className="comp">
@@ -200,7 +204,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                         </div>
 
                         <ModalWindow poolData={this.poolData} tokenOut={this.state.tokenOut}
-                                     toReceive={Math.floor(this.calculateAmountOut(0.95) * this.poolData.tokenDecimals[this.state.tokenOut]) / this.poolData.tokenDecimals[this.state.tokenOut]}
+                                     toReceive={(this.poolData.contractAddress === "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh") ? 0 : Math.floor(this.calculateAmountOut(0.95) * this.poolData.tokenDecimals[this.state.tokenOut]) / this.poolData.tokenDecimals[this.state.tokenOut]}
                                      txData={{
                                          pmt: {
                                              assetId: this.poolData.tokenIds[this.getTokenIn()],
@@ -215,10 +219,15 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                         <div className="poolliq-text">Pool liquidity:</div>
                         <div className="poolliq-value">${this.calculateLiquidity()}</div>
                     </div>
-                    <div>
-                        <div className="poolliq-text">Pool volume:</div>
-                        <div className="poolliq-value">${this.getTotalVolume()}</div>
-                    </div>
+                    { (this.poolData.contractAddress !== "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh") ? (
+                        <div>
+                            <div className="poolliq-text">Pool volume:</div>
+                            <div className="poolliq-value">${this.getTotalVolume()}</div>
+                        </div>
+                    ) : (
+                        <div></div>
+                    )
+                    }
                     { this.poolData.layer2Address ? (
                         <div>
                             <Link to={"/"+this.poolData.poolName+"/addLiquidity"}><button className="absolute button primary medium">Add liquidity</button></Link>
