@@ -19,6 +19,7 @@ import { MultiSwapInterface } from './MultiSwapInterface';
 import { LandingModule } from './LandingModule';
 import {WalletModule} from "./WalletModule";
 import puzzleLogo from "./img/puzzle-logo.svg";
+import puzzleLogoFooter from "./img/puzzle-logo-footer.svg";
 import {AddLiquidityInterface} from "./AddLiquidityInterface";
 import {InvestToPoolInterface} from "./InvestToPoolInterface";
 import { globalSigner } from './SignerHandler';
@@ -124,7 +125,7 @@ function App(this: any) {
 
                 <div className="footer__lc">
                     <div className="footer__lc-logo">
-                        <Link className="ignore-link" to="/"><img className="logo-image" src={puzzleLogo} /></Link>
+                        <Link className="ignore-link" to="/"><img className="logo-image" src={puzzleLogoFooter} /></Link>
                     </div>
 
                     <div className="footer__lc-copyright">

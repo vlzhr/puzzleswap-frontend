@@ -154,7 +154,7 @@ export class WalletModule extends React.Component<IProps, IState> {
                 <button className={this.state.status == "authed" ? "open wallet-widget" : "non-visible"}
                      onClick={(e) => e.currentTarget.focus()} id="PortfolioFocus" type="button">
                     <span className="portfolio-value">
-                        ${this.valueFormat(this.state.portfolioValue)}<img className="arrow" src={arrow} alt=""/>
+                        ${this.valueFormat(this.state.portfolioValue)}<img className="arrow-portfolio" src={arrow} alt=""/>
                     </span>
                     <span className="balance">{this.wavesFormat(this.state.wavesBalance)} <img className="waves-logo" src="https://s2.coinmarketcap.com/static/img/coins/200x200/1274.png" alt="waves logo"/></span>
                     <span className="address">{this.displayFormat(this.state.address)}</span>
