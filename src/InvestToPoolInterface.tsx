@@ -182,12 +182,14 @@ export class InvestToPoolInterface extends React.Component<IProps, IState> {
         const tokenData = this.calculateTokenAvailableReward(tokenName)
 
         return <div className="tokenDeposit">
-            <div>
-                <img className="smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
-                <div className="tokenName">{tokenName}</div>
+            <div className="tokenDeposit__lc">
+                <img className="tokenDeposit__smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
+                <div className="tokenDeposit__lc-desc">
+                    <div className="tokenDeposit__tokenName">{tokenName}</div>
+                </div>
             </div>
-            <div>
-                <div className="poolValue">{tokenData.balance} <span className="dollarValue">($ {tokenData.value})</span></div>
+            <div className="tokenDeposit__rc">
+                <div className="tokenDeposit__poolValue">{tokenData.balance} <span className="dollarValue">($ {tokenData.value})</span></div>
             </div>
         </div>
     }
