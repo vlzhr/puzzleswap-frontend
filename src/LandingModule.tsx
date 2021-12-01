@@ -126,11 +126,11 @@ export class LandingModule extends React.Component<IProps, IState> {
                             PUZZLE token <br/>
                             is released!
                         </div>
-                        <div>
+                        <Link to='/puzzle'>
                             <button className="button secondary medium">
-                                <Link to="puzzle">Trade PUZZLE</Link>
+                                Trade PUZZLE
                             </button>
-                        </div>
+                        </Link>
                     </div>
                     <div className="landing__about--banner-rc">
                         <img className="landing__about--banner-rc-image" src={bannerToken} alt="img"/>

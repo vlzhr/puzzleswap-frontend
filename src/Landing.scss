@@ -29,6 +29,13 @@ h1, h2 {
     margin: auto;
     font-style: normal;
     font-weight: 500;
+    //@media screen and (max-width: 375px) {
+    //    max-width: 80%;
+    //}
+}
+
+a {
+    text-decoration: none !important;
 }
 
 .landing {
@@ -36,7 +43,10 @@ h1, h2 {
     padding-top: 80px;
 
     &__title {
-
+        //@media screen and (max-width: 375px) {
+        //    max-width: 95%;
+        //    text-align: center;
+        //}
     }
 
     &__subtitle {
@@ -117,9 +127,18 @@ h1, h2 {
             line-height: 20px;
             color: #7075E9;
             cursor: pointer;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: baseline;
 
             @media screen and (min-width: 1400px) {
                 left: 500px;
+            }
+
+            @media screen and (max-width: 375px) {
+                padding: 16px 18px 9px;
+                line-height: 1;
+                left: 20px;
             }
 
             img {
@@ -358,10 +377,6 @@ h1, h2 {
         @media screen and (max-width: 1000px) {
             padding: 0 60px;
         }
-
-        //@media screen and (max-width: 375px) {
-        //    padding: 0;
-        //}
 
         button {
             padding: 16px 50px;
