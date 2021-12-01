@@ -183,7 +183,7 @@ export class AddOneTokenInterface extends React.Component<IProps, IState> {
                         <div className="poolValue">Your Index tokens:&nbsp;{userIndexTokens} <span className="dollarValue">(${userLiquidityValue})</span></div>
                     </div>
                     <div className="buttonContainer">
-                        {(this.state.auth) ? (<button className="withdraw"><Link to="invest">Manage</Link></button>) : (<div></div>)}
+                        {(this.state.auth) ? (<button className="withdraw"><Link to="invest">Change pool</Link></button>) : (<div></div>)}
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@ export class AddOneTokenInterface extends React.Component<IProps, IState> {
                         </div>
                         <div className={this.state.allTokensHave ? "depositButtonContainer" : "hidden"}>
                             <button className="depositButton" onClick={() => {this.depositOneTokenAndStake()}}>
-                                Convert and deposit <span className="">$ {this.calculateDepositValue()}</span>
+                                Convert and deposit <span className="">${this.calculateDepositValue()}</span>
                             </button>
                         </div>
                     </div>
