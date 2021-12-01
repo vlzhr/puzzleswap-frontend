@@ -5,7 +5,8 @@ import {Button, Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover}
 import {signerEmail, signerWeb, signerKeeper, globalSigner} from "./SignerHandler";
 import axios from "axios";
 import {API_URL, IContractStateKey} from "./MultiSwapInterface";
-import arrow from "./img/arrow.svg";
+import arrow from "./img/arrow-blue.svg";
+import balance from "./img/wallet-icon.svg";
 
 interface IState{
     address: string,
@@ -154,28 +155,33 @@ export class WalletModule extends React.Component<IProps, IState> {
                 <button className={this.state.status == "authed" ? "open wallet-widget" : "non-visible"}
                      onClick={(e) => e.currentTarget.focus()} id="PortfolioFocus" type="button">
                     <span className="portfolio-value">
+                        <img className="arrow-portfolio" src={balance} alt=""/>
                         ${this.valueFormat(this.state.portfolioValue)}<img className="arrow-portfolio" src={arrow} alt=""/>
                     </span>
-                    <span className="balance">{this.wavesFormat(this.state.wavesBalance)} <img className="waves-logo" src="https://s2.coinmarketcap.com/static/img/coins/200x200/1274.png" alt="waves logo"/></span>
-                    <span className="address">{this.displayFormat(this.state.address)}</span>
+                    {/*<span className="balance">{this.wavesFormat(this.state.wavesBalance)} <img className="waves-logo" src="https://s2.coinmarketcap.com/static/img/coins/200x200/1274.png" alt="waves logo"/></span>*/}
                 </button>
+                    <button className={this.state.status == "authed" ? "button secondary medium address" : "non-visible"} onClick={() => globalSigner.logout()}>
+                        {this.displayFormat(this.state.address)}
+                        <img className="arrow-portfolio" src={arrow} alt=""/>
+                    </button>
+
                 <UncontrolledPopover className="wallet-popup infoPopup" trigger="focus" placement="bottom" target="PortfolioFocus">
                     {Object.keys(this.state.balances).map((item: any) => (
                         this.renderTokenBalance(item)
                     ))}
                 </UncontrolledPopover>
 
-                <button onClick={() => {this.setState({status: "authOpen"})}} id="login" className={this.state.status == "authed" ? "non-visible" : "open button primary medium"}>Login</button>
+                <button onClick={() => {this.setState({status: "authOpen"})}} id="login" className={this.state.status == "authed" ? "non-visible" : "open button primary medium"}>Connect wallet</button>
 
                 <Modal toggle={() => {this.setState({"status": "nonauth"})}} isOpen={this.state.status == "authOpen"} className={"auth-window mt-5"}>
                     <ModalHeader toggle={() => {this.setState({"status": "nonauth"})}}>Connect your wallet</ModalHeader>
                     <ModalBody className="text-center">
-                        <div><Button className="mt-4 mb-2" color="success" size="lg"
-                                     onClick={() => {globalSigner.auth("email"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Email</Button></div>
-                        <div><Button className="mb-2" color="success" size="lg"
-                                     onClick={() => {globalSigner.auth("seed"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Seed</Button></div>
-                        <div><Button className="mb-5" color="success" size="lg"
-                                     onClick={() => {globalSigner.auth("keeper"); this.handleLogin(globalSigner.signer);}}>Waves Keeper</Button></div>
+                        <button className="button primary large wide"
+                                     onClick={() => {globalSigner.auth("email"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Email</button>
+                        <button className="button primary large wide"
+                                     onClick={() => {globalSigner.auth("seed"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Seed</button>
+                        <button className="button primary large wide"
+                                     onClick={() => {globalSigner.auth("keeper"); this.handleLogin(globalSigner.signer);}}>Waves Keeper</button>
                     </ModalBody>
                 </Modal>
             </div>

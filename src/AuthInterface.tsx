@@ -136,12 +136,12 @@ const ModalWindow = (props: any) => {
             <Modal isOpen={modal} toggle={toggle} className={className+" mt-5"}>
                 <ModalHeader toggle={toggle}>Connect your wallet</ModalHeader>
                 <ModalBody className="text-center">
-    <div><Button className="mt-4 mb-2" color="success" size="lg"
-                 onClick={() => exchangeWithSigner(txData, signerEmail.signer, toReceive).then(toggle)}>Waves Exchange Email</Button></div>
-    <div><Button className="mb-2" color="success" size="lg"
-                 onClick={() => exchangeWithSigner(txData, signerWeb.signer, toReceive).then(toggle)}>Waves Exchange Seed</Button></div>
-    <div><Button className="mb-5" color="success" size="lg"
-                 onClick={() => exchangeWithKeeper(txData, toReceive).then(toggle)}>Waves Keeper</Button></div>
+    <button className="button primary large wide"
+                 onClick={() => exchangeWithSigner(txData, signerEmail.signer, toReceive).then(toggle)}>Waves Exchange Email</button>
+    <button className="button primary large wide"
+                 onClick={() => exchangeWithSigner(txData, signerWeb.signer, toReceive).then(toggle)}>Waves Exchange Seed</button>
+    <button className="button primary large wide"
+                 onClick={() => exchangeWithKeeper(txData, toReceive).then(toggle)}>Waves Keeper</button>
                 </ModalBody>
             </Modal>
         </div>

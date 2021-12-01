@@ -164,6 +164,8 @@ span.logo {
   border: 1px solid #F1F2FE !important;
   box-sizing: border-box;
   color: #363870;
+  background-color: transparent;
+  padding: 8px 20px;
   &:hover {
     background: #F1F2FE;
     color: #363870;
@@ -408,6 +410,11 @@ span.logo {
   margin: auto 12px;
 }
 
+.address {
+  border: 1px solid #F1F2FE;
+  border-radius: 10px;
+}
+
 .portfolio-value {
   display: inline-block;
 }
@@ -445,6 +452,8 @@ span.logo {
 .wallet-module {
   margin-top: 0;
   align-self: center;
+  display: flex;
+  flex-direction: row;
 
   button {
     margin: 0;

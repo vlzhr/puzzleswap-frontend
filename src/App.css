@@ -358,7 +358,11 @@ button.exchange-button {
   margin: auto 12px;
 }
 
-
+.address {
+  border: 1px solid #F1F2FE;
+  border-radius: 10px;
+  width: 146px;
+}
 
 .tokenBalance {
   margin: 10px auto;
@@ -393,6 +397,7 @@ button.exchange-button {
 .wallet-module {
   margin-top: 4px;
 }
+
 
 .login-button {
   background: #7075E9;
