@@ -7,6 +7,9 @@ import 'react-notifications-component/dist/theme.css'
 import {signerEmail, signerWeb} from "./SignerHandler";
 import ReactNotification from 'react-notifications-component'
 import { store } from 'react-notifications-component';
+import mail from "./img/mail.svg";
+import seed from "./img/seed.svg";
+import wx from "./img/wx.svg";
 
 export const successMessage = (message: string) => {
     store.addNotification({
@@ -134,14 +137,20 @@ const ModalWindow = (props: any) => {
             </UncontrolledPopover>
 
             <Modal isOpen={modal} toggle={toggle} className={className+" mt-5"}>
-                <ModalHeader toggle={toggle}>Connect your wallet</ModalHeader>
+                <ModalHeader toggle={toggle}>Connect wallet</ModalHeader>
                 <ModalBody className="text-center">
-    <button className="button primary large wide"
-                 onClick={() => exchangeWithSigner(txData, signerEmail.signer, toReceive).then(toggle)}>Waves Exchange Email</button>
-    <button className="button primary large wide"
-                 onClick={() => exchangeWithSigner(txData, signerWeb.signer, toReceive).then(toggle)}>Waves Exchange Seed</button>
-    <button className="button primary large wide"
-                 onClick={() => exchangeWithKeeper(txData, toReceive).then(toggle)}>Waves Keeper</button>
+                    <button className="button secondary large wide button__icon"
+                        onClick={() => exchangeWithSigner(txData, signerEmail.signer, toReceive).then(toggle)}>Waves Exchange Email
+                        <img className="button__icon-image" src={mail} alt=""/>
+                    </button>
+                    <button className="button secondary large wide button__icon"
+                        onClick={() => exchangeWithSigner(txData, signerWeb.signer, toReceive).then(toggle)}>Waves Exchange Seed
+                        <img className="button__icon-image" src={seed} alt=""/>
+                    </button>
+                    <button className="button secondary large wide button__icon"
+                        onClick={() => exchangeWithKeeper(txData, toReceive).then(toggle)}>Waves Keeper
+                        <img className="button__icon-image" src={wx} alt=""/>
+                    </button>
                 </ModalBody>
             </Modal>
         </div>

@@ -43,10 +43,16 @@ a {
     padding-top: 80px;
 
     &__title {
-        //@media screen and (max-width: 375px) {
-        //    max-width: 95%;
-        //    text-align: center;
-        //}
+        .left {
+            text-align: left;
+        }
+
+        .middle {
+            @media screen and (max-width: 375px) {
+                max-width: 80%;
+            }
+        }
+
     }
 
     &__subtitle {

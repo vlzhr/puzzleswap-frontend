@@ -7,6 +7,9 @@ import axios from "axios";
 import {API_URL, IContractStateKey} from "./MultiSwapInterface";
 import arrow from "./img/arrow-blue.svg";
 import balance from "./img/wallet-icon.svg";
+import mail from "./img/mail.svg";
+import seed from "./img/seed.svg";
+import wx from "./img/wx.svg";
 
 interface IState{
     address: string,
@@ -174,14 +177,20 @@ export class WalletModule extends React.Component<IProps, IState> {
                 <button onClick={() => {this.setState({status: "authOpen"})}} id="login" className={this.state.status == "authed" ? "non-visible" : "open button primary medium"}>Connect wallet</button>
 
                 <Modal toggle={() => {this.setState({"status": "nonauth"})}} isOpen={this.state.status == "authOpen"} className={"auth-window mt-5"}>
-                    <ModalHeader toggle={() => {this.setState({"status": "nonauth"})}}>Connect your wallet</ModalHeader>
+                    <ModalHeader toggle={() => {this.setState({"status": "nonauth"})}}>Connect wallet</ModalHeader>
                     <ModalBody className="text-center">
-                        <button className="button primary large wide"
-                                     onClick={() => {globalSigner.auth("email"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Email</button>
-                        <button className="button primary large wide"
-                                     onClick={() => {globalSigner.auth("seed"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Seed</button>
-                        <button className="button primary large wide"
-                                     onClick={() => {globalSigner.auth("keeper"); this.handleLogin(globalSigner.signer);}}>Waves Keeper</button>
+                        <button className="button secondary large wide button__icon"
+                            onClick={() => {globalSigner.auth("email"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Email
+                            <img className="button__icon-image" src={mail} alt=""/>
+                        </button>
+                        <button className="button secondary large wide button__icon"
+                            onClick={() => {globalSigner.auth("seed"); this.handleLogin(globalSigner.signer);}}>Waves Exchange Seed
+                            <img className="button__icon-image" src={seed} alt=""/>
+                        </button>
+                        <button className="button secondary large wide button__icon"
+                            onClick={() => {globalSigner.auth("keeper"); this.handleLogin(globalSigner.signer);}}>Waves Keeper
+                            <img className="button__icon-image" src={wx} alt=""/>
+                        </button>
                     </ModalBody>
                 </Modal>
             </div>

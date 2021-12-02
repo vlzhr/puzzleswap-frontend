@@ -146,6 +146,17 @@ span.logo {
   justify-content: center;
   align-items: center;
   text-decoration: none;
+
+
+
+  &__icon {
+
+    justify-content: space-between !important;
+    &-image {
+      width: 24px;
+      height: 24px;
+    }
+  }
 }
 
 .primary {
@@ -195,6 +206,31 @@ span.logo {
 .wide {
   width: 100%;
   margin: 12px 0;
+}
+
+.modal {
+  &-content {
+    background: #FFFFFF;
+    border: 1px solid #F1F2FE;
+    box-shadow: 0 8px 56px rgba(54, 56, 112, 0.16);
+    border-radius: 16px !important;
+  }
+  &-header {
+    border: 1px solid #F1F2FE;
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+
+    button {
+      border: none;
+      background: #FFFFFF;
+
+      span {
+        color: #C6C9F4;
+        font-size: 32px;
+        line-height: 40px;
+      }
+    }
+}
 }
 
 //END OF BUTTONS
