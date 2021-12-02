@@ -186,23 +186,27 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
             const tokenDollarValue = Math.floor(tokenDetails["value"] * 100) / 100;
 
             return <div className="tokenDeposit">
-                <div>
-                    <div className="tokenWeight">{tokenWeight}%</div>
-                    <img className="smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
-                    <div className="tokenName">{tokenName}</div>
+                <div className="tokenDeposit__lc">
+                    <img className="tokenDeposit__smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
+                    <div className="tokenDeposit__lc-desc">
+                        <div className="tokenDeposit__tokenName">{tokenName}</div>
+                        <div className="tokenDeposit__tokenWeight"><div>Share: </div>{tokenWeight}%</div>
+                    </div>
                 </div>
-                <div>
+                <div className="tokenDeposit__rc">
                     <div className="poolValue">{tokenToDeposit} <span className="dollarValue">/{tokenBalance}</span></div>
                 </div>
             </div>
         } else {
             return <div className="tokenDeposit">
-                <div>
-                    <div className="tokenWeight">{tokenWeight}%</div>
-                    <img className="smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
-                    <div className="tokenName">{tokenName}</div>
+                <div className="tokenDeposit__lc">
+                    <img className="tokenDeposit__smallLogo" src={this.poolData.tokenLogos[tokenNum]} alt=""/>
+                    <div className="tokenDeposit__lc-desc">
+                        <div className="tokenDeposit__tokenName">{tokenName}</div>
+                        <div className="tokenDeposit__tokenWeight"><div>Share: </div>{tokenWeight}%</div>
+                    </div>
                 </div>
-                <div>
+                <div className="tokenDeposit__rc">
                     <div className="notEnough"><Link to="./"><span>buy {tokenToDeposit} tokens</span></Link></div>
                 </div>
             </div>
@@ -226,7 +230,7 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
         return <div className="addLiquidity">
             <div className="head">
                 <h1>Deposit liquidity</h1>
-                <p className="desc">Select the method of adding liquidity and enter the value</p>
+                <p className="landing__desc">Select the method of adding liquidity and enter the value</p>
             </div>
 
             <div className="methodChoice">
@@ -247,7 +251,7 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
                         <div className="poolValue">Your Index tokens:&nbsp;{userIndexTokens} <span className="dollarValue">(${userLiquidityValue})</span></div>
                     </div>
                     <div className="buttonContainer">
-                        {(this.state.auth) ? (<button className="withdraw"><Link to="invest">Manage</Link></button>) : (<div></div>)}
+                        {(this.state.auth) ? (<button className="withdraw"><Link to="invest">Change pool</Link></button>) : (<div></div>)}
                     </div>
                 </div>
             </div>
@@ -257,9 +261,9 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
                     <div className="amountChoice">
                         <h2 className="preTitle">Amount</h2>
                         <div className="blockBody">
-                            <p className="desc">Select the percentage of your assets</p>
+                            <p className="landing__desc">Select the percentage of your assets</p>
                             <div className="addAmountValue">{this.state.percentage}% <span className="dollarValue">($ {this.calculateDepositValue()})</span></div>
-                            <input onInput={(e) => {this.handleRangeChange(e)}} className="chooseValue" type="range" min="0" max="100" step="0.1" />
+                            <input onInput={(e) => {this.handleRangeChange(e)}} className="chooseValue" type="range" min="0" max="100" step="0.25" />
                         </div>
                     </div>
 

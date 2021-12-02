@@ -29,6 +29,13 @@ h1, h2 {
     margin: auto;
     font-style: normal;
     font-weight: 500;
+    //@media screen and (max-width: 375px) {
+    //    max-width: 80%;
+    //}
+}
+
+a {
+    text-decoration: none !important;
 }
 
 .landing {
@@ -36,7 +43,10 @@ h1, h2 {
     padding-top: 80px;
 
     &__title {
-
+        //@media screen and (max-width: 375px) {
+        //    max-width: 95%;
+        //    text-align: center;
+        //}
     }
 
     &__subtitle {
@@ -117,6 +127,19 @@ h1, h2 {
             line-height: 20px;
             color: #7075E9;
             cursor: pointer;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: baseline;
+
+            @media screen and (min-width: 1400px) {
+                left: 500px;
+            }
+
+            @media screen and (max-width: 375px) {
+                padding: 16px 18px 9px;
+                line-height: 1;
+                left: 20px;
+            }
 
             img {
                 margin-left: 10px;
@@ -186,15 +209,19 @@ h1, h2 {
             padding: 0;
             margin-bottom: -130px;
 
-            @media screen and (max-width: 720px) {
-                height: 144px;
-                position: relative;
-                margin-bottom: -72px;
-            }
+            //@media screen and (max-width: 720px) {
+            //    height: 144px;
+            //    position: relative;
+            //    margin-bottom: -72px;
+            //}
             @media screen and (max-width: 720px) {
                 height: auto;
                 position: relative;
                 margin-bottom: -72px;
+            }
+
+            @media screen and (max-width: 400px) {
+                width: 90%;
             }
 
             &-wrapper {
@@ -245,7 +272,9 @@ h1, h2 {
                         max-height: 120px;
                         margin: -15px 24px;
                     }
-
+                    @media screen and (max-width: 400px) {
+                        width: 80%;
+                    }
                 }
             }
         }
@@ -349,10 +378,6 @@ h1, h2 {
             padding: 0 60px;
         }
 
-        //@media screen and (max-width: 375px) {
-        //    padding: 0;
-        //}
-
         button {
             padding: 16px 50px;
             margin-left: 0;
@@ -423,4 +448,5 @@ h1, h2 {
     display: inherit;
     text-decoration: none;
     color: inherit;
+    padding: 20px;
 }

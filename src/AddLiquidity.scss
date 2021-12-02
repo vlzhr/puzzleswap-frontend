@@ -46,6 +46,15 @@
     padding: 4px;
     box-sizing: border-box;
     margin: 10px auto;
+    height: 40px;
+
+    .ignore-link {
+        padding: 0;
+    }
+
+    @media screen and (max-width: 375px) {
+        font-size: 14px;
+    }
 }
 
 .choice {
@@ -66,7 +75,7 @@
     line-height: 24px;
     color: #8082C5;
     text-align: left;
-    margin-bottom: 8px;
+    margin: 24px 0 8px;
 }
 
 .blockBody {
@@ -127,7 +136,47 @@
     justify-content: space-between;
     margin-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 2px #C6C9F4 dotted;
+    border-bottom: 1px solid #F1F2FE;
+
+    &__lc {
+        display: flex;
+        justify-content: flex-start;
+
+        &-desc {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-left: 8px;
+        }
+    }
+
+    &__rc {
+        align-items: center;
+    }
+
+    &__tokenName {
+        font-size: 14px;
+        line-height: 20px;
+        color: #8082C5;
+    }
+
+    &__tokenWeight {
+        font-weight: 500;
+        color: #8082C5;
+        margin-right: 16px;
+        width: 33px;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    &__smallLogo {
+        border: 1px solid #F1F2FE;
+        border-radius: 8px;
+        position: relative;
+        //margin: auto;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .tokenDeposit>div {
@@ -135,19 +184,7 @@
     text-align: left;
 }
 
-.tokenName {
-    font-size: 14px;
-    line-height: 20px;
-    color: #8082C5;
-    margin-left: 8px;
-}
 
-.tokenWeight {
-    font-weight: 500;
-    color: #8082C5;
-    margin-right: 16px;
-    width: 33px;
-}
 
 .notEnough {
     color: #EDAA8A;
@@ -284,7 +321,7 @@ button a:hover {
 
 .explanation {
     padding: 18px 16px 16px;
-    background: #FCF4F1;
+    background: #F1F2FE;
     border-radius: 12px;
     font-size: 14px;
     line-height: 20px;

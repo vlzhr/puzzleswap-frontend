@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import axios from 'axios';
 import {PoolNames, poolsData} from "./Pools"
 import classNames from "classnames";
@@ -10,6 +10,8 @@ import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
 import {PopoverBody, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
+import {createBrowserHistory} from "history";
+import ReactGA from "react-ga";
 
 export const logos = [streetLogo, usdnLogo]
 
@@ -32,6 +34,17 @@ export interface IContractStateKey{
     value: number | boolean | string;
     type: 'integer' | 'string' | 'boolean';
 }
+//
+// function RotateIcon(this: any) {
+//
+//     const [isChanged, setChanged] = useState(false);
+//
+//     const toggleClass = () => {
+//         setChanged(!isChanged);
+//     };
+//
+//     return;
+// }
 
 export class MultiSwapInterface extends React.Component<IProps, IState>{
 
@@ -63,6 +76,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                 data: s
             })
         }, 5000);
+
     }
 
     async downloadState(){
@@ -153,11 +167,14 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                         <div className="comp">
                                 <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenIn" type="button">
                                     <img className="tokenLogo" src={this.poolData.tokenLogos[this.getTokenIn()]}/>
-                                    <div className="tokenName">
-                                        <span className="tokenName-text">You pay</span>
-                                        <span
-                                            className="tokenName-name">{this.poolData.tokenNames[this.getTokenIn()]}
-                                            <img className="arrow" src={arrow} alt=""/></span>
+                                    <div className="tokenPair">
+                                        <div className="tokenName">
+                                            <span className="tokenName-text">You pay</span>
+                                            <span
+                                                className="tokenName-name">{this.poolData.tokenNames[this.getTokenIn()]}
+                                            </span>
+                                        </div>
+                                        <img className="arrow" src={arrow} alt=""/>
                                     </div>
                                 </button>
 
@@ -184,12 +201,15 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                         <div className="comp">
                             <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenOut" type="button">
                                 <img className="tokenLogo" src={this.poolData.tokenLogos[this.state.tokenOut]}/>
-                                <div className="tokenName">
-                                    <span className="tokenName-text">You receive</span>
-                                    <span
-                                        className="tokenName-name">{this.poolData.tokenNames[this.state.tokenOut]}
-                                        <img className="arrow" src={arrow} alt=""/>
-                                    </span>
+
+                                <div className="tokenPair">
+                                    <div className="tokenName">
+                                        <span className="tokenName-text">You receive</span>
+                                        <span
+                                            className="tokenName-name">{this.poolData.tokenNames[this.state.tokenOut]}
+                                        </span>
+                                    </div>
+                                    <img className="arrow" src={arrow} alt=""/>
                                 </div>
                             </button>
                             <input disabled={true} placeholder={(this.calculateAmountOut(0.98)).toString()}/>
