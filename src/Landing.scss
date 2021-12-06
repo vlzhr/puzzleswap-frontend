@@ -1,3 +1,5 @@
+@import "./index";
+
 h1 {
     color: #363870;
     font-size: 48px;
@@ -12,7 +14,7 @@ h1 {
 h2 {
     font-size: 32px;
     line-height: 40px;
-    color: #8082C5;
+    color: $color-primary-blue-650;
     @media screen and (max-width: 375px) {
         font-size: 16px;
         line-height: 24px;
@@ -51,14 +53,14 @@ a {
         font-size: 14px;
         line-height: 20px;
         text-align: center;
-        color: #7075E9;
+        color: $color-primary-blue-500;
         text-transform: uppercase;
         margin-top: 96px;
         margin-bottom: 0.5rem;
     }
 
     &__desc {
-        color: #8082C5;
+        color: $color-primary-blue-650;
         font-size: 16px;
         line-height: 24px;
     }
@@ -122,13 +124,13 @@ a {
             position: absolute;
             bottom: 0;
             left: 120px;
-            background: #F1F2FE;
+            background: $color-primary-blue-100;
             border-radius: 12px 12px 0px 0px;
             padding: 20px 24px 16px;
             font-weight: 500;
             font-size: 14px;
             line-height: 20px;
-            color: #7075E9;
+            color: $color-primary-blue-500;
             cursor: pointer;
             display: flex;
             flex-wrap: nowrap;
@@ -152,7 +154,7 @@ a {
     }
 
     &__about {
-        background: #F1F2FE;
+        background: $color-primary-blue-100;
         display: flex;
         margin: 0 auto;
         justify-content: center;
@@ -197,7 +199,7 @@ a {
                     font-size: 14px;
                     line-height: 20px;
                     text-align: center;
-                    color: #8082C5;
+                    color: $color-primary-blue-650;
                 }
 
                 img {
@@ -262,7 +264,7 @@ a {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                color: #FFFFFF;
+                color: $color-white;
                 text-align: left;
                 margin: 48px;
                 font-style: normal;
@@ -310,7 +312,7 @@ a {
     &__prices {
         margin: 56px auto;
         max-width: 790px;
-        border: 1px solid #F1F2FE;
+        border: 1px solid $color-primary-blue-100;
         border-radius: 12px;
         padding: 14px 24px;
 
@@ -333,14 +335,14 @@ a {
 
         .table {
             &-head {
-                color: #8082C5;
+                color: $color-primary-blue-650;
                 align-items: center;
             }
             &-row {
                 display: flex;
                 color: #363870;
                 padding: 12px 19px;
-                border-bottom: 1px solid #F1F2FE;
+                border-bottom: 1px solid $color-primary-blue-100;
 
                 @media screen and (max-width: 720px) {
                     padding: 0;
@@ -370,13 +372,13 @@ a {
 
                 .button.secondary.medium {
                     background-color: unset;
-                    border: 1px solid #F1F2FE;
+                    border: 1px solid $color-primary-blue-100;
                     box-sizing: border-box;
                     margin: 0;
 
                     &:hover {
-                        background: #F1F2FE;
-                        border: 1px solid #F1F2FE;
+                        background: $color-primary-blue-100;
+                        border: 1px solid $color-primary-blue-100;
                     }
                 }
             }
@@ -394,7 +396,7 @@ a {
         display: flex;
         align-items: center;
         width: 100%;
-        background: #F1F2FE;
+        background: $color-primary-blue-100;
         position: relative;
 
         @media screen and (max-width: 720px) {
@@ -459,13 +461,13 @@ a {
             position: absolute;
             bottom: 0;
             left: 120px;
-            background: #F1F2FE;
+            background: $color-primary-blue-100;
             border-radius: 12px 12px 0px 0px;
             padding: 20px 24px 16px;
             font-weight: 500;
             font-size: 14px;
             line-height: 20px;
-            color: #7075E9;
+            color: $color-primary-blue-500;
             cursor: pointer;
 
             img {

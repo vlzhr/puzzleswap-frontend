@@ -1,4 +1,4 @@
-/*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic&display=swap');*/
+@import "./index";
 
 .App {
   text-align: center;
@@ -82,7 +82,7 @@ span.logo {
   padding: 16px;
   border-radius: 12px;
   box-shadow: none;
-  background: #F1F2FE;
+  background: $color-primary-blue-100;
   border: none;
   margin: 10px 0 10px;
   text-align: left;
@@ -96,11 +96,11 @@ span.logo {
 }
 
 .swap-window input::placeholder {
-  color: #8082C5;
+  color: $color-primary-blue-650;
 }
 
 .swap-window .afterInput {
-  color: #8082C5;
+  color: $color-primary-blue-650;
   position: absolute;
   font-size: 12px;
   right: 38px;
@@ -160,8 +160,8 @@ span.logo {
 }
 
 .primary {
-  background: #7075E9;
-  color: #FFFFFF;
+  background: $color-primary-blue-500;
+  color: $color-white;
   border: none;
   &:hover {
     background: #6563DD;
@@ -172,19 +172,19 @@ span.logo {
 }
 
 .secondary {
-  border: 1px solid #F1F2FE !important;
+  border: 1px solid $color-primary-blue-100 !important;
   box-sizing: border-box;
   color: #363870;
   background-color: #fff;
   padding: 8px 20px;
   &:hover {
-    background: #F1F2FE;
+    background: $color-primary-blue-100;
     color: #363870;
   }
   &:disabled {
     background: #C6C9F4;
     opacity: 0.4;
-    border: 1px solid #F1F2FE;
+    border: 1px solid $color-primary-blue-100;
   }
 }
 
@@ -201,6 +201,10 @@ span.logo {
   height: 40px;
   border-radius: 10px;
   padding: 8px 20px;
+
+  @media screen and (max-width: 500px) {
+    width: max-content;
+  }
 }
 
 .wide {
@@ -210,19 +214,19 @@ span.logo {
 
 .modal {
   &-content {
-    background: #FFFFFF;
-    border: 1px solid #F1F2FE;
+    background: $color-white;
+    border: 1px solid $color-primary-blue-100;
     box-shadow: 0 8px 56px rgba(54, 56, 112, 0.16);
     border-radius: 16px !important;
   }
   &-header {
-    border: 1px solid #F1F2FE;
+    border: 1px solid $color-primary-blue-100;
     border-top-left-radius: 16px !important;
     border-top-right-radius: 16px !important;
 
     button {
       border: none;
-      background: #FFFFFF;
+      background: $color-white;
 
       span {
         color: #C6C9F4;
@@ -259,7 +263,7 @@ span.logo {
   text-align: left;
   font-size: 14px;
   line-height: 20px;
-  color: #8082C5;
+  color: $color-primary-blue-650;
 }
 
 .poolliq-value {
@@ -284,7 +288,7 @@ span.logo {
 }
 
 .tokenLogo, .smallLogo {
-  border: 1px solid #F1F2FE;
+  border: 1px solid $color-primary-blue-100;
   border-radius: 12px;
   position: relative;
   //margin: auto;
@@ -337,7 +341,7 @@ span.logo {
 .tokenName-text {
   font-size: 14px;
   line-height: 20px;
-  color: #8082C5;
+  color: $color-primary-blue-650;
   text-align: left;
   margin-left: 10px;
 }
@@ -349,7 +353,7 @@ span.logo {
   @media screen and (max-width: 720px) {
     width: 24px;
     height: 24px;
-    background: #F1F2FE;
+    background: $color-primary-blue-100;
     border-radius: 6px;
     flex: none;
     order: 2;
@@ -393,7 +397,7 @@ span.logo {
   background: none;
   font-size: 14px;
   line-height: 20px;
-  color: #8082C5;
+  color: $color-primary-blue-650;
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -406,8 +410,8 @@ span.logo {
 
 .custom-popover .popover {
   padding: 12px 4px 0px;
-  background: #ffffff;
-  border: 1px solid #F1F2FE;
+  background: $color-white;
+  border: 1px solid $color-primary-blue-100;
   box-shadow: 0px 8px 24px rgba(54, 56, 112, 0.16);
   border-radius: 12px;
 }
@@ -447,7 +451,7 @@ span.logo {
 }
 
 .address {
-  border: 1px solid #F1F2FE;
+  border: 1px solid $color-primary-blue-100;
   border-radius: 10px;
 }
 
@@ -544,7 +548,7 @@ span.logo {
     &-copyright {
       font-size: 14px;
       line-height: 20px;
-      color: #8082C5;
+      color: $color-primary-blue-650;
       text-align: left;
       padding-left: 1rem;
     }
@@ -559,7 +563,7 @@ span.logo {
     flex-wrap: nowrap;
 
     a {
-      color: #FFFFFF;
+      color: $color-white;
       text-decoration: none;
       font-size: 16px;
       line-height: 24px;
@@ -568,7 +572,7 @@ span.logo {
     }
 
     .landing__subtitle {
-      color: #8082C5;
+      color: $color-primary-blue-650;
       text-transform: none;
       margin-top: 0;
       @media screen and (max-width: 375px) {
@@ -603,7 +607,7 @@ span.logo {
 //END OF FOOTER
 
 .banner a {
-  color: #8082C5;
+  color: $color-primary-blue-650;
   text-decoration: none;
   margin: 0 10px;
   transition: color .5s;
@@ -618,7 +622,7 @@ span.logo {
   margin-bottom: 40px !important;
   border-radius: 12px;
   color: #363870;
-  background: #f1f2fe;
+  background: $color-primary-blue-100;
 }
 
 .banner span {
@@ -666,7 +670,7 @@ span.logo {
 
 .header {
   display: flex;
-  background: #FFFFFF;
+  background: $color-white;
   box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
   width: 100%;
   position: fixed;
@@ -732,14 +736,14 @@ span.logo {
     &-link {
         font-size: 14px;
         line-height: 24px;
-        color: #8082C5;
+        color: $color-primary-blue-650;
         flex: none;
         order: 0;
         flex-grow: 0;
         margin: 24px 12px;
         &:hover {
           color: #363870;
-          border-bottom: 4px solid #7075E9;
+          border-bottom: 4px solid $color-primary-blue-500;
           padding-bottom: 24px;
           margin-bottom: 0;
 
@@ -751,7 +755,7 @@ span.logo {
 
         a.chosen .header__menu-link:hover  {
           color: #363870;
-          border-bottom: 4px solid #7075E9;
+          border-bottom: 4px solid $color-primary-blue-500;
           padding-bottom: 24px;
           margin-bottom: 0;
 
@@ -786,7 +790,7 @@ span.logo {
       font-weight: 500;
       font-size: 16px;
       line-height: 24px;
-      color: #8082C5;
+      color: $color-primary-blue-650;
       margin: 0 14px;
       cursor: pointer;
       transition: color .5s;
@@ -799,7 +803,7 @@ span.logo {
 
     a.chosen .header__menu-link:hover  {
       color: #363870;
-      border-bottom: 4px solid #7075E9;
+      border-bottom: 4px solid $color-primary-blue-500;
       padding-bottom: 28px;
       margin-bottom: 0;
     }
@@ -807,7 +811,7 @@ span.logo {
     //&:hover {
     //  border-bottom: 4px solid #C6C9F4;
     //  padding-bottom: 26px;
-    //  color: #8082C5;
+    //  color: $color-primary-blue-650;
     //  /*margin: 12px 14px 0;*/
     //}
     @media screen and (max-width: 720px) {
@@ -850,7 +854,7 @@ span.logo {
       top:24px;
       left:20px;
       margin:10px 0;
-      background: #8082C5;
+      background: $color-primary-blue-650;
       border-radius:2px;
 
       &:nth-child(1){
@@ -902,7 +906,7 @@ span.logo {
 
     &-item {
       display: block;
-      background: #8082C5;
+      background: $color-primary-blue-650;
       border-radius:2px;
 
       &:nth-child(1){
