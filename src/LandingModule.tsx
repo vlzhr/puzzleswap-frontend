@@ -13,7 +13,7 @@ import adv2 from "./img/adv2.png";
 import priceIcon from "./img/price-icon.svg";
 import adv3 from "./img/adv3.png";
 import adv4 from "./img/adv4.png";
-import bannerToken from "./img/banner-token.png";
+import bannerToken from "./img/landing-banner-with-image.svg";
 
 interface IState{
     data: any;
@@ -82,7 +82,7 @@ export class LandingModule extends React.Component<IProps, IState> {
         return <div className="landing">
             <div className="landing__intro">
                 <div className="landing__intro--lc">
-                    <h1 className="landing__title">Decentralized&nbsp;exchange <br/>
+                    <h1 className="landing__title left">Decentralized&nbsp;exchange <br/>
                         of a newer generation</h1>
                     <p className="landing__desc">Trade tokens in multiple mega pools</p>
                     <Link to="/defi"><button className="button primary large">Trade</button></Link>
@@ -97,7 +97,7 @@ export class LandingModule extends React.Component<IProps, IState> {
             </div>
             <div className="landing__about">
                 <p className="landing__subtitle">About</p>
-                <h1 className="landing__title">Solving multiple pain points and market needs</h1>
+                <h1 className="landing__title middle">Solving multiple pain points and market needs</h1>
                 <div className="landing__about--advantages">
                     <div className="landing__about--advantages-item">
                         <img src={adv1} alt="img"/>
@@ -121,8 +121,8 @@ export class LandingModule extends React.Component<IProps, IState> {
                     </div>
                 </div>
                 <div className="landing__about--banner">
-                    <div className="landing__about--banner-lc">
-                        <div>
+                    <div className="landing__about--banner--lc">
+                        <div className="landing__about--banner--lc-desc">
                             PUZZLE token <br/>
                             is released!
                         </div>
@@ -132,16 +132,13 @@ export class LandingModule extends React.Component<IProps, IState> {
                             </button>
                         </Link>
                     </div>
-                    <div className="landing__about--banner-rc">
-                        <img className="landing__about--banner-rc-image" src={bannerToken} alt="img"/>
-                    </div>
                 </div>
             </div>
 
 
             <div className="landing__traders">
                 <p className="landing__subtitle">Trade</p>
-                <h1 className="landing__title">Trade the best performing tokens</h1>
+                <h1 className="landing__title middle">Trade the best performing tokens</h1>
                 <p className="landing__desc">Trade any share tokens and earn on holding them.
                     Learn more on <a href="https://collective.wavesducks.com" target="_blank">collective.wavesducks.com</a></p>
 

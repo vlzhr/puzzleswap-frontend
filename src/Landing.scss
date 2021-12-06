@@ -29,9 +29,6 @@ h1, h2 {
     margin: auto;
     font-style: normal;
     font-weight: 500;
-    //@media screen and (max-width: 375px) {
-    //    max-width: 80%;
-    //}
 }
 
 a {
@@ -41,17 +38,11 @@ a {
 .landing {
     width: 100%;
     padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
 
     &__title {
-        .left {
-            text-align: left;
-        }
-
-        .middle {
-            @media screen and (max-width: 375px) {
-                max-width: 80%;
-            }
-        }
 
     }
 
@@ -74,6 +65,7 @@ a {
 
     &__intro {
         padding-left: 140px;
+        padding-right: 140px;
         display: flex;
         align-items: center;
         width: 100%;
@@ -86,8 +78,11 @@ a {
 
         @media screen and (max-width: 720px) {
             flex-direction: column;
-            padding-left: 16px;
+            align-items: flex-start;
             padding-top: 80px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
         }
 
         button {
@@ -97,6 +92,7 @@ a {
 
         &--lc {
             text-align: left;
+
             @media screen and (max-width: 1000px) {
                 margin-bottom: 46px;
             }
@@ -107,16 +103,17 @@ a {
             &-image {
                 display: block;
                 margin: 80px auto 0;
-                max-width: 100%;
+                max-width: 80%;
 
                 @media screen and (max-width: 1000px) {
                     max-width: 80%;
+                    align-self: center;
                     margin: 40px auto 0;
                 }
 
                 @media screen and (max-width: 720px) {
-                    margin: 0 0 46px;
-                    max-width: 320px;
+                    margin: 0 auto 46px;
+                    //max-width: 320px;
                 }
             }
         }
@@ -162,6 +159,11 @@ a {
         align-items: center;
         flex-direction: column;
 
+        @media screen and (max-width: 720px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
         &--advantages {
             display: flex;
             flex-wrap: wrap;
@@ -206,28 +208,49 @@ a {
 
         &--banner {
             position: relative;
-            background: #7075E9;
-            border-radius: 16px;
-            height: 270px;
+            background-image: url(./img/landing-banner-with-image-desktop.svg);
+            background-repeat: no-repeat;
+            height: auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            padding: 0;
-            margin-bottom: -130px;
+            //padding-bottom: 3rem;
+            //padding-top: 3rem;
+            //padding-left: 3rem;
 
-            //@media screen and (max-width: 720px) {
-            //    height: 144px;
-            //    position: relative;
-            //    margin-bottom: -72px;
-            //}
-            @media screen and (max-width: 720px) {
-                height: auto;
+            margin-bottom: -130px;
+            max-width: 1160px;
+            min-width: 80%;
+            background-size: contain;
+
+            @media screen and (max-width: 1000px) {
+                background-image: url(./img/landing-banner-with-image.svg);
                 position: relative;
-                margin-bottom: -72px;
+                padding-bottom: 2rem;
+                padding-top: 2rem;
+                padding-left: 2rem;
+                //height: unset;
             }
 
-            @media screen and (max-width: 400px) {
-                width: 90%;
+            @media screen and (max-width: 720px) {
+
+                min-height: 154px;
+                padding-bottom: 1.5rem;
+                padding-top: 1.5rem;
+                padding-left: 1.5rem;
+            }
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                min-height: 154px;
+                padding: 0;
+            }
+
+            @media screen and (max-width: 375px) {
+                min-height: 104px;
+                button {
+                    margin-top: 0;
+                }
             }
 
             &-wrapper {
@@ -235,12 +258,11 @@ a {
                 margin-top: 100px;
             }
 
-            &-lc {
+            &--lc {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
                 color: #FFFFFF;
-                height: 80%;
                 text-align: left;
                 margin: 48px;
                 font-style: normal;
@@ -248,9 +270,13 @@ a {
                 font-size: 32px;
                 line-height: 40px;
                 @media screen and (max-width: 720px) {
-                    margin: 24px;
-                    font-size: 24px;
-                    line-height: 1.2;
+                    margin: 1.5rem;
+                    font-size: 16px;
+                    line-height: 24px;
+                    flex-grow: 1;
+                }
+
+                &-desc {
                 }
             }
 
@@ -261,26 +287,7 @@ a {
                 @media screen and (max-width: 720px) {
                     height: auto;
                     width: max-content;
-                }
-            }
-
-            &-rc {
-                &-image {
-                    max-width: 438px;
-                    max-height: 328px;
-                    margin: -30px 48px;
-
-                    @media screen and (max-width: 1200px) {
-                        max-width: 260px;
-                    }
-
-                    @media screen and (max-width: 720px) {
-                        max-height: 120px;
-                        margin: -15px 24px;
-                    }
-                    @media screen and (max-width: 400px) {
-                        width: 80%;
-                    }
+                    margin-right: 0;
                 }
             }
         }
@@ -289,6 +296,11 @@ a {
     &__traders {
         background: white;
         padding-top: 200px;
+
+        @media screen and (max-width: 720px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
 
         a {
             text-decoration: none; padding: 0;
@@ -301,6 +313,11 @@ a {
         border: 1px solid #F1F2FE;
         border-radius: 12px;
         padding: 14px 24px;
+
+        @media screen and (max-width: 720px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
 
         p {
             margin-top: 0;
@@ -324,6 +341,10 @@ a {
                 color: #363870;
                 padding: 12px 19px;
                 border-bottom: 1px solid #F1F2FE;
+
+                @media screen and (max-width: 720px) {
+                    padding: 0;
+                }
             }
 
             &-cell {
@@ -369,7 +390,7 @@ a {
     }
 
     &__invest {
-        padding: 0 140px;
+        padding: 0 70px;
         display: flex;
         align-items: center;
         width: 100%;
@@ -378,10 +399,15 @@ a {
 
         @media screen and (max-width: 720px) {
             flex-direction: column;
+            padding: 0 20px;
         }
 
         @media screen and (max-width: 1000px) {
             padding: 0 60px;
+        }
+
+        @media screen and (min-width: 1001px) {
+            padding: 0 140px;
         }
 
         button {
@@ -416,7 +442,7 @@ a {
 
             &-image {
                 display: block;
-                margin: 80px auto 0;
+                margin: auto;
                 max-width: 100%;
 
                 @media screen and (max-width: 1000px) {
@@ -424,7 +450,7 @@ a {
                 }
 
                 @media screen and (max-width: 720px) {
-                    //max-width: 343px;
+                    max-width: 343px;
                 }
             }
         }
