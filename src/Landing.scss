@@ -1,3 +1,5 @@
+@import "./index";
+
 h1 {
     color: #363870;
     font-size: 48px;
@@ -12,7 +14,7 @@ h1 {
 h2 {
     font-size: 32px;
     line-height: 40px;
-    color: #8082C5;
+    color: $color-primary-blue-650;
     @media screen and (max-width: 375px) {
         font-size: 16px;
         line-height: 24px;
@@ -29,9 +31,6 @@ h1, h2 {
     margin: auto;
     font-style: normal;
     font-weight: 500;
-    //@media screen and (max-width: 375px) {
-    //    max-width: 80%;
-    //}
 }
 
 a {
@@ -41,17 +40,11 @@ a {
 .landing {
     width: 100%;
     padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
 
     &__title {
-        .left {
-            text-align: left;
-        }
-
-        .middle {
-            @media screen and (max-width: 375px) {
-                max-width: 80%;
-            }
-        }
 
     }
 
@@ -60,20 +53,21 @@ a {
         font-size: 14px;
         line-height: 20px;
         text-align: center;
-        color: #7075E9;
+        color: $color-primary-blue-500;
         text-transform: uppercase;
         margin-top: 96px;
         margin-bottom: 0.5rem;
     }
 
     &__desc {
-        color: #8082C5;
+        color: $color-primary-blue-650;
         font-size: 16px;
         line-height: 24px;
     }
 
     &__intro {
         padding-left: 140px;
+        padding-right: 140px;
         display: flex;
         align-items: center;
         width: 100%;
@@ -86,8 +80,11 @@ a {
 
         @media screen and (max-width: 720px) {
             flex-direction: column;
-            padding-left: 16px;
+            align-items: flex-start;
             padding-top: 80px;
+            padding-left: 1rem;
+            padding-right: 1rem;
+
         }
 
         button {
@@ -97,6 +94,7 @@ a {
 
         &--lc {
             text-align: left;
+
             @media screen and (max-width: 1000px) {
                 margin-bottom: 46px;
             }
@@ -107,16 +105,17 @@ a {
             &-image {
                 display: block;
                 margin: 80px auto 0;
-                max-width: 100%;
+                max-width: 80%;
 
                 @media screen and (max-width: 1000px) {
                     max-width: 80%;
+                    align-self: center;
                     margin: 40px auto 0;
                 }
 
                 @media screen and (max-width: 720px) {
-                    margin: 0 0 46px;
-                    max-width: 320px;
+                    margin: 0 auto 46px;
+                    //max-width: 320px;
                 }
             }
         }
@@ -125,13 +124,13 @@ a {
             position: absolute;
             bottom: 0;
             left: 120px;
-            background: #F1F2FE;
+            background: $color-primary-blue-100;
             border-radius: 12px 12px 0px 0px;
             padding: 20px 24px 16px;
             font-weight: 500;
             font-size: 14px;
             line-height: 20px;
-            color: #7075E9;
+            color: $color-primary-blue-500;
             cursor: pointer;
             display: flex;
             flex-wrap: nowrap;
@@ -155,12 +154,17 @@ a {
     }
 
     &__about {
-        background: #F1F2FE;
+        background: $color-primary-blue-100;
         display: flex;
         margin: 0 auto;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+
+        @media screen and (max-width: 720px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
 
         &--advantages {
             display: flex;
@@ -195,7 +199,7 @@ a {
                     font-size: 14px;
                     line-height: 20px;
                     text-align: center;
-                    color: #8082C5;
+                    color: $color-primary-blue-650;
                 }
 
                 img {
@@ -206,28 +210,49 @@ a {
 
         &--banner {
             position: relative;
-            background: #7075E9;
-            border-radius: 16px;
-            height: 270px;
+            background-image: url(./img/landing-banner-with-image-desktop.svg);
+            background-repeat: no-repeat;
+            height: auto;
             display: flex;
-            justify-content: space-between;
+            justify-content: flex-start;
             align-items: center;
-            padding: 0;
-            margin-bottom: -130px;
+            //padding-bottom: 3rem;
+            //padding-top: 3rem;
+            //padding-left: 3rem;
 
-            //@media screen and (max-width: 720px) {
-            //    height: 144px;
-            //    position: relative;
-            //    margin-bottom: -72px;
-            //}
-            @media screen and (max-width: 720px) {
-                height: auto;
+            margin-bottom: -130px;
+            max-width: 1160px;
+            min-width: 80%;
+            background-size: contain;
+
+            @media screen and (max-width: 1000px) {
+                background-image: url(./img/landing-banner-with-image.svg);
                 position: relative;
-                margin-bottom: -72px;
+                padding-bottom: 2rem;
+                padding-top: 2rem;
+                padding-left: 2rem;
+                //height: unset;
             }
 
-            @media screen and (max-width: 400px) {
-                width: 90%;
+            @media screen and (max-width: 720px) {
+
+                min-height: 154px;
+                padding-bottom: 1.5rem;
+                padding-top: 1.5rem;
+                padding-left: 1.5rem;
+            }
+
+            @media screen and (max-width: 500px) {
+                width: 100%;
+                min-height: 154px;
+                padding: 0;
+            }
+
+            @media screen and (max-width: 375px) {
+                min-height: 104px;
+                button {
+                    margin-top: 0;
+                }
             }
 
             &-wrapper {
@@ -235,12 +260,11 @@ a {
                 margin-top: 100px;
             }
 
-            &-lc {
+            &--lc {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                color: #FFFFFF;
-                height: 80%;
+                color: $color-white;
                 text-align: left;
                 margin: 48px;
                 font-style: normal;
@@ -248,9 +272,13 @@ a {
                 font-size: 32px;
                 line-height: 40px;
                 @media screen and (max-width: 720px) {
-                    margin: 24px;
-                    font-size: 24px;
-                    line-height: 1.2;
+                    margin: 1.5rem;
+                    font-size: 16px;
+                    line-height: 24px;
+                    flex-grow: 1;
+                }
+
+                &-desc {
                 }
             }
 
@@ -261,26 +289,7 @@ a {
                 @media screen and (max-width: 720px) {
                     height: auto;
                     width: max-content;
-                }
-            }
-
-            &-rc {
-                &-image {
-                    max-width: 438px;
-                    max-height: 328px;
-                    margin: -30px 48px;
-
-                    @media screen and (max-width: 1200px) {
-                        max-width: 260px;
-                    }
-
-                    @media screen and (max-width: 720px) {
-                        max-height: 120px;
-                        margin: -15px 24px;
-                    }
-                    @media screen and (max-width: 400px) {
-                        width: 80%;
-                    }
+                    margin-right: 0;
                 }
             }
         }
@@ -290,6 +299,11 @@ a {
         background: white;
         padding-top: 200px;
 
+        @media screen and (max-width: 720px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
         a {
             text-decoration: none; padding: 0;
         }
@@ -298,9 +312,14 @@ a {
     &__prices {
         margin: 56px auto;
         max-width: 790px;
-        border: 1px solid #F1F2FE;
+        border: 1px solid $color-primary-blue-100;
         border-radius: 12px;
         padding: 14px 24px;
+
+        @media screen and (max-width: 720px) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
 
         p {
             margin-top: 0;
@@ -316,14 +335,18 @@ a {
 
         .table {
             &-head {
-                color: #8082C5;
+                color: $color-primary-blue-650;
                 align-items: center;
             }
             &-row {
                 display: flex;
                 color: #363870;
                 padding: 12px 19px;
-                border-bottom: 1px solid #F1F2FE;
+                border-bottom: 1px solid $color-primary-blue-100;
+
+                @media screen and (max-width: 720px) {
+                    padding: 0;
+                }
             }
 
             &-cell {
@@ -349,13 +372,13 @@ a {
 
                 .button.secondary.medium {
                     background-color: unset;
-                    border: 1px solid #F1F2FE;
+                    border: 1px solid $color-primary-blue-100;
                     box-sizing: border-box;
                     margin: 0;
 
                     &:hover {
-                        background: #F1F2FE;
-                        border: 1px solid #F1F2FE;
+                        background: $color-primary-blue-100;
+                        border: 1px solid $color-primary-blue-100;
                     }
                 }
             }
@@ -369,19 +392,24 @@ a {
     }
 
     &__invest {
-        padding: 0 140px;
+        padding: 0 70px;
         display: flex;
         align-items: center;
         width: 100%;
-        background: #F1F2FE;
+        background: $color-primary-blue-100;
         position: relative;
 
         @media screen and (max-width: 720px) {
             flex-direction: column;
+            padding: 0 20px;
         }
 
         @media screen and (max-width: 1000px) {
             padding: 0 60px;
+        }
+
+        @media screen and (min-width: 1001px) {
+            padding: 0 140px;
         }
 
         button {
@@ -416,7 +444,7 @@ a {
 
             &-image {
                 display: block;
-                margin: 80px auto 0;
+                margin: auto;
                 max-width: 100%;
 
                 @media screen and (max-width: 1000px) {
@@ -424,7 +452,7 @@ a {
                 }
 
                 @media screen and (max-width: 720px) {
-                    //max-width: 343px;
+                    max-width: 343px;
                 }
             }
         }
@@ -433,13 +461,13 @@ a {
             position: absolute;
             bottom: 0;
             left: 120px;
-            background: #F1F2FE;
+            background: $color-primary-blue-100;
             border-radius: 12px 12px 0px 0px;
             padding: 20px 24px 16px;
             font-weight: 500;
             font-size: 14px;
             line-height: 20px;
-            color: #7075E9;
+            color: $color-primary-blue-500;
             cursor: pointer;
 
             img {

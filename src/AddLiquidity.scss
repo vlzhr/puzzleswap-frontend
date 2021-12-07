@@ -1,3 +1,5 @@
+@import "./index";
+
 .addLiquidity {
     display: flex;
     flex-direction: column;
@@ -30,7 +32,7 @@
             font-size: 14px;
             line-height: 20px;
             text-align: center;
-            color: #8082C5;
+            color: $color-primary-blue-650;
             margin-top: 4px;
             margin-bottom: 8px;
         }
@@ -39,9 +41,9 @@
 
 .methodChoice {
     display: flex;
-    background: #FFFFFF;
+    background: $color-white;
     width: 100%;
-    border: 1px solid #F1F2FE;
+    border: 1px solid $color-primary-blue-100;
     border-radius: 12px;
     padding: 4px;
     box-sizing: border-box;
@@ -60,26 +62,26 @@
 .choice {
     border-radius: 10px;
     padding: 4px 20px;
-    color: #8082C5;
+    color: $color-primary-blue-650;
     cursor: pointer;
     width: 50%;
 }
 .choice.chosen {
-    background: #7075E9;
-    color: #FFFFFF;
+    background: $color-primary-blue-500;
+    color: $color-white;
 }
 
 .preTitle {
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #8082C5;
+    color: $color-primary-blue-650;
     text-align: left;
     margin: 24px 0 8px;
 }
 
 .blockBody {
-    background: #FFFFFF;
+    background: $color-white;
     border-radius: 16px;
     margin: 8px 0px;
     padding: 30px;
@@ -103,7 +105,7 @@
 }
 
 .dollarValue {
-    color: #8082C5;
+    color: $color-primary-blue-650;
 }
 
 .addAmountValue {
@@ -114,21 +116,21 @@
 .chooseValue {
     width: 100%;
     margin-top: 26px;
-    background: #7075E9;
-    border: 1px solid #7075E9;
+    background: $color-primary-blue-500;
+    border: 1px solid $color-primary-blue-500;
     cursor: pointer;
     border-radius: 2px;
 }
 
 /*.chooseValue::-webkit-slider-runnable-track {*/
-/*    background: #F1F2FE;*/
+/*    background: $color-primary-blue-100;*/
 /*    border-radius: 2px;*/
 /*    border: none;*/
 /*}*/
 
 /*.chooseValue::-webkit-slider-thumb {*/
-/*    !*background: #7075E9;*!*/
-/*    !*border: 1px solid #7075E9;*!*/
+/*    !*background: $color-primary-blue-500;*!*/
+/*    !*border: 1px solid $color-primary-blue-500;*!*/
 /*}*/
 
 .tokenDeposit {
@@ -136,7 +138,7 @@
     justify-content: space-between;
     margin-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid #F1F2FE;
+    border-bottom: 1px solid $color-primary-blue-100;
 
     &__lc {
         display: flex;
@@ -157,12 +159,12 @@
     &__tokenName {
         font-size: 14px;
         line-height: 20px;
-        color: #8082C5;
+        color: $color-primary-blue-650;
     }
 
     &__tokenWeight {
         font-weight: 500;
-        color: #8082C5;
+        color: $color-primary-blue-650;
         margin-right: 16px;
         width: 33px;
         display: flex;
@@ -170,7 +172,7 @@
     }
 
     &__smallLogo {
-        border: 1px solid #F1F2FE;
+        border: 1px solid $color-primary-blue-100;
         border-radius: 8px;
         position: relative;
         //margin: auto;
@@ -203,7 +205,7 @@
 .depositButton {
     width: 100%;
     padding: 16px 24px;
-    background: #7075E9;
+    background: $color-primary-blue-500;
     border-radius: 12px;
     border: none;
     color: white;
@@ -211,7 +213,7 @@
 
 .investToPool button, .addLiquidity button, .typicalButton {
     border: none;
-    background: #7075E9;
+    background: $color-primary-blue-500;
     border-radius: 10px;
     color: white;
     padding: 8px 20px;
@@ -221,7 +223,7 @@
 .investToPool button.withdraw, .addLiquidity button.withdraw {
     background: white;
     color: #363870;
-    border: 2px solid #F1F2FE;
+    border: 2px solid $color-primary-blue-100;
 }
 
 .column {
@@ -232,7 +234,7 @@
 .subPreTitle {
     font-size: 14px;
     line-height: 20px;
-    color: #8082C5;
+    color: $color-primary-blue-650;
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -277,7 +279,7 @@
 
 .blockBodyHead {
     padding-bottom: 24px;
-    border-bottom: 1px solid #F1F2FE;
+    border-bottom: 1px solid $color-primary-blue-100;
 }
 
 .smallTitle {
@@ -321,7 +323,7 @@ button a:hover {
 
 .explanation {
     padding: 18px 16px 16px;
-    background: #F1F2FE;
+    background: $color-primary-blue-100;
     border-radius: 12px;
     font-size: 14px;
     line-height: 20px;
@@ -330,7 +332,7 @@ button a:hover {
 }
 
 .classicInput {
-    background: #F1F2FE;
+    background: $color-primary-blue-100;
     border-radius: 12px;
     color: #363870;
     width: 60%;

@@ -1,9 +1,11 @@
+@import "./styles/colors";
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #F1F2FE;
+  background: $color-primary-blue-100;
 }
 
 code {
