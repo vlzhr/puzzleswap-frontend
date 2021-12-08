@@ -150,15 +150,17 @@ const ModalWindow = (props: any) => {
                         <button className="button__icon-image" id="PopoverFocus" onClick={(e) => e.currentTarget.focus()}><img src={newInfo} alt="icon" /></button>
                         <UncontrolledPopover className="custom-popover" trigger="focus" placement="top" target="PopoverFocus" arrowProps="left">
                             <PopoverBody className="details__popover">
+                                {/*TODO add related numbers for Protocol fee*/}
                                 <div className="details__popover--pair">
                                     <div className="details__popover--pair-name">Protocol fee:</div>
                                     <div className="details__popover--pair-amount">4 USDN</div>
                                 </div>
+                                {/*TODO add related numbers for LP fee*/}
                                 <div className="details__popover--pair">
                                     <div className="details__popover--pair-name">LP fee:</div>
                                     <div className="details__popover--pair-amount">1.2%</div>
                                 </div>
-                            {/*TODO add related info for price impact*/}
+                            {/*TODO add related numbers for price impact*/}
                                 <div className="details__popover--pair">
                                     <div className="details__popover--pair-name">Price impact:</div>
                                     <div className="details__popover--pair-amount">0.02%</div>

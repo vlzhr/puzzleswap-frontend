@@ -10,8 +10,9 @@ import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
 import {Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
-import {createBrowserHistory} from "history";
-import ReactGA from "react-ga";
+import './App.scss';
+import './Landing.scss';
+import './AuthInterface.scss';
 
 export const logos = [streetLogo, usdnLogo]
 

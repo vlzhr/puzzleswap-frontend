@@ -70,3 +70,11 @@
     }
   }
 }
+
+.notification-container {
+  &--top-right {
+    .danger {
+      background-color: green;
+    }
+  }
+}
