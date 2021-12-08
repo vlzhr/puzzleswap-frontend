@@ -734,7 +734,7 @@ span.logo {
   right: 0;
 
   &__with-banner {
-    top: 56px !important;
+    top: 56px;
     display: flex;
     background: $color-white;
     box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
@@ -746,6 +746,10 @@ span.logo {
     color: white;
     left: 0;
     right: 0;
+
+    @media screen and (max-width: 720px) {
+      top: 80px;
+    }
   }
 
   &__container {
