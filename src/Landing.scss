@@ -1,7 +1,7 @@
 @import "./index";
 
 h1 {
-    color: #363870;
+    color: $color-primary-blue-800;
     font-size: 48px;
     line-height: 56px;
 
@@ -57,6 +57,9 @@ a {
         text-transform: uppercase;
         margin-top: 96px;
         margin-bottom: 0.5rem;
+        @media screen and (max-width: 400px) {
+            margin-top: 4rem;
+        }
     }
 
     &__desc {
@@ -82,9 +85,13 @@ a {
             flex-direction: column;
             align-items: flex-start;
             padding-top: 80px;
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        @media screen and (max-width: 400px) {
             padding-left: 1rem;
             padding-right: 1rem;
-
         }
 
         button {
@@ -115,7 +122,10 @@ a {
 
                 @media screen and (max-width: 720px) {
                     margin: 0 auto 46px;
-                    //max-width: 320px;
+                }
+
+                @media screen and (max-width: 500px) {
+                    margin: 0 0 46px 0;
                 }
             }
         }
@@ -186,12 +196,16 @@ a {
                     width: 90%;
                 }
 
+                @media screen and (max-width: 400px) {
+                    margin-top: 0;
+                }
+
                 h2 {
                     font-weight: 500;
                     font-size: 24px;
                     line-height: 32px;
                     text-align: center;
-                    color: #363870;
+                    color: $color-primary-blue-800;
                     margin-bottom: 8px;
                 }
 
@@ -216,10 +230,6 @@ a {
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            //padding-bottom: 3rem;
-            //padding-top: 3rem;
-            //padding-left: 3rem;
-
             margin-bottom: -130px;
             max-width: 1160px;
             min-width: 80%;
@@ -246,6 +256,7 @@ a {
                 width: 100%;
                 min-height: 154px;
                 padding: 0;
+                margin-bottom: -60px;
             }
 
             @media screen and (max-width: 375px) {
@@ -300,8 +311,14 @@ a {
         padding-top: 200px;
 
         @media screen and (max-width: 720px) {
+            padding-left: 2rem;
+            padding-right: 2rem;
+        }
+
+        @media screen and (max-width: 500px) {
             padding-left: 1rem;
             padding-right: 1rem;
+            padding-top: 4rem;
         }
 
         a {
@@ -340,7 +357,7 @@ a {
             }
             &-row {
                 display: flex;
-                color: #363870;
+                color: $color-primary-blue-800;
                 padding: 12px 19px;
                 border-bottom: 1px solid $color-primary-blue-100;
 
@@ -398,12 +415,6 @@ a {
         width: 100%;
         background: $color-primary-blue-100;
         position: relative;
-
-        @media screen and (max-width: 720px) {
-            flex-direction: column;
-            padding: 0 20px;
-        }
-
         @media screen and (max-width: 1000px) {
             padding: 0 60px;
         }
@@ -411,6 +422,19 @@ a {
         @media screen and (min-width: 1001px) {
             padding: 0 140px;
         }
+
+        @media screen and (max-width: 720px) {
+            flex-direction: column;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        @media screen and (max-width: 400px) {
+            padding: 0 1rem;
+            align-items: center;
+        }
+
+
 
         button {
             padding: 16px 50px;
@@ -424,10 +448,16 @@ a {
 
             .landing__subtitle {
                 text-align: left;
+                @media screen and (max-width: 720px) {
+                    text-align: center;
+                }
             }
 
             .landing__title {
                 max-width: 560px;
+                @media screen and (max-width: 720px) {
+                    text-align: center;
+                }
             }
 
             .landing__desc {
@@ -435,6 +465,9 @@ a {
                 margin-bottom: 40px;
                 a {
                     text-decoration: none;
+                }
+                @media screen and (max-width: 720px) {
+                    text-align: center;
                 }
             }
         }

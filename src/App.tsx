@@ -20,6 +20,7 @@ import { LandingModule } from './LandingModule';
 import {WalletModule} from "./WalletModule";
 import puzzleLogo from "./img/puzzle-logo.svg";
 import puzzleLogoFooter from "./img/puzzle-logo-footer.svg";
+import closeIcon from "./img/close.svg";
 import {AddLiquidityInterface} from "./AddLiquidityInterface";
 import {InvestToPoolInterface} from "./InvestToPoolInterface";
 import { globalSigner } from './SignerHandler';
@@ -45,15 +46,22 @@ function App(this: any) {
     });
 
     const [isActive, setActive] = useState(false);
+    const [isBanner, setBanner] = useState(true);
 
     const toggleClass = () => {
         setActive(!isActive);
     };
 
+    const handleCloseBanner = () => setBanner(false);
+
   return (
       <Router>
         <div className="App">
-            <header className="header">
+            <div className={isBanner ? 'banner__top': 'banner__top--closed'}>
+                <div className="banner__top-desc">Puzzle Swap roadmap is published! 🎊 <strong>Do not miss it</strong></div>
+                <img className="banner__top-icon" src={closeIcon} alt="close-img" onClick={handleCloseBanner}/>
+            </div>
+            <header className={isBanner ? 'header__with-banner': 'header'}>
 
                 <div className="header__container">
                     <div className="header__logo">

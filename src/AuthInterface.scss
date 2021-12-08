@@ -1,0 +1,72 @@
+@import "./index";
+
+.details {
+  &__table {
+    display: flex;
+    flex-direction: column;
+
+    &--row {
+      display: flex;
+      justify-content: space-between;
+      color: $color-primary-blue-650;
+      padding: 8px 0;
+      font-size: 14px;
+      line-height: 20px;
+      border-bottom: 1px solid $color-primary-blue-100;
+      margin: 0 !important;
+
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+
+     &-desc {
+       color: $color-primary-blue-800;
+       img {
+         margin-left: 5px;
+         cursor: pointer;
+       }
+
+       button {
+         background: unset;
+         border: none;
+       }
+     }
+
+      &-cashback {
+        padding: 2px 8px 2px 5px;
+        background: linear-gradient(256.62deg, $color-primary-blue-500 0%, #D19EF9 100%);
+        border-radius: 10px;
+        color: $color-white;
+        font-size: 12px;
+        line-height: 16px;
+
+        img {
+          margin-left: 5px;
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+
+  &__popover {
+    filter: drop-shadow(0px 8px 24px rgba(54, 56, 112, 0.16));
+    padding: 8px;
+
+    &--pair {
+      display: flex;
+      justify-content: flex-start;
+      font-size: 12px;
+      line-height: 16px;
+      &-name {
+        color: $color-primary-blue-800;
+        margin-right: 5px;
+      }
+
+      &-amount {
+        color: $color-primary-blue-650;
+        margin-right: 5px;
+      }
+    }
+  }
+}
