@@ -2,7 +2,24 @@
 
 .App {
   text-align: center;
+  overflow: hidden;
 }
+
+.popover-overlay-helper {
+  z-index: 1;
+  position: fixed;
+  //background: red;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+
+  &.active {
+    display: block;
+  }
+}
+
 
 .topmenu {
   /*margin: 19px 0 0 34px;*/
@@ -244,9 +261,9 @@ span.logo {
 
 //END OF BUTTONS
 
-.notificationWindow {
-  top: 50px;
-}
+//.notificationWindow {
+//  top: 50px;
+//}
 
 .pool-data {
   margin: 0 auto 100px;
@@ -340,7 +357,7 @@ span.logo {
 }
 
 .popover, .custom-popover, .infoPopup, .tokenChoice, .tokenChoice-image, .tokenChoice-name {
-  z-index: 1000;
+  z-index: 1100 !important;
 }
 
 .tokenPair {
