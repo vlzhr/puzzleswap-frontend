@@ -15,7 +15,7 @@
     font-size: 32px;
     line-height: 40px;
     text-align: center;
-    color: #363870;
+    color: $color-primary-blue-800;
     margin: 100px 0 4px;
 }
 
@@ -95,13 +95,13 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #363870;
+    color: $color-primary-blue-800;
 }
 
 .poolValue {
     font-size: 14px;
     line-height: 20px;
-    color: #363870;
+    color: $color-primary-blue-800;
 }
 
 .dollarValue {
@@ -189,7 +189,7 @@
 
 
 .notEnough {
-    color: #EDAA8A;
+    color: $color-attention-500;
     font-size: 14px;
     line-height: 20px;
 }
@@ -222,7 +222,7 @@
 
 .investToPool button.withdraw, .addLiquidity button.withdraw {
     background: white;
-    color: #363870;
+    color: $color-primary-blue-800;
     border: 2px solid $color-primary-blue-100;
 }
 
@@ -267,14 +267,14 @@
     font-weight: 500;
     font-size: 24px;
     line-height: 32px;
-    color: #363870;
+    color: $color-primary-blue-800;
 }
 
 .mediumNumber {
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #363870;
+    color: $color-primary-blue-800;
 }
 
 .blockBodyHead {
@@ -286,7 +286,7 @@
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: #363870;
+    color: $color-primary-blue-800;
     margin-top: 24px;
     margin-bottom: 10px;
     text-align: left;
@@ -327,14 +327,14 @@ button a:hover {
     border-radius: 12px;
     font-size: 14px;
     line-height: 20px;
-    color: #363870;
+    color: $color-primary-blue-800;
     text-align: left;
 }
 
 .classicInput {
     background: $color-primary-blue-100;
     border-radius: 12px;
-    color: #363870;
+    color: $color-primary-blue-800;
     width: 60%;
     margin-left: 16px;
     padding: 16px;

@@ -1,15 +1,26 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
 import React, { useState } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
+import {
+    Modal,
+    ModalHeader,
+    ModalBody,
+    PopoverBody,
+    Popover, UncontrolledPopover
+} from 'reactstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-notifications-component/dist/theme.css'
 import {signerEmail, signerWeb} from "./SignerHandler";
-import ReactNotification from 'react-notifications-component'
 import { store } from 'react-notifications-component';
 import mail from "./img/mail.svg";
 import seed from "./img/seed.svg";
 import wx from "./img/wx.svg";
+import puzzleIcon from "./img/puzzle-icon-white.svg";
+import openFull from "./img/open-full-icon.svg";
+import newInfo from "./img/new-info-icon.svg";
+import './App.scss';
+import './Landing.scss';
+import './AuthInterface.scss';
 
 export const successMessage = (message: string) => {
     store.addNotification({
@@ -40,7 +51,7 @@ export const errorMessage = (message: string) => {
 }
 
 const ModalWindow = (props: any) => {
-    let buttonLabel = "Exchange";
+    let buttonLabel = "Swap";
     let className = "modal-window";
 
     const pool = props.poolData;
@@ -124,17 +135,50 @@ const ModalWindow = (props: any) => {
     return (
         <div>
             <button onClick={toggle} className="button primary large wide">{buttonLabel}</button>
-            <button onClick={(e) => e.currentTarget.focus()} className="infoIcon button secondary large wide" id="PopoverFocus" type="button">
-                Details
-            </button>
-            <UncontrolledPopover className="custom-popover infoPopup" trigger="focus" placement="bottom" target="PopoverFocus">
-                <PopoverBody className="">
-                    Protocol fee: 0.8% <br/>
-                    LP fee: 1.2% <br/>
-                    Slippage tolerance: 3% <br/>
-                    Minimum to receive: {props.toReceive} {pool.tokenNames[props.tokenOut]} <br/>
-                </PopoverBody>
-            </UncontrolledPopover>
+            <div className="details__table">
+                <div className="details__table--row">
+                    <div>Route</div>
+                    <div className="details__table--row-desc"> --
+                        {/*TODO make this to open modal window with Routing*/}
+                        <img src={openFull} alt="icon"/>
+                    </div>
+                </div>
+                <div className="details__table--row">
+                    <div>Minimum to receive</div>
+                    {/*TODO put amount of cashback here*/}
+                    <div className="details__table--row-desc">0 PUZZLE
+                        <button className="button__icon-image" id="PopoverFocus" onClick={(e) => e.currentTarget.focus()}><img src={newInfo} alt="icon" /></button>
+                        <UncontrolledPopover className="custom-popover" trigger="focus" placement="top" target="PopoverFocus" arrowProps="left">
+                            <PopoverBody className="details__popover">
+                                {/*TODO add related numbers for Protocol fee*/}
+                                <div className="details__popover--pair">
+                                    <div className="details__popover--pair-name">Protocol fee:</div>
+                                    <div className="details__popover--pair-amount">4 USDN</div>
+                                </div>
+                                {/*TODO add related numbers for LP fee*/}
+                                <div className="details__popover--pair">
+                                    <div className="details__popover--pair-name">LP fee:</div>
+                                    <div className="details__popover--pair-amount">1.2%</div>
+                                </div>
+                            {/*TODO add related numbers for price impact*/}
+                                <div className="details__popover--pair">
+                                    <div className="details__popover--pair-name">Price impact:</div>
+                                    <div className="details__popover--pair-amount">0.02%</div>
+                                </div>
+
+                            </PopoverBody>
+                        </UncontrolledPopover>
+                    </div>
+
+
+                </div>
+                <div className="details__table--row">
+                    <div>Cashback</div>
+                    <div className="details__table--row-cashback">
+                        {/*TODO put amount of cashback here*/}
+                        <img src={puzzleIcon} alt="icon"/>0.7433</div>
+                </div>
+            </div>
 
             <Modal isOpen={modal} toggle={toggle} className={className+" mt-5"}>
                 <ModalHeader toggle={toggle}>Connect wallet</ModalHeader>

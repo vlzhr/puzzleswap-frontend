@@ -10,6 +10,7 @@ import balance from "./img/wallet-icon.svg";
 import mail from "./img/mail.svg";
 import seed from "./img/seed.svg";
 import wx from "./img/wx.svg";
+// import {AccountDropdown} from "./Account/AccountDropdown";
 
 interface IState{
     address: string,
@@ -164,9 +165,12 @@ export class WalletModule extends React.Component<IProps, IState> {
                     {/*<span className="balance">{this.wavesFormat(this.state.wavesBalance)} <img className="waves-logo" src="https://s2.coinmarketcap.com/static/img/coins/200x200/1274.png" alt="waves logo"/></span>*/}
                 </button>
                     <button className={this.state.status == "authed" ? "button secondary medium address" : "non-visible"} onClick={() => globalSigner.logout()}>
+                        {/*<button className={this.state.status == "authed" ? "button secondary medium address" : "non-visible"} onClick={() => <AccountDropdown setShowAccount={} setIsAuthPopupOpen={} address={} logout={}}>*/}
                         {this.displayFormat(this.state.address)}
                         <img className="arrow-portfolio" src={arrow} alt=""/>
                     </button>
+                
+                {/*//globalSigner.logout()*/}
 
                 <UncontrolledPopover className="wallet-popup infoPopup" trigger="focus" placement="bottom" target="PortfolioFocus">
                     {Object.keys(this.state.balances).map((item: any) => (

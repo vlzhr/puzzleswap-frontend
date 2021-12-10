@@ -8,10 +8,11 @@ import streetLogo from './img/street-logo.svg';
 import usdnLogo from './img/usdn-logo.svg';
 import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
-import {PopoverBody, UncontrolledPopover} from "reactstrap";
+import {Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
-import {createBrowserHistory} from "history";
-import ReactGA from "react-ga";
+import './App.scss';
+import './Landing.scss';
+import './AuthInterface.scss';
 
 export const logos = [streetLogo, usdnLogo]
 
@@ -178,7 +179,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                     </div>
                                 </button>
 
-                                <UncontrolledPopover className="custom-popover" trigger="focus" placement="bottom" target="TokenIn">
+                                <UncontrolledPopover className="custom-popover" trigger="click" placement="bottom" target="TokenIn">
                                         {this.poolData.tokenNames.map((item: any) => (
                                             this.renderTokenChoice(item,"in")
                                         ))}
@@ -215,7 +216,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                             <input disabled={true} placeholder={(this.calculateAmountOut(0.98)).toString()}/>
 
 
-                            <UncontrolledPopover className="custom-popover" trigger="focus" placement="bottom" target="TokenOut">
+                            <UncontrolledPopover className="custom-popover" trigger="click" placement="bottom" target="TokenOut">
                                 {this.poolData.tokenNames.map((item: any) => (
                                     this.renderTokenChoice(item,"out")
                                 ))}

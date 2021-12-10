@@ -86,7 +86,7 @@ span.logo {
   border: none;
   margin: 10px 0 10px;
   text-align: left;
-  color: #363870;
+  color: $color-primary-blue-800;
   font-size: 20px;
   max-width: 200px;
 
@@ -112,7 +112,7 @@ span.logo {
 
 .swap-window .afterInput:hover {
   cursor: pointer;
-  color: #363870;
+  color: $color-primary-blue-800;
 }
 
 .swap-window .comp {
@@ -164,25 +164,25 @@ span.logo {
   color: $color-white;
   border: none;
   &:hover {
-    background: #6563DD;
+    background: $color-primary-blue-550;
   }
   &:disabled {
-    background: #C6C9F4;
+    background: $color-primary-blue-300;
   }
 }
 
 .secondary {
   border: 1px solid $color-primary-blue-100 !important;
   box-sizing: border-box;
-  color: #363870;
-  background-color: #fff;
+  color: $color-primary-blue-800;
+  background-color: $color-white;
   padding: 8px 20px;
   &:hover {
     background: $color-primary-blue-100;
-    color: #363870;
+    color: $color-primary-blue-800;
   }
   &:disabled {
-    background: #C6C9F4;
+    background: $color-primary-blue-300;
     opacity: 0.4;
     border: 1px solid $color-primary-blue-100;
   }
@@ -229,7 +229,7 @@ span.logo {
       background: $color-white;
 
       span {
-        color: #C6C9F4;
+        color: $color-primary-blue-300;
         font-size: 32px;
         line-height: 40px;
       }
@@ -271,7 +271,7 @@ span.logo {
   font-weight: bold;
   font-size: 16px;
   line-height: 24px;
-  color: #363870;
+  color: $color-primary-blue-800;
 }
 
 .change-button {
@@ -313,6 +313,29 @@ span.logo {
   flex-direction: column;
   //width: 101px;
   justify-content: center;
+
+  &-name {
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: $color-primary-blue-800;
+    text-align: left;
+    margin-left: 10px;
+  }
+
+  &-text {
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-primary-blue-650;
+    text-align: left;
+    margin-left: 10px;
+  }
+}
+
+.popover, .custom-popover, .infoPopup, .tokenChoice, .tokenChoice-image, .tokenChoice-name {
+  z-index: 1000;
 }
 
 .tokenPair {
@@ -325,25 +348,6 @@ span.logo {
     width: 100%;
     align-items: center;
   }
-}
-
-.tokenName-name {
-  font-family: Roboto, sans-serif;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 24px;
-  color: #363870;
-  text-align: left;
-  margin-left: 10px;
-}
-
-.tokenName-text {
-  font-size: 14px;
-  line-height: 20px;
-  color: $color-primary-blue-650;
-  text-align: left;
-  margin-left: 10px;
 }
 
 .arrow {
@@ -371,7 +375,7 @@ span.logo {
   justify-content: flex-start;
   font-size: 14px;
   line-height: 20px;
-  color: #363870;
+  color: $color-primary-blue-800;
 
   @media screen and (max-width: 720px) {
     flex-direction: row !important;
@@ -387,7 +391,7 @@ span.logo {
 .rateText {
   font-size: 14px;
   line-height: 20px;
-  color: #363870;
+  color: $color-primary-blue-800;
   display: block;
   margin: auto 4px;
 }
@@ -406,6 +410,7 @@ span.logo {
 
 .infoPopup .popover {
   padding: 20px 25px 10px !important;
+  z-index: 1000;
 }
 
 .custom-popover .popover {
@@ -416,9 +421,7 @@ span.logo {
   border-radius: 12px;
 }
 
-//.popover, .custom-popover, .infoPopup, .tokenChoice, .tokenChoice-image, .tokenChoice-name {
-//  z-index: 101 !important;
-//}
+
 
 .tokenChoice {
   padding: 8px 12px;
@@ -437,7 +440,7 @@ span.logo {
   line-height: 20px;
   vertical-align: center;
   margin: 2px 8px;
-  color: #363870;
+  color: $color-primary-blue-800;
 }
 
 .non-visible {
@@ -446,7 +449,7 @@ span.logo {
 
 .portfolio-value, .balance, .address {
   font-size: 16px;
-  color: #1c1d39;
+  color: $color-primary-blue-800;
   margin: auto 12px;
 }
 
@@ -513,7 +516,7 @@ span.logo {
 
 .footer {
   min-height: 320px;
-  background: #363870;
+  background: $color-primary-blue-800;
   flex: none;
   order: 5;
   flex-grow: 0;
@@ -614,15 +617,63 @@ span.logo {
 }
 
 .banner a:hover {
-  color: #363870;
+  color: $color-primary-blue-800;
 }
 
 .banner {
   padding: 15px;
   margin-bottom: 40px !important;
   border-radius: 12px;
-  color: #363870;
+  color: $color-primary-blue-800;
   background: $color-primary-blue-100;
+
+  &__top {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 56px;
+    background-color: $color-primary-blue-800;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    scroll-behavior: opacity($color-white);
+
+    @media screen and (max-width: 720px) {
+      flex-direction: row;
+      height: 80px;
+    }
+
+    &--closed {
+      display: none;
+    }
+
+    &-desc {
+      color: $color-primary-blue-300;
+      font-weight: 400;
+      flex-grow: 10;
+      @media screen and (max-width: 720px) {
+        flex-wrap: wrap;
+        padding-left: 48px;
+      }
+    }
+    &-icon {
+      flex-grow: 0;
+      padding-right: 45px;
+      cursor: pointer;
+      @media screen and (max-width: 720px) {
+        padding-right: 21px;
+        align-self: flex-start;
+        padding-top: 21px;
+      }
+    }
+  }
 }
 
 .banner span {
@@ -676,11 +727,30 @@ span.logo {
   position: fixed;
   min-height: 80px;
   align-items: center;
-  //z-index: 100;
+  z-index: 100;
   color: white;
   top: 0;
   left: 0;
   right: 0;
+
+  &__with-banner {
+    top: 56px;
+    display: flex;
+    background: $color-white;
+    box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
+    width: 100%;
+    position: fixed;
+    min-height: 80px;
+    align-items: center;
+    z-index: 100;
+    color: white;
+    left: 0;
+    right: 0;
+
+    @media screen and (max-width: 720px) {
+      top: 80px;
+    }
+  }
 
   &__container {
     display: flex;
@@ -742,24 +812,34 @@ span.logo {
         flex-grow: 0;
         margin: 24px 12px;
         &:hover {
-          color: #363870;
+          color: $color-primary-blue-800;
           border-bottom: 4px solid $color-primary-blue-500;
-          padding-bottom: 24px;
+          padding-bottom: 28px;
           margin-bottom: 0;
 
           @media screen and (max-width: 1000px) {
             border-bottom: none;
             padding-bottom: 0;
           }
+
+          @media screen and (max-width: 720px) {
+            border-bottom: none;
+            padding-bottom: 0;
+          }
         }
 
         a.chosen .header__menu-link:hover  {
-          color: #363870;
+          color: $color-primary-blue-800;
           border-bottom: 4px solid $color-primary-blue-500;
-          padding-bottom: 24px;
+          padding-bottom: 28px;
           margin-bottom: 0;
 
           @media screen and (max-width: 1000px) {
+            border-bottom: none;
+            padding-bottom: 0;
+          }
+
+          @media screen and (max-width: 720px) {
             border-bottom: none;
             padding-bottom: 0;
           }
@@ -802,14 +882,19 @@ span.logo {
       }
 
     a.chosen .header__menu-link:hover  {
-      color: #363870;
+      color: $color-primary-blue-800;
       border-bottom: 4px solid $color-primary-blue-500;
       padding-bottom: 28px;
       margin-bottom: 0;
+
+      @media screen and (max-width: 720px) {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
     }
 
     //&:hover {
-    //  border-bottom: 4px solid #C6C9F4;
+    //  border-bottom: 4px solid $color-primary-blue-300;
     //  padding-bottom: 26px;
     //  color: $color-primary-blue-650;
     //  /*margin: 12px 14px 0;*/
