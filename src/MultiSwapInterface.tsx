@@ -170,15 +170,15 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
         return <div>
             {this.poolData && <>
                 <div className="swap-window">
-                    <div className="banner">
-                        <span>PUZZLE token is live 🧩🚀</span>
-                        <br/>
-                        {(this.poolData.contractAddress !== "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh") ?
-                            (<Link to="puzzle">Trade.</Link>)
-                            :
-                            (<a href="https://t.me/PuzzleSwap" target="_blank">Join our chat.</a>)
-                        }
-                    </div>
+                    {/*<div className="banner">*/}
+                    {/*    <span>PUZZLE token is live 🧩🚀</span>*/}
+                    {/*    <br/>*/}
+                    {/*    {(this.poolData.contractAddress !== "3PFDgzu1UtswAkCMxqqQjbTeHaX4cMab8Kh") ?*/}
+                    {/*        (<Link to="puzzle">Trade.</Link>)*/}
+                    {/*        :*/}
+                    {/*        (<a href="https://t.me/PuzzleSwap" target="_blank">Join our chat.</a>)*/}
+                    {/*    }*/}
+                    {/*</div>*/}
                     <div>
                         <div className="comp">
                                 <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenIn" type="button">
