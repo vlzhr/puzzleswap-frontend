@@ -1,0 +1,15 @@
+.inputContainer {
+  position: relative;
+}
+
+.swap-window .afterInput {
+  color: #8082C5;
+  //position: relative;
+  font-size: 12px;
+  top: 120px;
+  right: 8px;
+  width: 320px;
+  text-align: right;
+  transition: color .5s;
+  margin-top: -100px;
+}

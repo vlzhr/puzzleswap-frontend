@@ -58,7 +58,7 @@ function App(this: any) {
       <Router>
         <div className="App">
             <div className={isBanner ? 'banner__top': 'banner__top--closed'}>
-                <div className="banner__top-desc">Puzzle Swap roadmap is published! 🎊 <strong>Do not miss it</strong></div>
+                <div className="banner__top-desc">Puzzle Swap roadmap is published! 🎊 <strong onClick={() => window.open("https://twitter.com/puzzle_swap")}>Follow in Twitter</strong></div>
                 <img className="banner__top-icon" src={closeIcon} alt="close-img" onClick={handleCloseBanner}/>
             </div>
             <header className={isBanner ? 'header__with-banner': 'header'}>

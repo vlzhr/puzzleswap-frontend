@@ -119,7 +119,7 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
     calculateMinPIssued() {
         const poolState = this.state.poolState;
 
-        let minPIssued = 100000000000;
+        let minPIssued = 10000000000000000;
         for (const name of this.poolData.tokenNames) {
             if (this.dicBalances[name] != undefined) {
                 const tokenId = this.dicBalances[name].tokenId;
@@ -130,7 +130,7 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
                 let tokenMaxPIssued = Math.floor(this.dicBalances[name].decimals * poolTokenAmount * userTokenBalance / globalTokenBalance) / this.dicBalances[name].decimals;
 
                 // console.log(globalTokenBalance, userTokenBalance, poolTokenAmount)
-                console.log(tokenMaxPIssued);
+                console.log(name, "max pissued", tokenMaxPIssued);
 
                 minPIssued = Math.min(tokenMaxPIssued, minPIssued);
             } else {
@@ -251,7 +251,7 @@ export class AddLiquidityInterface extends React.Component<IProps, IState> {
                         <div className="poolValue">Your Index tokens:&nbsp;{userIndexTokens} <span className="dollarValue">(${userLiquidityValue})</span></div>
                     </div>
                     <div className="buttonContainer">
-                        {(this.state.auth) ? (<button className="withdraw"><Link to="invest">Change pool</Link></button>) : (<div></div>)}
+                        {(this.state.auth) ? (<button className="withdraw"><Link to="invest">Manage</Link></button>) : (<div></div>)}
                     </div>
                 </div>
             </div>

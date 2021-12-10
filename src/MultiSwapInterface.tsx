@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import './App.scss';
 import './Landing.scss';
 import './AuthInterface.scss';
+import {valueOrZero} from "./InvestToPoolInterface";
 
 export const logos = [streetLogo, usdnLogo]
 
@@ -50,6 +51,7 @@ export interface IContractStateKey{
 export class MultiSwapInterface extends React.Component<IProps, IState>{
 
     poolData: any = {};
+    dicBalances: any = {};
 
     constructor(props: any) {
         super(props);
@@ -63,6 +65,13 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
             tokenOut: this.poolData.tokenNames.length - 1,
             amountIn: 0,
             tokenIn: 1
+        }
+
+        let balances: [], auth: boolean = true;
+        let balancesStr = localStorage.getItem('userBalances');
+        if (!balancesStr) {balances = []; auth= false;} else {balances = JSON.parse(balancesStr)}
+        for (const b of balances) {
+            this.dicBalances[b["name"]] = b;
         }
     }
 
@@ -111,18 +120,19 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
         let sum = 0;
         const usdnId = this.poolData.tokenNames.indexOf("USDN");
         while (n < this.poolData.tokenNames.length) {
-            sum += 100 * this.state.data.get("global_"+[this.poolData.tokenIds[n]]+"_balance")  * this.calculateCurrentPrice(usdnId, n, 1) / this.poolData.tokenDecimals[n];
+            sum += this.state.data.get("global_"+[this.poolData.tokenIds[n]]+"_balance")  * this.calculateCurrentPrice(usdnId, n, 1) / this.poolData.tokenDecimals[n];
             n = n + 1;
         }
-        return Math.floor(sum) / 100;
+        return Math.floor(sum);
     }
 
     getTotalVolume() {
-        return Math.floor(this.state.data.get("global_volume") * 100 / 1000000) / 100;
+        return Math.floor(this.state.data.get("global_volume") / 1000000);
     }
 
     getTokenInBalance() {
-        return this.state.tokenIn
+        const balanceData = this.dicBalances[this.poolData.tokenNames[this.state.tokenIn]]
+        return balanceData ? balanceData.balance : 0;
     }
 
     getTokenIn() {
@@ -135,6 +145,11 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
         this.setState({
             amountIn: value
         });
+    }
+
+    handleMaxClick() {
+        // document.querySelector(".afterInput")!.setAttribute("value", this.getTokenInBalance());
+        this.setState({amountIn: this.getTokenInBalance()})
     }
 
     renderTokenChoice(tokenName: string, direction: string) {
@@ -187,7 +202,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
 
                             <div>
                                 <input onChange={(e) => this.handleInput(e)} type="text" placeholder="0"/>
-                                {/*<div className="afterInput">max:&nbsp;${this.getTokenInBalance()}</div>*/}
+                                <div className="afterInput" onClick={() => this.handleMaxClick()}>max:&nbsp;{this.getTokenInBalance()}</div>
                             </div>
                         </div>
                         <div className="change-button comp rate"

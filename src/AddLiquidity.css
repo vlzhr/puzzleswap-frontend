@@ -1,12 +1,11 @@
-@import "./index";
-
 .addLiquidity {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 560px;
     max-width: 90%;
-    margin: 50px auto;
+    margin: 0 auto;
 }
 
 .investToPool h1, .addLiquidity h1 {
@@ -19,69 +18,53 @@
     margin: 100px 0 4px;
 }
 
-.addLiquidity {
+.addLiquidity>div {
+    margin-bottom: 24px;
+}
 
-    &__login {
-        display: flex;
-        flex-direction: column;
-        margin: 0 auto 24px;
-        justify-content: center;
-        align-items: center;
-
-        &-desc {
-            font-size: 14px;
-            line-height: 20px;
-            text-align: center;
-            color: $color-primary-blue-650;
-            margin-top: 4px;
-            margin-bottom: 8px;
-        }
-    }
+.addLiquidity .desc {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #8082C5;
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
 
 .methodChoice {
     display: flex;
-    background: $color-white;
+    background: #FFFFFF;
     width: 100%;
-    border: 1px solid $color-primary-blue-100;
+    border: 1px solid #F1F2FE;
     border-radius: 12px;
     padding: 4px;
     box-sizing: border-box;
     margin: 10px auto;
-    height: 40px;
-
-    .ignore-link {
-        padding: 0;
-    }
-
-    @media screen and (max-width: 375px) {
-        font-size: 14px;
-    }
 }
 
 .choice {
     border-radius: 10px;
     padding: 4px 20px;
-    color: $color-primary-blue-650;
+    color: #8082C5;
     cursor: pointer;
     width: 50%;
 }
 .choice.chosen {
-    background: $color-primary-blue-500;
-    color: $color-white;
+    background: #7075E9;
+    color: #FFFFFF;
 }
 
 .preTitle {
     font-weight: 500;
     font-size: 16px;
     line-height: 24px;
-    color: $color-primary-blue-650;
+    color: #8082C5;
     text-align: left;
-    margin: 24px 0 8px;
+    margin-bottom: 8px;
 }
 
 .blockBody {
-    background: $color-white;
+    background: #FFFFFF;
     border-radius: 16px;
     margin: 8px 0px;
     padding: 30px;
@@ -105,7 +88,7 @@
 }
 
 .dollarValue {
-    color: $color-primary-blue-650;
+    color: #8082C5;
 }
 
 .addAmountValue {
@@ -116,21 +99,21 @@
 .chooseValue {
     width: 100%;
     margin-top: 26px;
-    background: $color-primary-blue-500;
-    border: 1px solid $color-primary-blue-500;
+    background: #7075E9;
+    border: 1px solid #7075E9;
     cursor: pointer;
     border-radius: 2px;
 }
 
 /*.chooseValue::-webkit-slider-runnable-track {*/
-/*    background: $color-primary-blue-100;*/
+/*    background: #F1F2FE;*/
 /*    border-radius: 2px;*/
 /*    border: none;*/
 /*}*/
 
 /*.chooseValue::-webkit-slider-thumb {*/
-/*    !*background: $color-primary-blue-500;*!*/
-/*    !*border: 1px solid $color-primary-blue-500;*!*/
+/*    !*background: #7075E9;*!*/
+/*    !*border: 1px solid #7075E9;*!*/
 /*}*/
 
 .tokenDeposit {
@@ -138,47 +121,7 @@
     justify-content: space-between;
     margin-top: 10px;
     padding-bottom: 10px;
-    border-bottom: 1px solid $color-primary-blue-100;
-
-    &__lc {
-        display: flex;
-        justify-content: flex-start;
-
-        &-desc {
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            margin-left: 8px;
-        }
-    }
-
-    &__rc {
-        align-items: center;
-    }
-
-    &__tokenName {
-        font-size: 14px;
-        line-height: 20px;
-        color: $color-primary-blue-650;
-    }
-
-    &__tokenWeight {
-        font-weight: 500;
-        color: $color-primary-blue-650;
-        margin-right: 16px;
-        width: 33px;
-        display: flex;
-        justify-content: flex-start;
-    }
-
-    &__smallLogo {
-        border: 1px solid $color-primary-blue-100;
-        border-radius: 8px;
-        position: relative;
-        //margin: auto;
-        width: 40px;
-        height: 40px;
-    }
+    border-bottom: 2px #C6C9F4 dotted;
 }
 
 .tokenDeposit>div {
@@ -186,7 +129,18 @@
     text-align: left;
 }
 
+.tokenName {
+    font-size: 14px;
+    line-height: 20px;
+    color: #8082C5;
+    margin-left: 8px;
+}
 
+.tokenWeight {
+    font-weight: 500;
+    color: #8082C5;
+    margin-right: 16px;
+}
 
 .notEnough {
     color: #EDAA8A;
@@ -205,7 +159,7 @@
 .depositButton {
     width: 100%;
     padding: 16px 24px;
-    background: $color-primary-blue-500;
+    background: #7075E9;
     border-radius: 12px;
     border: none;
     color: white;
@@ -213,7 +167,7 @@
 
 .investToPool button, .addLiquidity button, .typicalButton {
     border: none;
-    background: $color-primary-blue-500;
+    background: #7075E9;
     border-radius: 10px;
     color: white;
     padding: 8px 20px;
@@ -223,7 +177,7 @@
 .investToPool button.withdraw, .addLiquidity button.withdraw {
     background: white;
     color: #363870;
-    border: 2px solid $color-primary-blue-100;
+    border: 2px solid #F1F2FE;
 }
 
 .column {
@@ -234,7 +188,7 @@
 .subPreTitle {
     font-size: 14px;
     line-height: 20px;
-    color: $color-primary-blue-650;
+    color: #8082C5;
     flex: none;
     order: 0;
     flex-grow: 0;
@@ -279,7 +233,7 @@
 
 .blockBodyHead {
     padding-bottom: 24px;
-    border-bottom: 1px solid $color-primary-blue-100;
+    border-bottom: 1px solid #F1F2FE;
 }
 
 .smallTitle {
@@ -319,41 +273,6 @@ button a:hover {
 
 .preTitle-after {
     font-weight: 400;
-}
-
-.explanation {
-    padding: 18px 16px 16px;
-    background: $color-primary-blue-100;
-    border-radius: 12px;
-    font-size: 14px;
-    line-height: 20px;
-    color: #363870;
-    text-align: left;
-}
-
-.classicInput {
-    background: $color-primary-blue-100;
-    border-radius: 12px;
-    color: #363870;
-    width: 60%;
-    margin-left: 16px;
-    padding: 16px;
-    box-sizing: border-box;
-    height: 56px;
-    border: none;
-}
-
-.attentionImg {
-    display: block;
-    margin: 0 16px 0 0;
-}
-
-.left-small {
-    margin-left: 0px;
-    width: 100%;
-    position: relative;
-    margin-bottom: 20px;
-    text-align: left;
 }
 
 @media screen and (max-width: 720px) {

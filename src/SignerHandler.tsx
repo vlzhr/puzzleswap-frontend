@@ -60,6 +60,7 @@ export class GlobalSigner {
         const states = await downloadStates()
 
         const data: Array<any> = (await axios.get(`${API_URL}/assets/balance/${localStorage.getItem("userAddress")}`)).data.balances;
+        const wavesBalance = (await axios.get(`${API_URL}/addresses/balance/details/${localStorage.getItem("userAddress")}`)).data.regular;
 
         let balances: any = []
         for (const asset of data) {
@@ -70,6 +71,12 @@ export class GlobalSigner {
                 balances.push(assetInfo)
             }
         }
+
+        const assetInfo = appTokens["WAVES"]
+        assetInfo["balance"] = Number(wavesBalance) / assetInfo["decimals"]
+        assetInfo["value"] = calculateTokenPrice(assetInfo, states) * assetInfo["balance"]
+        balances.push(assetInfo)
+
         balances = balances.sort((x: any, y: any) => (y.value - x.value))
         console.log(balances)
 

@@ -210,7 +210,7 @@ export class InvestToPoolInterface extends React.Component<IProps, IState> {
                         <div className="flex">
                             <div className="columnFlex">
                                 <div className="subPreTitle">Index balance</div>
-                                <div className="bigNumber">{valueOrZero(this.state.poolState.get(this.state.userAddress + "_indexStaked") / 10**8)}</div>
+                                <div className="bigNumber">{Math.floor(100 * valueOrZero(this.state.poolState.get(this.state.userAddress + "_indexStaked") / 10**8)) / 100}</div>
                             </div>
                             <div className="columnFlex">
                                 <div className="subPreTitle">Value</div>

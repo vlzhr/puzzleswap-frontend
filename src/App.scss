@@ -103,11 +103,15 @@ span.logo {
   color: $color-primary-blue-650;
   position: absolute;
   font-size: 12px;
-  right: 38px;
-  top: 50px;
+  right: 18px;
+  top: 18px;
   width: 320px;
   text-align: right;
   transition: color .5s;
+
+  @media screen and (max-width: 720px) {
+    top: 100px;
+  }
 }
 
 .swap-window .afterInput:hover {
@@ -122,6 +126,7 @@ span.logo {
   vertical-align: center;
   margin: 1px auto;
   flex-grow: 1;
+  position: relative;
 
   @media screen and (max-width: 720px) {
     flex-direction: column;

@@ -136,24 +136,24 @@ const ModalWindow = (props: any) => {
         <div>
             <button onClick={toggle} className="button primary large wide">{buttonLabel}</button>
             <div className="details__table">
+                {/*<div className="details__table--row">*/}
+                {/*    <div>Route</div>*/}
+                {/*    <div className="details__table--row-desc"> --*/}
+                {/*        /!*TODO make this to open modal window with Routing*!/*/}
+                {/*        <img src={openFull} alt="icon"/>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="details__table--row">
-                    <div>Route</div>
-                    <div className="details__table--row-desc"> --
-                        {/*TODO make this to open modal window with Routing*/}
-                        <img src={openFull} alt="icon"/>
-                    </div>
-                </div>
-                <div className="details__table--row">
-                    <div>Minimum to receive</div>
+                    <div>Details</div>
                     {/*TODO put amount of cashback here*/}
-                    <div className="details__table--row-desc">0 PUZZLE
+                    <div className="details__table--row-desc">
                         <button className="button__icon-image" id="PopoverFocus" onClick={(e) => e.currentTarget.focus()}><img src={newInfo} alt="icon" /></button>
                         <UncontrolledPopover className="custom-popover" trigger="focus" placement="top" target="PopoverFocus" arrowProps="left">
                             <PopoverBody className="details__popover">
                                 {/*TODO add related numbers for Protocol fee*/}
                                 <div className="details__popover--pair">
                                     <div className="details__popover--pair-name">Protocol fee:</div>
-                                    <div className="details__popover--pair-amount">4 USDN</div>
+                                    <div className="details__popover--pair-amount">0.8%</div>
                                 </div>
                                 {/*TODO add related numbers for LP fee*/}
                                 <div className="details__popover--pair">
@@ -162,8 +162,8 @@ const ModalWindow = (props: any) => {
                                 </div>
                             {/*TODO add related numbers for price impact*/}
                                 <div className="details__popover--pair">
-                                    <div className="details__popover--pair-name">Price impact:</div>
-                                    <div className="details__popover--pair-amount">0.02%</div>
+                                    <div className="details__popover--pair-name">Slippage tolerance:</div>
+                                    <div className="details__popover--pair-amount">3%</div>
                                 </div>
 
                             </PopoverBody>
@@ -172,12 +172,12 @@ const ModalWindow = (props: any) => {
 
 
                 </div>
-                <div className="details__table--row">
-                    <div>Cashback</div>
-                    <div className="details__table--row-cashback">
-                        {/*TODO put amount of cashback here*/}
-                        <img src={puzzleIcon} alt="icon"/>0.7433</div>
-                </div>
+                {/*<div className="details__table--row">*/}
+                {/*    <div>Cashback</div>*/}
+                {/*    <div className="details__table--row-cashback">*/}
+                {/*        /!*TODO put amount of cashback here*!/*/}
+                {/*        <img src={puzzleIcon} alt="icon"/>0.7433</div>*/}
+                {/*</div>*/}
             </div>
 
             <Modal isOpen={modal} toggle={toggle} className={className+" mt-5"}>

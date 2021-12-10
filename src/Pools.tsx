@@ -200,45 +200,45 @@ export const poolsData: any = {
 
     [PoolNames.defi]: {
         tokenIds: [
-            'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',  // EGG
-            'WAVES',  // WAVES
-            '4K35syPfY2tYrNWzjh1vbmH39qE4qPV7SwLwekrzD82r',  // USDTLAMBO
-            'Ehie5xYpeN8op1Cctc6aGUrqx8jq3jtf1DSjXDbfm7aT',  // SWOP
-            'DSbbhLsSTeDg5Lsiufk2Aneh3DjVqJuPr2M9uU1gwy5p',  // VIRES
-            '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g',  // NSBT
-            '7LMV3s1J4dKpMQZqge5sKYoFkZRLojnnU49aerqos4yg',  // ENNO
-            '9sQutD5HnRvjM1uui5cVC4w9xkMPAfYEV8ymug3Mon2Y',  // SIGN
-            '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',  // USDT
-            'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p'   // USDN
+            'WAVES',
+            'C1iWsKGqLwjHUndiQ7iXpdmPum9PeCDFfyXBdJJosDRS',
+            'Ehie5xYpeN8op1Cctc6aGUrqx8jq3jtf1DSjXDbfm7aT',
+            'DSbbhLsSTeDg5Lsiufk2Aneh3DjVqJuPr2M9uU1gwy5p',
+            '6nSpVyNH7yM69eg446wrQR94ipbbcmZMU1ENPwanC97g',
+            '7LMV3s1J4dKpMQZqge5sKYoFkZRLojnnU49aerqos4yg',
+            '9sQutD5HnRvjM1uui5cVC4w9xkMPAfYEV8ymug3Mon2Y',
+            'HEB8Qaw9xrWpWs8tHsiATYGBWDBtP2S7kcPALrMu43AS',
+            '34N9YcEETLWn93qYQ64EsP1x89tSruJU44RrEMSXXEPJ',
+            'DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p'
         ],
         tokenNames: [
-            "EGG",
-            "WAVES",
-            "USDTLAMBO",
-            "SWOP",
-            "VIRES",
-            "NSBT",
-            "ENNO",
-            "SIGN",
-            "USDT",
-            "USDN"
+            'WAVES',
+            'EGG',
+            'SWOP',
+            'VIRES',
+            'NSBT',
+            'ENNO',
+            'SIGN',
+            'PUZZLE',
+            'USDT',
+            'USDN'
         ],
         tokenLogos: [
-            eggLogo,
             wavesLogo,
-            usdtlamboLogo,
+            eggLogo,
             swopLogo,
             viresLogo,
             nsbtLogo,
             ennoLogo,
             signLogo,
+            puzzleLogo,
             usdtLogo,
             usdnLogo
         ],
-        tokenShares: [0.2, 0.2, 0.04, 0.08, 0.08, 0.06, 0.06, 0.04, 0.12, 0.12],
-        tokenDecimals: [10**8, 10**8, 10**8, 10**8, 10**8, 10**6, 10**8, 10**8, 10**6, 10**6],
+        tokenShares: [0.2, 0.1, 0.05, 0.05, 0.05, 0.05, 0.05, 0.2, 0.1, 0.15],
+        tokenDecimals: [10**8, 10**8, 10**8, 10**8, 10**6, 10**8, 10**8, 10**8, 10**6, 10**6],
         contractAddress: "3PDrYPF6izza2sXWffzTPF7e2Fcir2CMpki",
-        // layer2Address: "-",
+        layer2Address: "3PJAg4A4gPQXtSLKQNAf5VxbXV2QVM9wPei",
         baseTokenId: "DG2xFkPdDwKUoBkzGAhQtLpSGzfXLiCYPEzeKH2Ad24p",
         name: "Waves DeFi"
     },

@@ -80,7 +80,10 @@ export class AddOneTokenInterface extends React.Component<IProps, IState> {
     }
 
     depositOneTokenAndStake() {
-        const toStake = Math.round(Number(this.state.eggAmount) * 10**8);
+        const baseTokenNum = this.poolData.tokenIds.indexOf(this.poolData.baseTokenId);
+        const baseTokenDecimals = this.poolData.tokenDecimals[baseTokenNum]
+
+        const toStake = Math.round(Number(this.state.eggAmount) * baseTokenDecimals);
 
         globalSigner.signer.invoke({
             dApp: this.poolData.layer2Address,
@@ -147,7 +150,10 @@ export class AddOneTokenInterface extends React.Component<IProps, IState> {
     calculateDepositValue() {
         const baseTokenNum = this.poolData.tokenIds.indexOf(this.poolData.baseTokenId);
         const baseTokenName = this.poolData.tokenNames[baseTokenNum];
-        return Math.round(100 * this.dicBalances[baseTokenName].value * (Number(this.state.eggAmount) / this.dicBalances[baseTokenName].balance)) / 100
+        const baseTokenBalance = this.dicBalances[baseTokenName] ? this.dicBalances[baseTokenName].balance : 0;
+        const baseTokenValue = this.dicBalances[baseTokenName] ? this.dicBalances[baseTokenName].value : 0;
+
+        return Math.round(10000 / 98 * baseTokenValue * (Number(this.state.eggAmount) / baseTokenBalance)) / 100
     }
 
     render() {
@@ -158,6 +164,7 @@ export class AddOneTokenInterface extends React.Component<IProps, IState> {
 
         const baseTokenNum = this.poolData.tokenIds.indexOf(this.poolData.baseTokenId);
         const baseTokenName = this.poolData.tokenNames[baseTokenNum];
+        const baseTokenBalance = this.dicBalances[baseTokenName] ? this.dicBalances[baseTokenName].balance : 0;
 
         return <div className="addLiquidity">
             <div className="head">
@@ -197,10 +204,10 @@ export class AddOneTokenInterface extends React.Component<IProps, IState> {
                                     <img src={this.poolData.tokenLogos[baseTokenNum]} alt=""/>
                                     <div>
                                         <div className="poolName">{baseTokenName}</div>
-                                        <div className="poolValue dollarValue">Max: {valueOrZero(this.dicBalances[baseTokenName].balance)}</div>
+                                        <div className="poolValue dollarValue">Max: {baseTokenBalance}</div>
                                     </div>
                                 </div>
-                                    <input onChange={(e) => {this.setState({eggAmount: strToNum(e.target.value)})}} className="classicInput" id="eggAmountInput" defaultValue={valueOrZero(this.dicBalances[baseTokenName].balance)} type="text"/>
+                                    <input onChange={(e) => {this.setState({eggAmount: strToNum(e.target.value)})}} className="classicInput" id="eggAmountInput" defaultValue={baseTokenBalance} type="text"/>
                             </div>
                             <div className="explanation flex">
                                 <img src={attentionImg} className="attentionImg" alt="attentione"/>
