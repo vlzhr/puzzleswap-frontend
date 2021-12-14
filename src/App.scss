@@ -10,7 +10,7 @@
   position: fixed;
   //background: red;
   left: 0;
-  right: 0;
+  top: 0;
   width: 100vw;
   height: 100vh;
   display: none;
@@ -169,8 +169,6 @@ span.logo {
   align-items: center;
   text-decoration: none;
 
-
-
   &__icon {
 
     justify-content: space-between !important;
@@ -209,7 +207,6 @@ span.logo {
     border: 1px solid $color-primary-blue-100;
   }
 }
-
 
 .large {
   //width: 96px;
@@ -261,49 +258,57 @@ span.logo {
 
 //END OF BUTTONS
 
+//TEXT FIELDS
+
 .textField {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 16px;
+  padding: 16px 16px 16px 46px;
 
   position: relative;
   width: 100%;
   height: 56px;
-
-  color: $color-primary-blue-650;
   font-size: 20px;
   line-height: 24px;
-  background: $color-primary-blue-800;
+  background: $color-primary-blue-100;
   border-radius: 12px;
   border: transparent;
-  padding-left: 46px;
+  color: $color-primary-blue-800;
 
 
-  &:hover {
-    background: $color-primary-blue-100;
-    border: 1px solid $color-primary-blue-300;
+  @media screen and (max-width: 720px) {
+    height: 48px;
   }
 
-  &__icon-left::before {
-      content: url(./img/search.svg);
-      margin-right: .5rem;
-      width: 24px;
-      height: 24px;
-      position: relative;
-    }
+  &::placeholder {
+    color: $color-primary-blue-650;
+  }
+
+  &:active {
+    color: $color-primary-blue-800;
+    background: $color-white;
+    border: 1px solid $color-primary-blue-500 !important;
+  }
+
+  &:hover, &:focus-visible {
+    background: $color-primary-blue-100;
+    border: 1px solid $color-primary-blue-300 !important;
+  }
+
+  &__icon-left {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    pointer-events: none;
+    z-index: 3;
+    margin: 1rem;
+  }
 }
 
-//TEXT FIELDS
+//END OF TEXT FIELDS
 
-
-
-//END OF TEXT FILEDS
-
-//.notificationWindow {
-//  top: 50px;
-//}
 
 .pool-data {
   margin: 0 auto 100px;
@@ -369,84 +374,92 @@ span.logo {
   margin: 10px 0;
   padding: 0;
 
-  &__popover {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 24px;
-    box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
-
-    &--header {
-      color: $color-primary-blue-800;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      //width: 368px;
-      height: 56px;
-      background: $color-white !important;
-      //padding: 16px;
-
-      border-bottom: 1px solid #F1F2FE;
-      border-top-left-radius: 16px !important;
-      border-top-right-radius: 16px !important;
-
-      &-desc {
-        color: $color-primary-blue-800;
-        font-weight: 500;
-        flex-grow: 10;
-        @media screen and (max-width: 720px) {
-          flex-wrap: wrap;
-          padding-left: 48px;
-        }
-      }
-
-      &-icon {
-        flex-grow: 0;
-        cursor: pointer;
-        @media screen and (max-width: 720px) {
-          align-self: flex-start;
-          padding-top: 21px;
-        }
-      }
-    }
-
-    &--body {
-      align-self: flex-start;
-
-      &-input {
-        margin-bottom: 1rem;
-      }
-    }
-  }
-
 }
+
 .popover {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
   min-width: 360px;
   max-width: unset;
 
   border: 1px solid $color-primary-blue-100;
   border-radius: 1rem !important;
-  box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
   position: absolute;
 
   left: calc(50% - 360px/2);
   top: calc(50% - 496px/2);
 
-  &-header {
-    padding: 21px 29px 21px 24px !important;
+  &__header {
+    color: $color-primary-blue-800;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //width: 368px;
+    height: 56px;
+    background: $color-white !important;
+    //padding: 16px;
+
+    border-bottom: 1px solid #F1F2FE;
+    border-top-left-radius: 16px !important;
+    border-top-right-radius: 16px !important;
+
+    &-desc {
+      color: $color-primary-blue-800;
+      font-weight: 500;
+      flex-grow: 10;
+      @media screen and (max-width: 720px) {
+        flex-wrap: wrap;
+        padding-left: 48px;
+      }
+    }
+
+    &-icon {
+      flex-grow: 0;
+      cursor: pointer;
+      @media screen and (max-width: 720px) {
+        align-self: flex-start;
+        padding-top: 21px;
+      }
+    }
+  }
+
+  &--body {
+    align-self: flex-start;
+
+    &-input {
+      margin-bottom: 1rem;
+    }
   }
 
   &-body {
     padding: 24px !important;
   }
 }
-//.popover-header {
-//  background-color: unset;
-//  border-bottom: unset !important;
-//  border-top-left-radius: unset !important;
-//  border-top-right-radius: unset !important;
+
+//.popover {
+//  min-width: 360px;
+//  max-width: unset;
+//
+//  border: 1px solid $color-primary-blue-100;
+//  border-radius: 1rem !important;
+//  box-shadow: 0px 8px 56px rgba(54, 56, 112, 0.16);
+//  position: absolute;
+//
+//  left: calc(50% - 360px/2);
+//  top: calc(50% - 496px/2);
+//
+//  &-header {
+//    padding: 21px 29px 21px 24px !important;
+//  }
+//
+//  &-body {
+//    padding: 24px !important;
+//  }
 //}
 
 .tokenName {

@@ -9,6 +9,7 @@ import usdnLogo from './img/usdn-logo.svg';
 import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
 import closeIcon from "./img/close.svg";
+import searchIcon from "./img/search.svg";
 import {Modal, ModalBody, ModalHeader, Popover, PopoverBody, PopoverHeader, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
 import './App.scss';
@@ -27,6 +28,8 @@ interface IState{
     tokenIn: number;
     popoverInIsOpen: boolean;
     popoverOutIsOpen: boolean;
+    popoverInSearchStr: string;
+    popoverOutSearchStr: string;
 }
 
 interface IProps{
@@ -70,6 +73,8 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
             tokenIn: 1,
             popoverInIsOpen: false,
             popoverOutIsOpen: false,
+            popoverInSearchStr: '',
+            popoverOutSearchStr: ''
         }
 
         let balances: [], auth: boolean = true;
@@ -105,7 +110,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
 
     calculateCurrentPrice(t1: number, t2: number, coef: number){
         return  Math.round(10000 * coef * (this.state.data.get("global_"+[this.poolData.tokenIds[t1]]+"_balance") / this.poolData.tokenShares[t1] / this.poolData.tokenDecimals[t1]) /
-                (this.state.data.get("global_"+[this.poolData.tokenIds[t2]]+"_balance") / this.poolData.tokenShares[t2] / this.poolData.tokenDecimals[t2])) / 10000;
+            (this.state.data.get("global_"+[this.poolData.tokenIds[t2]]+"_balance") / this.poolData.tokenShares[t2] / this.poolData.tokenDecimals[t2])) / 10000;
     }
 
     calculateAmountOut(coef: number) {
@@ -116,7 +121,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
 
         const amountOut = BalanceOut / this.poolData.tokenDecimals[tokenOut] *
             (1 - (BalanceIn / (BalanceIn + this.poolData.tokenDecimals[tokenIn] * this.state.amountIn))
-            ** (this.poolData.tokenShares[tokenIn] / this.poolData.tokenShares[tokenOut]))
+                ** (this.poolData.tokenShares[tokenIn] / this.poolData.tokenShares[tokenOut]))
         return Math.floor(amountOut * this.poolData.tokenDecimals[tokenOut] * coef) / this.poolData.tokenDecimals[tokenOut]
     }
 
@@ -176,6 +181,18 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
         });
     }
 
+    changePopoverInSearchStr(str: string){
+        this.setState({
+            popoverInSearchStr: str
+        });
+    }
+
+    changePopoverOutSearchStr(str: string){
+        this.setState({
+            popoverOutSearchStr: str
+        });
+    }
+
     handleMaxClick() {
         // document.querySelector(".afterInput")!.setAttribute("value", this.getTokenInBalance());
         this.setState({amountIn: this.getTokenInBalance()})
@@ -230,28 +247,30 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                             </button>
 
                             <Popover
+                                className="popover"
                                 placement="bottom"
                                 isOpen={this.state.popoverInIsOpen}
                                 target="TokenIn"
                                 toggle={()=>{this.togglePopupIn()}}
                             >
-                                <PopoverHeader className="tokenData__popover--header">
-                                    <div className="tokenData__popover--header-desc">Select a token</div>
-                                    <img className="tokenData__popover--header-icon" src={closeIcon} alt="close-img"/>
+                                <PopoverHeader className="popover__header">
+                                    <div className="popover__header-desc">Select a token</div>
+                                    <img className="popover__header-icon" onClick={()=>{this.closePopoverIn()}} src={closeIcon} alt="close-img"/>
                                 </PopoverHeader>
-                                <PopoverBody className="tokenData__popover--body">
+                                <PopoverBody className="popover--body">
 
-                                    <div className="tokenData__popover--body-input">
-
+                                    <div className="popover--body-input">
+                                        <img src={searchIcon} alt="search-icon" className="textField__icon-left"/>
                                         <input type="text"
-                                               className="textField textField__icon-left"
+                                               className="textField"
                                                placeholder="Search by name or ticker..."
-                                               // placeholder="&#61442;"
-                                               value={""}
-                                               onChange={this.poolData}/>
+                                            // placeholder="&#61442;"
+                                            // value={""}
+                                               onChange={(e) => {this.changePopoverInSearchStr(e.target.value)}}
+                                        />
                                     </div>
 
-                                    {this.poolData.tokenNames.map((item: any) => (
+                                    {this.poolData.tokenNames.filter((item: string)=> item.toUpperCase().indexOf(this.state.popoverInSearchStr.toUpperCase()) > -1).map((item: any) => (
                                         this.renderTokenChoice(item, "in")
                                     ))}
                                 </PopoverBody>
@@ -300,20 +319,32 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                             <input disabled={true} placeholder={(this.calculateAmountOut(0.98)).toString()}/>
 
                             <Popover
+                                className="popover"
                                 placement="bottom"
                                 isOpen={this.state.popoverOutIsOpen}
                                 target="TokenOut"
                                 toggle={()=>{this.togglePopupOut()}}
                             >
-                                <PopoverHeader className="tokenData__popover--header">
-                                    <div className="tokenData__popover--header-desc">Select a token</div>
-                                    <img className="tokenData__popover--header-icon" src={closeIcon} alt="close-img"/>
+                                <PopoverHeader className="popover__header">
+                                    <div className="popover__header-desc">Select a token</div>
+                                    <img className="popover__header-icon" onClick={()=>{this.closePopoverOut()}} src={closeIcon} alt="close-img"/>
                                 </PopoverHeader>
-                                <PopoverBody className="tokenData__popover--body">
+                                <PopoverBody className="popover--body">
+
+                                    <div className="popover--body-input">
+                                        <img src={searchIcon} alt="search-icon" className="textField__icon-left"/>
+                                        <input type="text"
+                                               className="textField"
+                                               placeholder="Search by name or ticker..."
+                                               onChange={(e) => {this.changePopoverOutSearchStr(e.target.value)}}
+                                        />
+                                    </div>
+
                                     {this.poolData.tokenNames.map((item: any) => (
                                         this.renderTokenChoice(item,"out")
                                     ))}
                                 </PopoverBody>
+
                             </Popover>
 
                             {/*<UncontrolledPopover className="custom-popover" trigger="focus" placement="bottom" target="TokenOut">*/}
