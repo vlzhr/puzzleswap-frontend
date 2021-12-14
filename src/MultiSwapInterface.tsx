@@ -8,7 +8,8 @@ import streetLogo from './img/street-logo.svg';
 import usdnLogo from './img/usdn-logo.svg';
 import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
-import {Modal, ModalBody, ModalHeader, Popover, PopoverBody, UncontrolledPopover} from "reactstrap";
+import closeIcon from "./img/close.svg";
+import {Modal, ModalBody, ModalHeader, Popover, PopoverBody, PopoverHeader, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
 import './App.scss';
 import './Landing.scss';
@@ -234,11 +235,32 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                 target="TokenIn"
                                 toggle={()=>{this.togglePopupIn()}}
                             >
-                                <PopoverBody>
+                                <PopoverHeader className="tokenData__popover--header">
+                                    <div className="tokenData__popover--header-desc">Select a token</div>
+                                    <img className="tokenData__popover--header-icon" src={closeIcon} alt="close-img"/>
+                                </PopoverHeader>
+                                <PopoverBody className="tokenData__popover--body">
+
+                                    <div className="tokenData__popover--body-input">
+
+                                        <input type="text"
+                                               className="textField textField__icon-left"
+                                               placeholder="Search by name or ticker..."
+                                               // placeholder="&#61442;"
+                                               value={""}
+                                               onChange={this.poolData}/>
+                                    </div>
+
                                     {this.poolData.tokenNames.map((item: any) => (
                                         this.renderTokenChoice(item, "in")
                                     ))}
                                 </PopoverBody>
+
+                                {/*<PopoverBody>*/}
+                                {/*    {this.poolData.tokenNames.map((item: any) => (*/}
+                                {/*        this.renderTokenChoice(item, "in")*/}
+                                {/*    ))}*/}
+                                {/*</PopoverBody>*/}
                             </Popover>
 
                             {/*<UncontrolledPopover className="custom-popover" trigger="focus" placement="bottom" target="TokenIn">*/}
@@ -283,7 +305,11 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                 target="TokenOut"
                                 toggle={()=>{this.togglePopupOut()}}
                             >
-                                <PopoverBody>
+                                <PopoverHeader className="tokenData__popover--header">
+                                    <div className="tokenData__popover--header-desc">Select a token</div>
+                                    <img className="tokenData__popover--header-icon" src={closeIcon} alt="close-img"/>
+                                </PopoverHeader>
+                                <PopoverBody className="tokenData__popover--body">
                                     {this.poolData.tokenNames.map((item: any) => (
                                         this.renderTokenChoice(item,"out")
                                     ))}
