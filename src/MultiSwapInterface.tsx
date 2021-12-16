@@ -11,11 +11,17 @@ import arrow from './img/arrow.svg';
 import closeIcon from "./img/close.svg";
 import searchIcon from "./img/search.svg";
 import {Modal, ModalBody, ModalHeader, Popover, PopoverBody, PopoverHeader, UncontrolledPopover} from "reactstrap";
+import puzzleBannerIllustration from './img/puzzle-banner-illustration.svg';
+import puzzleLogo from "./img/logos/PUZZLE.svg";
+
+
+import {Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
 import './App.scss';
 import './Landing.scss';
 import './AuthInterface.scss';
 import {valueOrZero} from "./InvestToPoolInterface";
+import {calculateTokenPrice} from "./WalletModule";
 
 export const logos = [streetLogo, usdnLogo]
 
@@ -121,7 +127,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
 
         const amountOut = BalanceOut / this.poolData.tokenDecimals[tokenOut] *
             (1 - (BalanceIn / (BalanceIn + this.poolData.tokenDecimals[tokenIn] * this.state.amountIn))
-                ** (this.poolData.tokenShares[tokenIn] / this.poolData.tokenShares[tokenOut]))
+            ** (this.poolData.tokenShares[tokenIn] / this.poolData.tokenShares[tokenOut]))
         return Math.floor(amountOut * this.poolData.tokenDecimals[tokenOut] * coef) / this.poolData.tokenDecimals[tokenOut]
     }
 
@@ -219,6 +225,10 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
     }
 
     render(){
+        const puzzlePrice = 50;
+        let cashbackAmount = this.state.amountIn * 0.004 * this.calculateCurrentPrice(this.poolData.tokenNames.indexOf("USDN"), this.getTokenIn(), 1);
+        cashbackAmount = Math.floor(1000 * 0.96 * cashbackAmount / puzzlePrice) / 1000;
+
         return <div>
             {this.poolData && <>
                 <div className="swap-window">
@@ -364,6 +374,21 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                          },
                                          tokenOut: this.poolData.tokenIds[this.state.tokenOut]
                                      }}/>
+
+                        {this.poolData.poolName !== "puzzle" ? (
+                            <div className="cashback-banner">
+                                <div className="cashback-banner__text">
+                                    <strong>Congratulations 🎊🥳</strong> <br/>
+                                    You will earn PUZZLE for this trade:&nbsp;
+                                    <span className="puzzle-amount">
+                                    {cashbackAmount}<img className="puzzle-amount__logo" src={puzzleLogo} alt=""/>
+                                    </span>
+                                </div>
+                                <img src={puzzleBannerIllustration} alt=""/>
+                            </div>
+                        ) : (<div></div>)}
+
+
                     </div>
                 </div>
                 <div className="pool-data">

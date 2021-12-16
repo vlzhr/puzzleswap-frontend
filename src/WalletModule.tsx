@@ -84,16 +84,18 @@ export class WalletModule extends React.Component<IProps, IState> {
             this.setState({portfolioValue: sum})
             this.setState({status: "authed"})
 
-            setInterval(() => {
-                globalSigner.updateBalances()
-                this.setState({address: window.localStorage.getItem("userAddress")!})
-                const balances = JSON.parse(window.localStorage.getItem("userBalances")!)
-                let sum = 0
-                balances.map((x: any) => sum += x.value)
 
-                this.setState({balances: balances})
-                this.setState({portfolioValue: sum})
-                this.setState({status: "authed"})
+            setInterval(() => {
+                globalSigner.updateBalances().then((balances) => {
+                    this.setState({address: window.localStorage.getItem("userAddress")!})
+                    // const balances = JSON.parse(window.localStorage.getItem("userBalances")!)
+                    let sum = 0
+                    balances.map((x: any) => sum += x.value)
+
+                    this.setState({balances: balances})
+                    this.setState({portfolioValue: sum})
+                    this.setState({status: "authed"})
+                })
             }, 5000)
         }
 

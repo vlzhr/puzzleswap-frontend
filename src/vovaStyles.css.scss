@@ -13,3 +13,146 @@
   transition: color .5s;
   margin-top: -100px;
 }
+
+.cashback-banner {
+  margin-top: 320px;
+  font-size: 14px;
+  line-height: 20px;
+  color: #363870;
+  background: #F1F2FE;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.swap-window .cashback-banner__text {
+  margin: 12px 16px;
+  display: block;
+  text-align: left;
+}
+
+.swap-window .cashback-banner__text .puzzle-amount {
+  font-weight: 800;
+}
+
+.swap-window .cashback-banner__text .puzzle-amount .puzzle-amount__logo {
+  height: 14px;
+  margin-left: 5px;
+  margin-top: -2px;
+  border-radius: 50%;
+}
+
+.adapting-block {
+  width: 100%;
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+
+  @media screen and (max-width: 1140px) {
+    flex-direction: column;
+  }
+}
+
+.addLiquidity.stakeModule>*, .addLiquidity.stakeModule h1 {
+  text-align: left;
+}
+
+.addLiquidity.stakeModule {
+  width: 90%;
+  max-width: 1160px;
+}
+
+.stakeModule .blockBody {
+  max-width: 100%;
+  width: 660px;
+}
+
+.stakeModule .landing__desc {
+  //max-width: 440px;
+}
+
+.balances .blockBody {
+  max-width: 100%;
+  width: 460px
+}
+
+.value {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #363870;
+}
+
+.big-value {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #363870;
+}
+
+.addLiquidity.stakeModule .columnFlex {
+  min-width: 150px;
+
+  @media screen and (max-width: 720px) {
+    min-width: 100px;
+  }
+}
+
+.transactionIcon {
+  margin: 8px;
+}
+
+.transactionTitle {
+  font-size: 14px;
+  line-height: 20px;
+  color: #363870;
+}
+
+.transactionDate {
+  font-size: 12px;
+  line-height: 16px;
+  color: #8082C5;
+}
+
+.transactionValue {
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+  color: #35A15A;
+  cursor: pointer;
+}
+
+.stakeModule .balances button {
+  padding: 16px;
+}
+
+.balances .blockBody {
+  padding-bottom: 8px;
+}
+
+.needAuth .blockBody {
+  text-align: center;
+}
+
+.balances.needAuth .blockBody button {
+  width: 100%;
+  margin-top: 16px;
+  margin-bottom: 24px;
+}
+
+.swap-window.stake-form {
+  margin: 16px 0 16px 0;
+  width: 100%;
+  max-width: 460px;
+}
+
+@media screen and (max-width: 720px) {
+  .overview .blockBody .flex {
+    flex-direction: column;
+  }
+  .overview .blockBody .flex .columnFlex {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}

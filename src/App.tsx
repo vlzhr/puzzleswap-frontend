@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './App.scss';
 import './Landing.scss';
 import './AddLiquidity.scss';
+import './vovaStyles.css.scss';
 import {ExampleClass} from "./ExampleClass";
 import {SwapInterface} from "./SwapInterface";
 import ReactGA from 'react-ga';
@@ -25,6 +26,7 @@ import {AddLiquidityInterface} from "./AddLiquidityInterface";
 import {InvestToPoolInterface} from "./InvestToPoolInterface";
 import { globalSigner } from './SignerHandler';
 import {AddOneTokenInterface} from "./AddOneTokenInterface";
+import {StakeModule} from "./StakeModule";
 
 
 
@@ -58,7 +60,7 @@ function App(this: any) {
       <Router>
         <div className="App">
             <div className={isBanner ? 'banner__top': 'banner__top--closed'}>
-                <div className="banner__top-desc">Puzzle Swap roadmap is published! 🎊 <strong onClick={() => window.open("https://twitter.com/puzzle_swap")}>Follow in Twitter</strong></div>
+                <div className="banner__top-desc">Puzzle cashback rewards are live! 🎊<strong><Link to="/puzzle" className="ignore-link">Buy PUZZLE</Link></strong></div>
                 <img className="banner__top-icon" src={closeIcon} alt="close-img" onClick={handleCloseBanner}/>
             </div>
             <header className={isBanner ? 'header__with-banner': 'header'}>
@@ -112,6 +114,7 @@ function App(this: any) {
                 {/*    <SwapInterface matches={{...match} as any}/>*/}
                 {/*)} path="/:domain" />*/}
                 <Route exact path="/" key={3} children={<LandingModule />} />
+                <Route exact path="/stake" key={333} children={<StakeModule />} />
                     {/*<Redirect to="/farms" />*/}
 
 

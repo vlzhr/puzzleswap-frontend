@@ -29,6 +29,7 @@ import usdtlamboLogo from "./img/logos/USDTLAMBO.svg";
 
 import {API_URL, IContractStateKey} from "./MultiSwapInterface";
 import axios from "axios";
+import {calculateTokenPrice} from "./WalletModule";
 
 export enum PoolNames {
     street = 'street',

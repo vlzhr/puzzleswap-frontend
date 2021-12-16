@@ -81,6 +81,8 @@ export class GlobalSigner {
         console.log(balances)
 
         localStorage.setItem("userBalances", JSON.stringify(balances))
+
+        return balances;
     }
 
     auth(authorizationMethod: string) {
