@@ -5,7 +5,6 @@ import {
     ModalBody,
     ModalHeader,
     Popover,
-    PopoverBody,
     UncontrolledPopover
 } from "reactstrap";
 import {signerEmail, signerWeb, signerKeeper, globalSigner} from "./SignerHandler";
@@ -74,7 +73,7 @@ export class WalletModule extends React.Component<IProps, IState> {
             balances: {},
             signer: null,
             status: "nonauth",
-            addressModalIsOpen: false
+            addressModalIsOpen: false,
         }
     }
 
@@ -205,23 +204,24 @@ export class WalletModule extends React.Component<IProps, IState> {
                     </button>
 
                 <Popover
-                    className="popover popover--body-small"
+                    className="popover"
                     placement="bottom-end"
                     isOpen={this.state.addressModalIsOpen}
                     target="addressModal"
                     toggle={()=>{this.toggleAddressModal()}}
                 >
-
-                    <div className="popover--body-item">
-                        Copy address
-                    </div>
-                    <div className="popover--body-item">
-                        View in Waves Explorer
-                    </div>
-                    <div className="popover--body-item popover--body-logout" onClick={() => globalSigner.logout()}>
-                        Disconnect
-                    </div>
-
+                    {/*TODO add copy address function here*/}
+                        <div className="popover--body-item">
+                            Copy address
+                        </div>
+                        <div className="popover--body-item">
+                            <a href={`https://wavesexplorer.com/tx/${this.state.address}`} target="_blank">
+                                View in Waves Explorer
+                            </a>
+                        </div>
+                        <div className="popover--body-item popover--body-logout" onClick={() => globalSigner.logout()}>
+                            Disconnect
+                        </div>
                 </Popover>
 
                 <UncontrolledPopover className="wallet-popup infoPopup" trigger="focus" placement="bottom" target="PortfolioFocus">

@@ -50,6 +50,19 @@ export const errorMessage = (message: string) => {
     });
 }
 
+export const showCopiedMessage = (message: string) => {
+    store.addNotification({
+        title: "Address is copied to clipboard",
+        message: message,
+        type: "success",
+        insert: "top",
+        container: "top-right",
+        animationIn: ["animate__animated", "animate__fadeIn"],
+        animationOut: ["animate__animated", "animate__fadeOut"],
+        dismiss: {duration: 5000, onScreen: true}
+    });
+}
+
 const ModalWindow = (props: any) => {
     let buttonLabel = "Swap";
     let className = "modal-window";

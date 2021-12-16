@@ -341,18 +341,26 @@ span.logo {
   color: $color-primary-blue-800;
 }
 
-.change-button {
+.change-button{
   cursor: pointer;
-}
-
-.change-button img {
-  margin: 10px;
-
-  @media screen and (max-width: 720px) {
-    width: 40px;
-    height: 40px;
+  img {
+    will-change: transform;
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+    margin: 10px;
+    transition: transform 0.5s ease-in-out;
+    @media screen and (max-width: 720px) {
+      width: 40px;
+      height: 40px;
+    }
+  }
+  &--rotate{
+    img{
+      transform: rotate(180deg);
+    }
   }
 }
+
 
 .tokenLogo, .smallLogo {
   border: 1px solid $color-primary-blue-100;
@@ -393,6 +401,16 @@ span.logo {
 
   left: calc(50% - 360px/2);
   top: calc(50% - 496px/2);
+
+  >.popover {
+    //min-width: 240px;
+    max-width: 400px;
+    border: transparent;
+  }
+
+  &-inner {
+    width: 100%;
+  }
 
   &__header {
     color: $color-primary-blue-800;
@@ -458,6 +476,11 @@ span.logo {
       //padding-top: 10px;
       //padding-bottom: 10px;
       padding: 10px 12px;
+
+      a {
+        text-decoration: none;
+        color: $color-primary-blue-800;
+      }
     }
 
     &-logout {
@@ -1147,12 +1170,10 @@ span.logo {
   }
 
   &__toggle--open &__burger {
-    //TODO fix colors here
     background: transparent;
     padding-right: 20px;
 
     &:hover, &:focus {
-      //TODO fix colors here
       background: transparent;
     }
 
@@ -1226,12 +1247,11 @@ span.logo {
     }
   }
 
-  .header__toggle--open, .header__cross, .header__burger {
-    @media screen and (min-width: 1001px) {
+  .header__toggle--open, .header__burger {
+    @media screen and (min-width: 721px) {
       display: none;
     }
   }
-
 
   /* Logo */
   &__logo {
@@ -1260,7 +1280,11 @@ span.logo {
     @media screen and (max-width: 1000px) {
       justify-content: flex-start;
       align-items: flex-start;
-      //width: 100
+      margin-bottom: 2rem;
     }
+
+    //@media screen and (max-width: 500px) {
+    //  margin-bottom: 2rem;
+    //}
   }
 }
