@@ -19,7 +19,7 @@ import './Landing.scss';
 import {valueOrZero} from "./InvestToPoolInterface";
 import {calculateTokenPrice} from "./WalletModule";
 import {event} from "react-ga";
-import any = jasmine.any;
+// import any = jasmine.any;
 
 export const logos = [streetLogo, usdnLogo]
 
