@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import {appTokens, downloadStates, PoolNames, poolsData} from "./Pools";
 import {findAllByDisplayValue} from "@testing-library/react";
-import {Button, Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover} from "reactstrap";
+import {Button, Modal, ModalBody, ModalHeader, UncontrolledPopover} from "reactstrap";
 import {signerEmail, signerWeb, signerKeeper, globalSigner} from "./SignerHandler";
 import axios from "axios";
 import {API_URL, IContractStateKey} from "./MultiSwapInterface";

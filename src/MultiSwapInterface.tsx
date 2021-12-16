@@ -1,24 +1,25 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import {PoolNames, poolsData} from "./Pools"
-import classNames from "classnames";
 import ModalWindow from "./AuthInterface";
 import changeButton from './img/ChangeButton.svg';
 import streetLogo from './img/street-logo.svg';
 import usdnLogo from './img/usdn-logo.svg';
 import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
+import closeIcon from "./img/close.svg";
+import searchIcon from "./img/search.svg";
+import {Popover, PopoverBody, PopoverHeader} from "reactstrap";
 import puzzleBannerIllustration from './img/puzzle-banner-illustration.svg';
 import puzzleLogo from "./img/logos/PUZZLE.svg";
-
-
-import {Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
 import './App.scss';
 import './Landing.scss';
-import './AuthInterface.scss';
+// import './AuthInterface.scss';
 import {valueOrZero} from "./InvestToPoolInterface";
 import {calculateTokenPrice} from "./WalletModule";
+import {event} from "react-ga";
+// import any = jasmine.any;
 
 export const logos = [streetLogo, usdnLogo]
 
@@ -29,6 +30,10 @@ interface IState{
     tokenOut: number;
     amountIn: number;
     tokenIn: number;
+    popoverInIsOpen: boolean;
+    popoverOutIsOpen: boolean;
+    popoverInSearchStr: string;
+    popoverOutSearchStr: string;
 }
 
 interface IProps{
@@ -41,6 +46,17 @@ export interface IContractStateKey{
     value: number | boolean | string;
     type: 'integer' | 'string' | 'boolean';
 }
+//
+// function RotateIcon(this: any) {
+//
+//     const [isChanged, setChanged] = useState(false);
+//
+//     const toggleClass = () => {
+//         setChanged(!isChanged);
+//     };
+//
+//     return;
+// }
 
 export class MultiSwapInterface extends React.Component<IProps, IState>{
 
@@ -58,7 +74,11 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
             data: new Map<any, any>(),
             tokenOut: this.poolData.tokenNames.length - 1,
             amountIn: 0,
-            tokenIn: 1
+            tokenIn: 1,
+            popoverInIsOpen: false,
+            popoverOutIsOpen: false,
+            popoverInSearchStr: '',
+            popoverOutSearchStr: ''
         }
 
         let balances: [], auth: boolean = true;
@@ -94,7 +114,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
 
     calculateCurrentPrice(t1: number, t2: number, coef: number){
         return  Math.round(10000 * coef * (this.state.data.get("global_"+[this.poolData.tokenIds[t1]]+"_balance") / this.poolData.tokenShares[t1] / this.poolData.tokenDecimals[t1]) /
-                (this.state.data.get("global_"+[this.poolData.tokenIds[t2]]+"_balance") / this.poolData.tokenShares[t2] / this.poolData.tokenDecimals[t2])) / 10000;
+            (this.state.data.get("global_"+[this.poolData.tokenIds[t2]]+"_balance") / this.poolData.tokenShares[t2] / this.poolData.tokenDecimals[t2])) / 10000;
     }
 
     calculateAmountOut(coef: number) {
@@ -141,6 +161,42 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
         });
     }
 
+    closePopoverIn(){
+        this.setState({
+            popoverInIsOpen: false
+        });
+    }
+
+    closePopoverOut(){
+        this.setState({
+            popoverOutIsOpen: false
+        });
+    }
+
+    togglePopupIn() {
+        this.setState({
+            popoverInIsOpen: !this.state.popoverInIsOpen
+        });
+    }
+
+    togglePopupOut() {
+        this.setState({
+            popoverOutIsOpen: !this.state.popoverOutIsOpen
+        });
+    }
+
+    changePopoverInSearchStr(str: string){
+        this.setState({
+            popoverInSearchStr: str
+        });
+    }
+
+    changePopoverOutSearchStr(str: string){
+        this.setState({
+            popoverOutSearchStr: str
+        });
+    }
+
     handleMaxClick() {
         // document.querySelector(".afterInput")!.setAttribute("value", this.getTokenInBalance());
         this.setState({amountIn: this.getTokenInBalance()})
@@ -149,15 +205,21 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
     renderTokenChoice(tokenName: string, direction: string) {
         const n = this.poolData.tokenNames.indexOf(tokenName);
         return <div className="tokenChoice" onClick={() => {
-                    if (direction == "in") {
-                        this.setState({"tokenIn": n})
-                    } else {
-                        this.setState({"tokenOut": n})
-                    }
-                }}>
-                <img className="tokenChoice-image" src={this.poolData.tokenLogos[n]} />
-                <div className="tokenChoice-name">{tokenName}</div>
-            </div>
+            if (direction == "in") {
+                this.setState({"tokenIn": n})
+            } else {
+                this.setState({"tokenOut": n})
+            }
+            this.setState({
+                popoverInIsOpen: false
+            });
+            this.setState({
+                popoverOutIsOpen: false
+            });
+        }}>
+            <img className="tokenChoice-image" src={this.poolData.tokenLogos[n]} />
+            <div className="tokenChoice-name">{tokenName}</div>
+        </div>
     }
 
     render(){
@@ -179,24 +241,58 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                     {/*</div>*/}
                     <div>
                         <div className="comp">
-                                <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenIn" type="button">
-                                    <img className="tokenLogo" src={this.poolData.tokenLogos[this.getTokenIn()]}/>
-                                    <div className="tokenPair">
-                                        <div className="tokenName">
-                                            <span className="tokenName-text">You pay</span>
-                                            <span
-                                                className="tokenName-name">{this.poolData.tokenNames[this.getTokenIn()]}
+                            <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenIn" type="button">
+                                <img className="tokenLogo" src={this.poolData.tokenLogos[this.getTokenIn()]}/>
+                                <div className="tokenPair">
+                                    <div className="tokenName">
+                                        <span className="tokenName-text">You pay</span>
+                                        <span
+                                            className="tokenName-name">{this.poolData.tokenNames[this.getTokenIn()]}
                                             </span>
-                                        </div>
-                                        <img className="arrow" src={arrow} alt=""/>
                                     </div>
-                                </button>
+                                    <img className="arrow" src={arrow} alt=""/>
+                                </div>
+                            </button>
 
-                                <UncontrolledPopover className="custom-popover" trigger="click" placement="bottom" target="TokenIn">
-                                        {this.poolData.tokenNames.map((item: any) => (
-                                            this.renderTokenChoice(item,"in")
-                                        ))}
-                                </UncontrolledPopover>
+                            <Popover
+                                className="popover"
+                                placement="bottom"
+                                isOpen={this.state.popoverInIsOpen}
+                                target="TokenIn"
+                                toggle={()=>{this.togglePopupIn()}}
+                            >
+                                <PopoverHeader className="popover__header">
+                                    <div className="popover__header-desc">Select a token</div>
+                                    <img className="popover__header-icon" onClick={()=>{this.closePopoverIn()}} src={closeIcon} alt="close-img"/>
+                                </PopoverHeader>
+                                <PopoverBody className="popover--body">
+
+                                    <div className="popover--body-input">
+                                        <img src={searchIcon} alt="search-icon" className="textField__icon-left"/>
+                                        <input type="text"
+                                               className="textField"
+                                               placeholder="Search by name or ticker..."
+                                               onChange={(e) => {this.changePopoverInSearchStr(e.target.value)}}
+                                        />
+                                    </div>
+
+                                    {this.poolData.tokenNames.filter((item: string)=> item.toUpperCase().indexOf(this.state.popoverInSearchStr.toUpperCase()) > -1).map((item: any) => (
+                                        this.renderTokenChoice(item, "in")
+                                    ))}
+                                </PopoverBody>
+
+                                {/*<PopoverBody>*/}
+                                {/*    {this.poolData.tokenNames.map((item: any) => (*/}
+                                {/*        this.renderTokenChoice(item, "in")*/}
+                                {/*    ))}*/}
+                                {/*</PopoverBody>*/}
+                            </Popover>
+
+                            {/*<UncontrolledPopover className="custom-popover" trigger="focus" placement="bottom" target="TokenIn">*/}
+                            {/*    {this.poolData.tokenNames.map((item: any) => (*/}
+                            {/*        this.renderTokenChoice(item, "in")*/}
+                            {/*    ))}*/}
+                            {/*</UncontrolledPopover>*/}
 
                             <div>
                                 <input onChange={(e) => this.handleInput(e)} type="text" placeholder="0"/>
@@ -228,12 +324,40 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                             </button>
                             <input disabled={true} placeholder={(this.calculateAmountOut(0.98)).toString()}/>
 
+                            <Popover
+                                className="popover"
+                                placement="bottom"
+                                isOpen={this.state.popoverOutIsOpen}
+                                target="TokenOut"
+                                toggle={()=>{this.togglePopupOut()}}
+                            >
+                                <PopoverHeader className="popover__header">
+                                    <div className="popover__header-desc">Select a token</div>
+                                    <img className="popover__header-icon" onClick={()=>{this.closePopoverOut()}} src={closeIcon} alt="close-img"/>
+                                </PopoverHeader>
+                                <PopoverBody className="popover--body">
 
-                            <UncontrolledPopover className="custom-popover" trigger="click" placement="bottom" target="TokenOut">
-                                {this.poolData.tokenNames.map((item: any) => (
-                                    this.renderTokenChoice(item,"out")
-                                ))}
-                            </UncontrolledPopover>
+                                    <div className="popover--body-input">
+                                        <img src={searchIcon} alt="search-icon" className="textField__icon-left"/>
+                                        <input type="text"
+                                               className="textField"
+                                               placeholder="Search by name or ticker..."
+                                               onChange={(e) => {this.changePopoverOutSearchStr(e.target.value)}}
+                                        />
+                                    </div>
+
+                                    {this.poolData.tokenNames.map((item: any) => (
+                                        this.renderTokenChoice(item,"out")
+                                    ))}
+                                </PopoverBody>
+
+                            </Popover>
+
+                            {/*<UncontrolledPopover className="custom-popover" trigger="focus" placement="bottom" target="TokenOut">*/}
+                            {/*    {this.poolData.tokenNames.map((item: any, i: number) => (*/}
+                            {/*        this.renderTokenChoice(item,"out", i)*/}
+                            {/*    ))}*/}
+                            {/*</UncontrolledPopover>*/}
 
                         </div>
 
@@ -285,6 +409,8 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                         <img className="poolliq-image" src={puzzleBack}/>
                     )}
                 </div>
+                <div onClick={()=>{this.closePopoverIn()}} className={`popover-overlay-helper ${this.state.popoverInIsOpen? 'active' : ''}`}></div>
+                <div onClick={()=>{this.closePopoverOut()}} className={`popover-overlay-helper ${this.state.popoverOutIsOpen? 'active' : ''}`}></div>
             </>}
         </div>
     }

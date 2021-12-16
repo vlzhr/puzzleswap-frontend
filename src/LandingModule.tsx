@@ -13,6 +13,7 @@ import adv2 from "./img/adv2.png";
 import priceIcon from "./img/price-icon.svg";
 import adv3 from "./img/adv3.png";
 import adv4 from "./img/adv4.png";
+// import './index.scss';
 import bannerToken from "./img/landing-banner-with-image.svg";
 
 interface IState{
