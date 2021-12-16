@@ -8,12 +8,17 @@ import streetLogo from './img/street-logo.svg';
 import usdnLogo from './img/usdn-logo.svg';
 import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
+import puzzleBannerIllustration from './img/puzzle-banner-illustration.svg';
+import puzzleLogo from "./img/logos/PUZZLE.svg";
+
+
 import {Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
 import './App.scss';
 import './Landing.scss';
 import './AuthInterface.scss';
 import {valueOrZero} from "./InvestToPoolInterface";
+import {calculateTokenPrice} from "./WalletModule";
 
 export const logos = [streetLogo, usdnLogo]
 
@@ -36,17 +41,6 @@ export interface IContractStateKey{
     value: number | boolean | string;
     type: 'integer' | 'string' | 'boolean';
 }
-//
-// function RotateIcon(this: any) {
-//
-//     const [isChanged, setChanged] = useState(false);
-//
-//     const toggleClass = () => {
-//         setChanged(!isChanged);
-//     };
-//
-//     return;
-// }
 
 export class MultiSwapInterface extends React.Component<IProps, IState>{
 
@@ -167,6 +161,10 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
     }
 
     render(){
+        const puzzlePrice = 50;
+        let cashbackAmount = this.state.amountIn * 0.004 * this.calculateCurrentPrice(this.poolData.tokenNames.indexOf("USDN"), this.getTokenIn(), 1);
+        cashbackAmount = Math.floor(1000 * 0.96 * cashbackAmount / puzzlePrice) / 1000;
+
         return <div>
             {this.poolData && <>
                 <div className="swap-window">
@@ -248,6 +246,21 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                          },
                                          tokenOut: this.poolData.tokenIds[this.state.tokenOut]
                                      }}/>
+
+                        {this.poolData.poolName !== "puzzle" ? (
+                            <div className="cashback-banner">
+                                <div className="cashback-banner__text">
+                                    <strong>Congratulations 🎊🥳</strong> <br/>
+                                    You will earn PUZZLE for this trade:&nbsp;
+                                    <span className="puzzle-amount">
+                                    {cashbackAmount}<img className="puzzle-amount__logo" src={puzzleLogo} alt=""/>
+                                    </span>
+                                </div>
+                                <img src={puzzleBannerIllustration} alt=""/>
+                            </div>
+                        ) : (<div></div>)}
+
+
                     </div>
                 </div>
                 <div className="pool-data">

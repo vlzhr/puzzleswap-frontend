@@ -25,7 +25,7 @@ interface IProps{
 }
 
 const mouseClickEvents = ['mousedown', 'click', 'mouseup'];
-function simulateMouseClick(element: Element){
+export function simulateMouseClick(element: Element){
     mouseClickEvents.forEach(mouseEventType =>
         element.dispatchEvent(
             new MouseEvent(mouseEventType, {

@@ -78,7 +78,7 @@ span.logo {
   cursor: pointer;
 }
 
-.swap-window input {
+.stakeModule input, .swap-window input {
   padding: 16px;
   border-radius: 12px;
   box-shadow: none;
@@ -95,11 +95,11 @@ span.logo {
   }
 }
 
-.swap-window input::placeholder {
+.stakeModule input::placeholder, .swap-window input::placeholder {
   color: $color-primary-blue-650;
 }
 
-.swap-window .afterInput {
+.stakeModule .afterInput, .swap-window .afterInput {
   color: $color-primary-blue-650;
   position: absolute;
   font-size: 12px;
