@@ -1,16 +1,19 @@
 import React, {useState} from "react";
 import {appTokens, downloadStates, PoolNames, poolsData} from "./Pools";
-import {findAllByDisplayValue} from "@testing-library/react";
-import {Button, Modal, ModalBody, ModalHeader, UncontrolledPopover} from "reactstrap";
+import {
+    Modal,
+    ModalBody,
+    ModalHeader,
+    Popover,
+    PopoverBody,
+    UncontrolledPopover
+} from "reactstrap";
 import {signerEmail, signerWeb, signerKeeper, globalSigner} from "./SignerHandler";
-import axios from "axios";
-import {API_URL, IContractStateKey} from "./MultiSwapInterface";
 import arrow from "./img/arrow-blue.svg";
 import balance from "./img/wallet-icon.svg";
 import mail from "./img/mail.svg";
 import seed from "./img/seed.svg";
 import wx from "./img/wx.svg";
-// import {AccountDropdown} from "./Account/AccountDropdown";
 
 interface IState{
     address: string,
@@ -19,6 +22,7 @@ interface IState{
     signer: any,
     status: string,
     portfolioValue: number
+    addressModalIsOpen: boolean;
 }
 
 interface IProps{
@@ -69,7 +73,8 @@ export class WalletModule extends React.Component<IProps, IState> {
             portfolioValue: 0,
             balances: {},
             signer: null,
-            status: "nonauth"
+            status: "nonauth",
+            addressModalIsOpen: false
         }
     }
 
@@ -83,6 +88,9 @@ export class WalletModule extends React.Component<IProps, IState> {
             this.setState({balances: balances})
             this.setState({portfolioValue: sum})
             this.setState({status: "authed"})
+            this.setState({
+                addressModalIsOpen: false
+            });
 
             setInterval(() => {
                 globalSigner.updateBalances()
@@ -153,6 +161,7 @@ export class WalletModule extends React.Component<IProps, IState> {
 
     renderTokenBalance(tokenId: any) {
         const item = this.state.balances[tokenId]
+
         return (
             <div className="tokenBalance">
                 <div>
@@ -166,6 +175,18 @@ export class WalletModule extends React.Component<IProps, IState> {
         )
     }
 
+    closeAddressModal(){
+        this.setState({
+            addressModalIsOpen: false
+        });
+    }
+
+    toggleAddressModal() {
+        this.setState({
+            addressModalIsOpen: !this.state.addressModalIsOpen
+        });
+    }
+
     render() {
         return (
             <div className="wallet-module">
@@ -177,13 +198,31 @@ export class WalletModule extends React.Component<IProps, IState> {
                     </span>
                     {/*<span className="balance">{this.wavesFormat(this.state.wavesBalance)} <img className="waves-logo" src="https://s2.coinmarketcap.com/static/img/coins/200x200/1274.png" alt="waves logo"/></span>*/}
                 </button>
-                    <button className={this.state.status == "authed" ? "button secondary medium address" : "non-visible"} onClick={() => globalSigner.logout()}>
+                    <button className={this.state.status == "authed" ? "button secondary medium address" : "non-visible"} onClick={(e) => e.currentTarget.focus()} id="addressModal" type="button">
                         {/*<button className={this.state.status == "authed" ? "button secondary medium address" : "non-visible"} onClick={() => <AccountDropdown setShowAccount={} setIsAuthPopupOpen={} address={} logout={}}>*/}
                         {this.displayFormat(this.state.address)}
                         <img className="arrow-portfolio" src={arrow} alt=""/>
                     </button>
-                
-                {/*//globalSigner.logout()*/}
+
+                <Popover
+                    className="popover popover--body-small"
+                    placement="bottom-end"
+                    isOpen={this.state.addressModalIsOpen}
+                    target="addressModal"
+                    toggle={()=>{this.toggleAddressModal()}}
+                >
+
+                    <div className="popover--body-item">
+                        Copy address
+                    </div>
+                    <div className="popover--body-item">
+                        View in Waves Explorer
+                    </div>
+                    <div className="popover--body-item popover--body-logout" onClick={() => globalSigner.logout()}>
+                        Disconnect
+                    </div>
+
+                </Popover>
 
                 <UncontrolledPopover className="wallet-popup infoPopup" trigger="focus" placement="bottom" target="PortfolioFocus">
                     {Object.keys(this.state.balances).map((item: any) => (
@@ -210,6 +249,8 @@ export class WalletModule extends React.Component<IProps, IState> {
                         </button>
                     </ModalBody>
                 </Modal>
+
+                <div onClick={()=>{this.closeAddressModal()}} className={`popover-overlay-helper ${this.state.addressModalIsOpen? 'active' : ''}`}></div>
             </div>
         )
     }
