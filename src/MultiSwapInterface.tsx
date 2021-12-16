@@ -1,7 +1,6 @@
 import React, {useState} from "react";
 import axios from 'axios';
 import {PoolNames, poolsData} from "./Pools"
-import classNames from "classnames";
 import ModalWindow from "./AuthInterface";
 import changeButton from './img/ChangeButton.svg';
 import streetLogo from './img/street-logo.svg';
@@ -10,18 +9,17 @@ import puzzleBack from './img/puzzle-back-1.svg';
 import arrow from './img/arrow.svg';
 import closeIcon from "./img/close.svg";
 import searchIcon from "./img/search.svg";
-import {Modal, ModalBody, ModalHeader, Popover, PopoverBody, PopoverHeader, UncontrolledPopover} from "reactstrap";
+import {Popover, PopoverBody, PopoverHeader} from "reactstrap";
 import puzzleBannerIllustration from './img/puzzle-banner-illustration.svg';
 import puzzleLogo from "./img/logos/PUZZLE.svg";
-
-
-import {Modal, ModalBody, ModalHeader, PopoverBody, UncontrolledPopover} from "reactstrap";
 import { Link } from "react-router-dom";
 import './App.scss';
 import './Landing.scss';
-import './AuthInterface.scss';
+// import './AuthInterface.scss';
 import {valueOrZero} from "./InvestToPoolInterface";
 import {calculateTokenPrice} from "./WalletModule";
+import {event} from "react-ga";
+import any = jasmine.any;
 
 export const logos = [streetLogo, usdnLogo]
 
@@ -274,8 +272,6 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                         <input type="text"
                                                className="textField"
                                                placeholder="Search by name or ticker..."
-                                            // placeholder="&#61442;"
-                                            // value={""}
                                                onChange={(e) => {this.changePopoverInSearchStr(e.target.value)}}
                                         />
                                     </div>
