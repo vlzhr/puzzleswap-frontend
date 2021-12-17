@@ -71,10 +71,57 @@
   }
 }
 
-.notification-container {
-  &--top-right {
-    .danger {
-      background-color: green;
+.notification {
+
+  &__content {
+    text-align: left;
+    padding: 0;
+  }
+  &__title {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-primary-blue-800;
+  }
+  &__message {
+    color: $color-primary-blue-650;
+    font-size: 12px;
+    line-height: 16px;
+  }
+  &__item {
+
+    background: $color-white;
+    border: 1px solid $color-primary-blue-100;
+    box-shadow: 0px 8px 24px rgba(54, 56, 112, 0.16);
+    border-radius: 12px;
+    padding: 16px;
+
+    &--danger::before {
+      content: url(./img/error-icon.svg);
+      width: 20px;
+      height: 20px;
+      margin: 2px 14px 2px 2px;
+    }
+
+    &--success::before {
+      content: url(./img/success-icon.svg);
+      width: 24px;
+      height: 24px;
+      margin: 2px 8px 2px 2px;
+    }
+
+    &--alert::before {
+      content: url(./img/alert-icon.svg);
+      width: 20px;
+      height: 20px;
+      margin: 2px 14px 2px 2px;
+    }
+
+    &::after {
+      content: url(./img/close.svg);
+      width: 14px;
+      height: 14px;
+      margin: 2px 10px 5px 10px;
     }
   }
 }

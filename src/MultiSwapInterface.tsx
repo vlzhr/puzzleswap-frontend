@@ -34,6 +34,7 @@ interface IState{
     popoverOutIsOpen: boolean;
     popoverInSearchStr: string;
     popoverOutSearchStr: string;
+    changeButtonIsRotate: boolean
 }
 
 interface IProps{
@@ -78,7 +79,8 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
             popoverInIsOpen: false,
             popoverOutIsOpen: false,
             popoverInSearchStr: '',
-            popoverOutSearchStr: ''
+            popoverOutSearchStr: '',
+            changeButtonIsRotate: false
         }
 
         let balances: [], auth: boolean = true;
@@ -299,8 +301,11 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                 <div className="afterInput" onClick={() => this.handleMaxClick()}>max:&nbsp;{this.getTokenInBalance()}</div>
                             </div>
                         </div>
-                        <div className="change-button comp rate"
-                             onClick={() => this.setState({tokenOut: this.state.tokenIn, tokenIn: this.state.tokenOut})}>
+                        <div className={`change-button comp rate ${this.state.changeButtonIsRotate ? 'change-button--rotate' : ''}`}
+                             onClick={() => {
+                                 this.setState({changeButtonIsRotate: !this.state.changeButtonIsRotate});
+                                 this.setState({tokenOut: this.state.tokenIn, tokenIn: this.state.tokenOut});
+                             }}>
                             <img src={changeButton} alt="change"/>
                             <span className="rateText">
                                 <span className="rateText">1 {this.poolData.tokenNames[this.getTokenIn()]} = {this.calculateCurrentPrice(this.state.tokenOut, this.getTokenIn(), 0.98)} {this.poolData.tokenNames[this.state.tokenOut]}</span>
@@ -308,6 +313,7 @@ export class MultiSwapInterface extends React.Component<IProps, IState>{
                                 {/*<span className="rateText">1 {this.poolData.tokenNames[this.state.tokenOut]} = {this.calculateCurrentPrice(this.getTokenIn(), this.state.tokenOut)} {this.poolData.tokenNames[this.getTokenIn()]}</span>*/}
                             </span>
                         </div>
+
                         <div className="comp">
                             <button onClick={(e) => e.currentTarget.focus()} className="infoIcon tokenData" id="TokenOut" type="button">
                                 <img className="tokenLogo" src={this.poolData.tokenLogos[this.state.tokenOut]}/>
