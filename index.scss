@@ -1,0 +1,14 @@
+@import "./styles/colors";
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: $color-primary-blue-100;
+}
+
+code {
+  font-family: Roboto, source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
